@@ -64,14 +64,14 @@
   width: 25vw;
 }
 
-.Submit-inputInfoRight input {
+.Submit-inputInfoRight textarea {
   margin-top: 30px;
   height: 200px;
   border-radius: 5px;
   outline: none;
   border: none;
   box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
-  padding: 2px 10px;
+  padding: 10px 10px;
   font-family: "Montserrat";
 }
 

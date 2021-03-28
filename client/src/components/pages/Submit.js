@@ -48,7 +48,7 @@ function Submit(props) {
                     </div>
                 </div>
                 <div className="Submit-inputInfoRight">
-                    <input className="Submit-smallField" placeholder="Type your message here..." value={message} onChange={e => setMessage(e.target.value)}/>
+                    <textarea className="Submit-largeField" placeholder="Type your message here..." value={message} onChange={e => setMessage(e.target.value)}/>
                 </div>
             </div>
             
