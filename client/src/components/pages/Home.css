@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Orbitron:wght@700&display=swap");
+
+.Home-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../../dist/poster.jpeg");
+  color: white;
+  font-family: "Montserrat", "sans-serif";
+  text-align: center;
+}
+
+.Home-backgroundOverlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.Home-title {
+  font-size: 60px;
+  width: 1000px;
+  margin-left: calc(50vw - 500px);
+  padding-top: 20vh;
+  font-family: "Orbitron", sans-serif;
+  text-shadow: 2px 4px rgb(21, 21, 21);
+}
+
+.Home-introText {
+  font-size: 20px;
+  width: 800px;
+  margin-left: calc(50vw - 400px);
+  margin-top: 40px;
+  text-shadow: 2px 2px rgb(21, 21, 21);
+}
+
+.Home-buttonContainer {
+  width: 150px;
+  margin-top: 100px;
+  margin-left: calc(50vw - 75px);
+}
+
+.Home-submitButton {
+  background-color: white;
+  color: rgb(21, 21, 21);
+  padding: 20px;
+  border-radius: 20px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 30px;
+
+  box-shadow: 2px 2px 2px 3px rgb(79, 79, 79);
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+  text-decoration: none;
+  text-emphasis: none;
+}
+
+.Home-submitButton:hover {
+  color: white;
+  background-color: rgb(21, 21, 21);
+  cursor: pointer;
+}

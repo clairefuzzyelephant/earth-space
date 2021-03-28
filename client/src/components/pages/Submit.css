@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Orbitron:wght@700&display=swap");
+
+.Submit-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../../dist/poster.jpeg");
+  color: white;
+  font-family: "Montserrat", "sans-serif";
+  text-align: center;
+}
+
+.Submit-title {
+  font-size: 60px;
+  width: 1000px;
+  margin-left: calc(50vw - 500px);
+  padding-top: 10vh;
+  font-family: "Orbitron", sans-serif;
+  text-shadow: 2px 4px rgb(21, 21, 21);
+}
+
+.Submit-introText {
+  font-size: 20px;
+  width: 800px;
+  margin-left: calc(50vw - 400px);
+  margin-top: 40px;
+  text-shadow: 2px 2px rgb(21, 21, 21);
+}
+
+.Submit-inputSection {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80vw;
+  margin-left: 10vw;
+  margin-top: 20px;
+}
+
+.Submit-inputInfoLeft {
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+}
+
+.Submit-inputInfoLeft input {
+  margin-top: 30px;
+  height: 40px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
+  padding: 2px 10px;
+  font-family: "Montserrat";
+}
+
+.Submit-inputInfoRight {
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+}
+
+.Submit-inputInfoRight input {
+  margin-top: 30px;
+  height: 200px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
+  padding: 2px 10px;
+  font-family: "Montserrat";
+}
+
+.Submit-submitButton {
+  width: 150px;
+  margin-left: calc(75vw - 75px);
+  background-color: white;
+  color: rgb(21, 21, 21);
+  padding: 20px;
+  border-radius: 20px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 30px;
+  margin-top: 75px;
+  box-shadow: 2px 2px 2px 3px rgb(79, 79, 79);
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+}
+
+.Submit-submitButton:hover {
+  color: white;
+  background-color: rgb(21, 21, 21);
+  cursor: pointer;
+}
