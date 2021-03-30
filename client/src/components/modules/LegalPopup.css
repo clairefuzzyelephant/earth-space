@@ -1,0 +1,20 @@
+.Popup-background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+.Popup-container {
+  position: fixed;
+  z-index: 100;
+  background-color: white;
+  color: white;
+  width: 40vw;
+  height: 60vh;
+  top: 20vh;
+  left: 30vw;
+}

@@ -52,10 +52,25 @@
 }
 
 .Submit-dropdown {
-  height: 40px;
+  height: 80px;
   color: rgb(75, 75, 75);
   margin-top: 30px;
   font-size: 14px;
+}
+
+.Submit-legalCheckbox {
+  height: 50px;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 25vw;
+}
+
+.Submit-legalCheckbox input {
+  height: 20px;
+  margin-top: 0px;
 }
 
 .Submit-inputInfoRight {

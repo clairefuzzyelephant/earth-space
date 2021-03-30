@@ -1,6 +1,8 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Select from 'react-select';
 import countryList from 'react-select-country-list';
+
+import LegalPopup from "../modules/LegalPopup.js";
 
 import { post } from "../../utilities.js";
 
@@ -17,6 +19,9 @@ function Submit(props) {
     const [countryVal, setCountryVal] = useState("");
     const [message, setMessage] = useState("");
 
+    const [checked, setChecked] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
+
     const options = useMemo(() => countryList().getData(), []);
 
     const handleSubmit = () => {
@@ -32,6 +37,22 @@ function Submit(props) {
         })
     }
 
+    const togglePopup = () => {
+        if (!checked) {
+            console.log("toggling");
+            setShowPopup(true);
+            setChecked(true);
+        }
+        else {
+            setShowPopup(false);
+            setChecked(false);
+        }
+    }
+
+    useEffect(() => {
+        console.log("toggling popup!!!")
+    }, [showPopup])
+
     return (
         <>
         <div className="Submit-container">
@@ -46,6 +67,10 @@ function Submit(props) {
                     <div>
                         <Select className="Submit-dropdown" isSearchable={false} placeholder="No Country Selected" value={countryVal} options={options} onChange={e => setCountryVal(e)} />
                     </div>
+                    <div className="Submit-legalCheckbox">
+                        <div><input type="checkbox" value={checked} onChange={() => togglePopup()} /></div>
+                        <div>I accept the legal terms and conditions.</div>
+                    </div>
                 </div>
                 <div className="Submit-inputInfoRight">
                     <textarea className="Submit-largeField" placeholder="Type your message here..." value={message} onChange={e => setMessage(e.target.value)}/>
@@ -58,6 +83,8 @@ function Submit(props) {
                 Send
             </div>
             </div>
+
+            <div>{showPopup ? <LegalPopup /> : null}</div>
         </div>
         </>
     );
