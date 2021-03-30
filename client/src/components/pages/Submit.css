@@ -43,7 +43,7 @@
 .Submit-inputInfoLeft input {
   margin-top: 30px;
   height: 40px;
-  border-radius: 5px;
+  border-radius: 10px;
   outline: none;
   border: none;
   box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
@@ -52,10 +52,15 @@
 }
 
 .Submit-dropdown {
-  height: 80px;
-  color: rgb(75, 75, 75);
+  height: 50px;
+  width: 25vw;
+  border-radius: 10px;
+  color: rgb(125, 125, 125);
   margin-top: 30px;
   font-size: 14px;
+  padding-left: 5px;
+  box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
+  font-family: "Montserrat";
 }
 
 .Submit-legalCheckbox {
@@ -63,26 +68,34 @@
   margin-top: 25px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   width: 25vw;
+  font-size: 14px;
 }
 
 .Submit-legalCheckbox input {
-  height: 20px;
+  height: fit-content;
   margin-top: 0px;
+  margin-right: 15px;
+}
+
+.Submit-legalCheckbox input:hover {
+  cursor: pointer;
 }
 
 .Submit-inputInfoRight {
   display: flex;
   flex-direction: column;
   width: 25vw;
+  align-items: flex-end;
 }
 
 .Submit-inputInfoRight textarea {
   margin-top: 30px;
   height: 200px;
-  border-radius: 5px;
+  width: 100%;
+  border-radius: 10px;
   outline: none;
   border: none;
   box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
@@ -92,7 +105,6 @@
 
 .Submit-submitButton {
   width: 150px;
-  margin-left: calc(75vw - 75px);
   background-color: white;
   color: rgb(21, 21, 21);
   padding: 20px;
@@ -108,4 +120,11 @@
   color: white;
   background-color: rgb(21, 21, 21);
   cursor: pointer;
+}
+
+.Submit-notAcceptedWarning {
+  color: red;
+  text-align: right;
+  margin-top: 10px;
+  font-size: 12px;
 }

@@ -12,9 +12,63 @@
   position: fixed;
   z-index: 100;
   background-color: white;
-  color: white;
+  color: rgb(29, 29, 29);
   width: 40vw;
-  height: 60vh;
+  height: fit-content;
+  max-height: 60vh;
+  overflow-y: scroll;
   top: 20vh;
   left: 30vw;
+  font-size: 12px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 3px rgb(79, 79, 79);
+}
+
+.Popup-buttonGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 200px;
+  position: relative;
+  left: calc(40vw - 275px);
+  /* bottom: 20px; */
+  margin-top: 20px;
+}
+
+.Popup-acceptButton {
+  width: 80px;
+  background-color: rgb(2, 2, 2);
+  color: rgb(240, 240, 240);
+  padding: 20px;
+  border-radius: 20px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 12px;
+  box-shadow: 2px 2px 3px 1px rgb(79, 79, 79);
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+  margin-left: 20px;
+  height: 10px;
+}
+
+.Popup-acceptButton:hover {
+  color: rgb(7, 7, 7);
+  background-color: rgb(247, 247, 247);
+  cursor: pointer;
+}
+
+.Popup-cancelButton {
+  width: 80px;
+  background-color: rgb(69, 69, 69);
+  color: rgb(240, 240, 240);
+  padding: 20px;
+  border-radius: 20px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 12px;
+  box-shadow: 2px 2px 3px 1px rgb(79, 79, 79);
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+  height: 10px;
+}
+
+.Popup-cancelButton:hover {
+  cursor: pointer;
+  background-color: rgb(118, 118, 118);
 }
