@@ -1,7 +1,6 @@
-import React, { useState, useMemo, useEffect } from "react";
-import Select from 'react-select';
-import countryList from 'react-select-country-list';
+import React, { useState, useEffect, useMemo } from "react";
 import { CountryDropdown } from 'react-country-region-selector';
+import MicRecorder from 'mic-recorder-to-mp3';
 
 import LegalPopup from "../modules/LegalPopup.js";
 
@@ -29,6 +28,25 @@ function Submit(props) {
 
     const issueList = ["- Terms and conditions not accepted", "- Legal name not entered", "- Country not selected", "- Empty message"];
     const issuesOccur = {0: false, 1: false, 2: false, 3: false};
+
+    const recorder = useMemo(() => new MicRecorder({ bitRate: 64 }), []);
+    const [isRecording, setIsRecording] = useState(false);
+    const [isBlocked, setIsBlocked] = useState(false);
+    const [blobURL, setBlobURL] = useState("");
+    const [buffer, setBuffer] = useState(null);
+
+    useEffect(() => {
+        navigator.getUserMedia({ audio: true },
+            () => {
+              console.log('Permission Granted');
+              setIsBlocked(false);
+            },
+            () => {
+              console.log('Permission Denied');
+              setIsBlocked(true);
+            },
+          );
+    }, [])
     
 
     const handleSubmit = () => {
@@ -36,11 +54,24 @@ function Submit(props) {
         if (acceptedTerms && legalName !== "" && countryVal !== "" && message !== "") {
             post("/api/submitMessage", body).then((result) => {
                 if (result !== null) {
-                    console.log("Success!");
-                    setLegalName("");
-                    setEnglishName("");
-                    setCountryVal("");
-                    setMessage("");
+                    if (!buffer) {
+                        console.log("Success!");
+                        setLegalName("");
+                        setEnglishName("");
+                        setCountryVal("");
+                        setMessage("");
+                    }
+                    else {
+                        post("/api/submitRecording", { buffer: buffer }).then((result) => {
+                            console.log("Success with recording!");
+                            setLegalName("");
+                            setEnglishName("");
+                            setCountryVal("");
+                            setMessage("");
+                            setBuffer(null);
+                        })
+                    }
+                    
                 }
             })
         }
@@ -89,6 +120,30 @@ function Submit(props) {
         setShowPopup(false);
     }
 
+    const startRecording = () => {
+        if (isBlocked) {
+            console.log('Permission Denied');
+          } else {
+            recorder
+              .start()
+              .then(() => {
+                setIsRecording(true);
+              }).catch((e) => console.error(e));
+          }
+    }
+
+    const stopRecording = () => {
+        recorder.stop().getMp3()
+        .then(([buffer, blob]) => {
+        setIsRecording(false);
+        const blobURL = URL.createObjectURL(blob)
+        setBlobURL(blobURL);
+        setBuffer(buffer);
+        console.log(buffer);
+        console.log(blob);
+        })
+    }
+
 
     return (
         <>
@@ -110,7 +165,18 @@ function Submit(props) {
                     </div>
                 </div>
                 <div className="Submit-inputInfoRight">
-                    <textarea className="Submit-largeField" placeholder="Type your message here... (Max 200 characters)" maxlength={200} value={message} onChange={e => setMessage(e.target.value)}/>
+                    <textarea className="Submit-largeField" placeholder="Type your message here... (Max 200 characters)" maxLength={200} value={message} onChange={e => setMessage(e.target.value)}/>
+                    
+                    {/** Audio stuff */}
+                    {/* <button onClick={() => startRecording()} disabled={isRecording}>
+                    Record
+                    </button>
+                    <button onClick={() => stopRecording()} disabled={!isRecording}>
+                    Stop
+                    </button>
+                    <audio src={blobURL} controls="controls" /> */}
+                    
+                    
                     <div className="Submit-submitButton" onClick={() => handleSubmit()}>
                         Send
                     </div>

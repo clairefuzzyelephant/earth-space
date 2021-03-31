@@ -4,7 +4,8 @@ const MessageSchema = new mongoose.Schema({
   legalName: String,
   englishName: String,
   country: String,
-  message: String
+  message: String,
+  creationDate: { type: Date, default: Date.now }
 });
 
 // compile model from schema

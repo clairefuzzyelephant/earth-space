@@ -2,6 +2,7 @@
 const express = require("express");
 
 const Message = require("./models/Message");
+const Recording = require("./models/Recording");
 
 const router = express.Router();
 
@@ -13,6 +14,13 @@ router.post("/submitMessage", (req, res) => {
     message: req.body.message
   });
   newMessage.save().then(() => res.send(newMessage));
+})
+
+router.post("/submitRecording", (req, res) => {
+  const newRecording = new Recording({
+    file: req.body.buffer,
+  });
+  newRecording.save().then(() => res.send(newRecording));
 })
 
 
