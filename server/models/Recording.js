@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const RecordingSchema = new mongoose.Schema({
-  file: Buffer,
+  fileLink: String,
   creationDate: Date
 });
 // compile model from schema

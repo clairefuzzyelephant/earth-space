@@ -33,6 +33,7 @@ function Submit(props) {
     const [isRecording, setIsRecording] = useState(false);
     const [isBlocked, setIsBlocked] = useState(false);
     const [blobURL, setBlobURL] = useState("");
+    const [blob, setBlob] = useState(null);
     const [buffer, setBuffer] = useState(null);
 
     useEffect(() => {
@@ -50,7 +51,8 @@ function Submit(props) {
     
 
     const handleSubmit = () => {
-        const body = {legalName: legalName, englishName: englishName, country: countryVal.value, message: message};
+        console.log(countryVal);
+        const body = {legalName: legalName, englishName: englishName, country: countryVal, message: message};
         if (acceptedTerms && legalName !== "" && countryVal !== "" && message !== "") {
             post("/api/submitMessage", body).then((result) => {
                 if (result !== null) {
@@ -62,13 +64,14 @@ function Submit(props) {
                         setMessage("");
                     }
                     else {
-                        post("/api/submitRecording", { buffer: buffer }).then((result) => {
+                        post("/api/submitRecording", { buffer: buffer, blob: blob }).then((result) => {
                             console.log("Success with recording!");
                             setLegalName("");
                             setEnglishName("");
                             setCountryVal("");
                             setMessage("");
                             setBuffer(null);
+                            setBlob(null);
                         })
                     }
                     
@@ -138,7 +141,9 @@ function Submit(props) {
         setIsRecording(false);
         const blobURL = URL.createObjectURL(blob)
         setBlobURL(blobURL);
+        setBlob(blob);
         setBuffer(buffer);
+        console.log(typeof(buffer))
         console.log(buffer);
         console.log(blob);
         })
@@ -168,13 +173,13 @@ function Submit(props) {
                     <textarea className="Submit-largeField" placeholder="Type your message here... (Max 200 characters)" maxLength={200} value={message} onChange={e => setMessage(e.target.value)}/>
                     
                     {/** Audio stuff */}
-                    {/* <button onClick={() => startRecording()} disabled={isRecording}>
+                    <button onClick={() => startRecording()} disabled={isRecording}>
                     Record
                     </button>
                     <button onClick={() => stopRecording()} disabled={!isRecording}>
                     Stop
                     </button>
-                    <audio src={blobURL} controls="controls" /> */}
+                    <audio src={blobURL} controls="controls" />
                     
                     
                     <div className="Submit-submitButton" onClick={() => handleSubmit()}>
