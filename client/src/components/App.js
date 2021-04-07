@@ -5,8 +5,11 @@ import Home from "./pages/Home.js";
 import Submit from "./pages/Submit.js";
 
 import NavBar from "./modules/NavBar.js";
+import Footer from "./modules/Footer.js";
 
 import "../utilities.css";
+import Mission from "./pages/Mission.js";
+import Team from "./pages/Team.js";
 
 function App (props) {
 
@@ -17,14 +20,19 @@ function App (props) {
         <Home
           path="/"
         />
+        <Mission
+          path="/mission"
+        />
+        <Team 
+          path="/team"
+        />
         <Submit 
           path="/submit"
         />
         <NotFound default />
       </Router>
-      <div className="iconDisclaimer">
-        <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-      </div>
+      <Footer />
+      
     </>
   );
 }

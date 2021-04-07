@@ -6,6 +6,8 @@ import LegalPopup from "../modules/LegalPopup.js";
 
 import { post } from "../../utilities.js";
 
+import mic from "../../../dist/mic-icon-white.png";
+
 import "../../utilities.css";
 import "./Submit.css";
 
@@ -16,8 +18,10 @@ import "./Submit.css";
 function Submit(props) {
     const [legalName, setLegalName] = useState("");
     const [englishName, setEnglishName] = useState("");
+    const [emailAddr, setEmailAddr] = useState("");
     const [countryVal, setCountryVal] = useState("");
     const [message, setMessage] = useState("");
+    const [language, setLanguage] = useState("");
 
     const [isChecked, setIsChecked] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
@@ -26,8 +30,8 @@ function Submit(props) {
 
     const [issues, setIssues] = useState([]);
 
-    const issueList = ["- Terms and conditions not accepted", "- Legal name not entered", "- Country not selected", "- Empty message"];
-    const issuesOccur = {0: false, 1: false, 2: false, 3: false};
+    const issueList = ["- Terms and conditions not accepted", "- Legal name not entered", "- Country not selected", "- Empty message", "- Email address not entered"];
+    const issuesOccur = {0: false, 1: false, 2: false, 3: false, 4: false};
 
     const recorder = useMemo(() => new MicRecorder({ bitRate: 64 }), []);
     const [isRecording, setIsRecording] = useState(false);
@@ -52,8 +56,8 @@ function Submit(props) {
 
     const handleSubmit = () => {
         console.log(countryVal);
-        const body = {legalName: legalName, englishName: englishName, country: countryVal, message: message};
-        if (acceptedTerms && legalName !== "" && countryVal !== "" && message !== "") {
+        const body = {legalName: legalName, englishName: englishName, emailAddr: emailAddr, country: countryVal, message: message, language: language};
+        if (acceptedTerms && legalName !== "" && countryVal !== "" && message !== "" && emailAddr !== "") {
             post("/api/submitMessage", body).then((result) => {
                 if (result !== null) {
                     if (!buffer) {
@@ -90,6 +94,9 @@ function Submit(props) {
             }
             if (message == "" || !message) {
                 issuesOccur[3] = true;
+            }
+            if (emailAddr == "" || !emailAddr) {
+                issuesOccur[4] = true;
             }
             setIssues(issueList.filter(function(i) {
                 return issuesOccur[issueList.indexOf(i)]
@@ -153,16 +160,17 @@ function Submit(props) {
     return (
         <>
         <div className="Submit-container">
-            <div className="Home-backgroundOverlay">
+            <div className="Submit-backgroundOverlay">
             <div className="Submit-title">
                 Submit your message!
             </div>
             <div className="Submit-inputSection">
                 <div className="Submit-inputInfoLeft">
-                    <input className="Submit-smallField" placeholder="Legal Name" value={legalName} onChange={e => setLegalName(e.target.value)} />
-                    <input className="Submit-smallField" placeholder="English Name (if applicable)" value={englishName} onChange={e => setEnglishName(e.target.value)}/>
+                    <input className="Submit-smallField" placeholder="Legal Name (required)" value={legalName} onChange={e => setLegalName(e.target.value)} />
+                    <input className="Submit-smallField" placeholder="English Name (optional)" value={englishName} onChange={e => setEnglishName(e.target.value)}/>
+                    <input className="Submit-smallField" placeholder="Email address (required)" value={emailAddr} onChange={e => setEmailAddr(e.target.value)}/>
                     <div>
-                        <CountryDropdown className="Submit-dropdown" showDefaultOption={true} defaultOptionLabel="No Country Selected" value={countryVal} onChange={e => setCountryVal(e)} />
+                        <CountryDropdown className="Submit-dropdown" showDefaultOption={true} defaultOptionLabel="No Country Selected (required)" value={countryVal} onChange={e => setCountryVal(e)} />
                     </div>
                     <div className="Submit-legalCheckbox">
                         <div><input type="checkbox" checked={isChecked} onChange={() => toggleCheckbox()} /></div>
@@ -171,18 +179,33 @@ function Submit(props) {
                 </div>
                 <div className="Submit-inputInfoRight">
                     <textarea className="Submit-largeField" placeholder="Type your message here... (Max 200 characters)" maxLength={200} value={message} onChange={e => setMessage(e.target.value)}/>
-                    
+                    <input className="Submit-smallField" placeholder="Language of message (required)" value={language} onChange={e => setLanguage(e.target.value)}/>
+
                     {/** Audio stuff */}
-                    <button onClick={() => startRecording()} disabled={isRecording}>
-                    Record
-                    </button>
-                    <button onClick={() => stopRecording()} disabled={!isRecording}>
-                    Stop
-                    </button>
-                    <audio src={blobURL} controls="controls" />
+                    <div className="Submit-audioSection">
+                        <div className="Submit-recordButton" onClick={() => {
+                            if (!isRecording) startRecording()
+                            else stopRecording()
+                        }}>
+                            <img src={mic} />
+                        </div>
+                        <div className="Submit-audioPrompt">
+                            {buffer ? 
+                            <>
+                            <p>Double-check my recording... or record again?</p>
+                            <div>
+                                <audio controls autoplay src={blobURL} />
+                            </div>
+                            </>
+                         : isRecording ? <p>Recording...</p> : <p>Record your message (optional)</p>}
+                        </div>
+                        
+                    </div>
                     
                     
-                    <div className="Submit-submitButton" onClick={() => handleSubmit()}>
+                </div>
+            </div>
+            <div className="Submit-submitButton" onClick={() => handleSubmit()}>
                         Send
                     </div>
                     
@@ -197,10 +220,6 @@ function Submit(props) {
                             )}
                         </div> 
                     : null}
-                    
-                </div>
-            </div>
-            
             
             </div>
 

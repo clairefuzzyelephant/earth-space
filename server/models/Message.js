@@ -3,8 +3,10 @@ const mongoose = require("mongoose");
 const MessageSchema = new mongoose.Schema({
   legalName: String,
   englishName: String,
+  emailAddr: String,
   country: String,
   message: String,
+  language: String,
   creationDate: { type: Date, default: Date.now }
 });
 

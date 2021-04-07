@@ -1,0 +1,20 @@
+.Mission-introText {
+    font-size: 15px;
+    width: 70vw;
+    max-height: 60vh;
+    margin-left: 15vw;
+    margin-top: 40px;
+    text-shadow: 2px 2px rgb(21, 21, 21);
+    animation: fadeIn 4s 1;
+    overflow-y: scroll;
+}
+
+.Mission-title {
+    font-size: 60px;
+    width: 1000px;
+    margin-left: calc(50vw - 500px);
+    padding-top: 10vh;
+    font-family: "Orbitron", sans-serif;
+    text-shadow: 2px 4px rgb(21, 21, 21);
+    animation: fadeIn 2s 1;
+  }

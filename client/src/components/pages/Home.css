@@ -2,7 +2,7 @@
 
 .Home-container {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 75px);
   background-image: url("../../../dist/poster.jpeg");
   color: white;
   font-family: "Montserrat", "sans-serif";
@@ -12,7 +12,7 @@
 .Home-backgroundOverlay {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.65);
 }
 
 .Home-title {
@@ -22,6 +22,7 @@
   padding-top: 20vh;
   font-family: "Orbitron", sans-serif;
   text-shadow: 2px 4px rgb(21, 21, 21);
+  animation: fadeIn 2s 1;
 }
 
 .Home-introText {
@@ -30,12 +31,41 @@
   margin-left: calc(50vw - 400px);
   margin-top: 40px;
   text-shadow: 2px 2px rgb(21, 21, 21);
+  animation: fadeIn 4s 1;
+}
+
+@keyframes fadeIn {
+  0% {
+    color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    color: white;
+  }
 }
 
 .Home-buttonContainer {
   width: 150px;
   margin-top: 100px;
   margin-left: calc(50vw - 75px);
+  /* animation: fadeIn 6s 1; */
+}
+
+@keyframes fadeIn2 {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+  }
+  100% {
+    background-color: white;
+    color: rgb(21, 21, 21);
+    box-shadow: 2px 2px 2px 3px rgb(79, 79, 79);
+  }
 }
 
 .Home-submitButton {
@@ -50,10 +80,23 @@
   transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
   text-decoration: none;
   text-emphasis: none;
+  animation: fadeIn2 4s 1;
 }
 
 .Home-submitButton:hover {
-  color: white;
+  color: rgb(186, 186, 186);
   background-color: rgb(21, 21, 21);
   cursor: pointer;
+}
+
+@keyframes pulse { 
+  0% {
+    background-color: white;
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.646);
+  }
+  100% {
+    background-color: white;
+  }
 }

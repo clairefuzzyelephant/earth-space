@@ -10,6 +10,16 @@
   align-items: baseline;
   padding-left: 20px;
   margin-top: 20px;
+  animation: slideIn 2s 1;
+}
+
+@keyframes slideIn {
+  0% {
+    left: -500px;
+  }
+  100% {
+    left: 0;
+  }
 }
 
 .NavBar-container img {

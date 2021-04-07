@@ -34,8 +34,10 @@ router.post("/submitMessage", (req, res) => {
   const newMessage = new Message({
     legalName: req.body.legalName,
     englishName: req.body.englishName,
+    emailAddr: req.body.emailAddr,
     country: req.body.country,
-    message: req.body.message
+    message: req.body.message,
+    language: req.body.language,
   });
   newMessage.save().then(() => res.send(newMessage));
 })

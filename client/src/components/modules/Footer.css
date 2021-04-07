@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Orbitron:wght@700&display=swap");
+
+
+.Footer-container {
+    position: absolute;
+    width: 100vw;
+    height: 75px;
+    background-color: white;
+    left: 0;
+    background-image: url("../../../dist/poster.jpeg");
+    text-align: center;
+}
+
+.Footer-overlay {
+    position: absolute;
+    width: 100vw;
+    height: 75px;
+    background-color: rgba(21, 21, 21, 0.8);
+    left: 0;
+    z-index: 1;
+}
+
+.Footer-contact {
+    position: relative;
+    color: rgb(220, 220, 220);
+    padding-top: 20px;
+    text-shadow: 2px 1px rgb(21, 21, 21);
+    font-family: "Montserrat", "sans-serif";
+    z-index: 3;
+}
