@@ -2,8 +2,6 @@
 const express = require("express");
 
 const Message = require("./models/Message");
-const Recording = require("./models/Recording");
-
 const router = express.Router();
 
 // Load the AWS SDK for Node.js

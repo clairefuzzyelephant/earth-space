@@ -30,7 +30,7 @@ function Submit(props) {
 
     const [issues, setIssues] = useState([]);
 
-    const issueList = ["- Terms and conditions not accepted", "- Legal name not entered", "- Country not selected", "- Empty message", "- Email address not entered"];
+    const issueList = ["Terms and conditions", "Legal name", "Country", "Message", "Email Address"];
     const issuesOccur = {0: false, 1: false, 2: false, 3: false, 4: false};
 
     const recorder = useMemo(() => new MicRecorder({ bitRate: 64 }), []);
@@ -205,13 +205,14 @@ function Submit(props) {
                     
                     {displayWarning ? 
                         <div className="Submit-notAcceptedWarning">
-                            Please resolve the following issues before continuing: 
+                            Please complete the following required fields: 
                             <br/>
-                            {issues.map((issue) =>  
+                            {issues.slice(0, issues.length - 1).map((issue) =>  
                                 <>                     
-                                    <p>{issue}</p>
+                                    {issue + ", "}
                                 </>
                             )}
+                            {issues.length !== 0 ? issues[issues.length - 1]: null}
                         </div> 
                     : null}
             
