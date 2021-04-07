@@ -28,50 +28,32 @@ let uploadParams = {Bucket: 'earth-space', Key: '', Body: '', ContentType: 'bina
 const fs = require('fs');
 const path = require('path');
 const Buffer = require('buffer/').Buffer  // note: the trailing slash is important!
-const toBuffer = require('typedarray-to-buffer')
+
+
+const generateFileName = (emailAddr) => {
+  let fileName = "";
+  ind = emailAddr.indexOf("@");
+  if (ind !== -1) {
+    fileName = emailAddr.slice(0, ind);
+  }
+  else {
+    fileName = emailAddr.slice(0, Math.round(emailAddr.length/3));
+  }
+  fileName = fileName + Date.now().toString();
+  return fileName;
+}
 
 router.post("/submitMessage", (req, res) => {
-  const newMessage = new Message({
-    legalName: req.body.legalName,
-    englishName: req.body.englishName,
-    emailAddr: req.body.emailAddr,
-    country: req.body.country,
-    message: req.body.message,
-    language: req.body.language,
-  });
-  newMessage.save().then(() => res.send(newMessage));
-})
-
-router.post("/submitRecording", (req, res) => {
-  // console.log(req.body.buffer);
-  // const buf = toBuffer(req.body.buffer);
   const buf = req.body.buffer;
-  const blob = req.body.blob;
-  // console.log(blob);
-  // console.log(new Uint8Array([buf]));
-  // console.log(buf);
-  // console.log(typeof(buf));
-  // console.log("whatUP!");
   const arr = [];
 
   for (i = 0; i < buf.length; i++) {
-    console.log(buf[i]);
-    console.log(Object.values(buf[i]));
-    console.log('UUWUUUUUU--------------\n\n\n')
     arr.push(Buffer.from(Object.values(buf[i])));
   }
-
-  console.log(arr);
-
-  fs.writeFileSync('test.mp3', Buffer.concat(arr), 'binary');
-
-  let fileStream = fs.createReadStream('test.mp3');
-  fileStream.on('error', function(err) {
-    console.log('File Error', err);
-  });
   uploadParams.Body = Buffer.concat(arr);
-  uploadParams.Key = path.basename('what.mp3');
 
+  const fileName = generateFileName(req.body.emailAddr);
+  uploadParams.Key = path.basename(fileName + '.mp3');
 
   let linkToRecording = "";
   // call S3 to retrieve upload file to specified bucket
@@ -80,16 +62,54 @@ router.post("/submitRecording", (req, res) => {
       console.log("Error", err);
       res.send(err);
     } if (data) {
-      console.log("Upload Success", data.Location);
+      console.log("Upload Success");
       linkToRecording = data.Location;
-      const newRecording = new Recording({
-        fileLink: linkToRecording,
+      const newMessage = new Message({
+        legalName: req.body.legalName,
+        englishName: req.body.englishName,
+        emailAddr: req.body.emailAddr,
+        country: req.body.country,
+        message: req.body.message,
+        language: req.body.language,
+        recordingLink: linkToRecording,
       });
-      newRecording.save().then(() => res.send(newRecording));
+      newMessage.save().then(() => res.send(newMessage));
     }
   });
   
 })
+
+// router.post("/submitRecording", (req, res) => {
+//   const buf = req.body.buffer;
+//   const arr = [];
+
+//   for (i = 0; i < buf.length; i++) {
+//     arr.push(Buffer.from(Object.values(buf[i])));
+//   }
+//   // fs.writeFileSync('test.mp3', Buffer.concat(arr), 'binary');
+//   // let fileStream = fs.createReadStream('test.mp3');
+//   // fileStream.on('error', function(err) {
+//   //   console.log('File Error', err);
+//   // });
+//   uploadParams.Body = Buffer.concat(arr);
+//   uploadParams.Key = path.basename('hum.mp3');
+
+//   let linkToRecording = "";
+//   // call S3 to retrieve upload file to specified bucket
+//   s3.upload (uploadParams, function (err, data) {
+//     if (err) {
+//       console.log("Error", err);
+//       res.send(err);
+//     } if (data) {
+//       console.log("Upload Success");
+//       linkToRecording = data.Location;
+//       const newRecording = new Recording({
+//         fileLink: linkToRecording,
+//       });
+//       newRecording.save().then(() => res.send(newRecording));
+//     }
+//   });
+// })
 
 
 router.all("*", (req, res) => {

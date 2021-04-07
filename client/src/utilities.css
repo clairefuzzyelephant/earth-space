@@ -91,18 +91,4 @@ form {
   color: var(--primary--dim);
 }
 
-.iconDisclaimer {
-  font-size: 8px;
-  width: 200px;
-  color: rgb(198, 196, 196);
-  position: absolute;
-  bottom: 10px;
-  /* left: 5px; */
-  left: calc(50vw - 100px);
-  text-decoration: none;
-  z-index: 3;
-}
 
-.iconDisclaimer a {
-  color: white;
-}

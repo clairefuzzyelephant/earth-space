@@ -7,6 +7,7 @@ const MessageSchema = new mongoose.Schema({
   country: String,
   message: String,
   language: String,
+  recordingLink: String,
   creationDate: { type: Date, default: Date.now }
 });
 

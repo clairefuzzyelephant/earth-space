@@ -56,29 +56,23 @@ function Submit(props) {
 
     const handleSubmit = () => {
         console.log(countryVal);
-        const body = {legalName: legalName, englishName: englishName, emailAddr: emailAddr, country: countryVal, message: message, language: language};
+        const body = {legalName: legalName, englishName: englishName, emailAddr: emailAddr, country: countryVal, message: message, language: language, buffer: buffer};
         if (acceptedTerms && legalName !== "" && countryVal !== "" && message !== "" && emailAddr !== "") {
             post("/api/submitMessage", body).then((result) => {
                 if (result !== null) {
-                    if (!buffer) {
-                        console.log("Success!");
-                        setLegalName("");
-                        setEnglishName("");
-                        setCountryVal("");
-                        setMessage("");
-                    }
-                    else {
-                        post("/api/submitRecording", { buffer: buffer, blob: blob }).then((result) => {
-                            console.log("Success with recording!");
-                            setLegalName("");
-                            setEnglishName("");
-                            setCountryVal("");
-                            setMessage("");
-                            setBuffer(null);
-                            setBlob(null);
-                        })
-                    }
-                    
+                    console.log("Success!");
+                    setLegalName("");
+                    setEnglishName("");
+                    setCountryVal("");
+                    setMessage("");
+                    setEmailAddr("");
+                    setLanguage("");
+                    setBuffer(null);
+                    setBlob(null);
+                    setIsChecked(false);
+                }
+                else {
+                    alert("We encountered an error while trying to submit. Please refresh and try again.")
                 }
             })
         }
