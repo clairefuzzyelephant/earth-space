@@ -10,7 +10,7 @@ function Team(props) {
     <>
       <div className="Home-container">
         <div className="Home-backgroundOverlay">
-          <div className="Home-title">
+          <div className="Team-title">
             Our Team
           </div>
           <div className="Home-introText">

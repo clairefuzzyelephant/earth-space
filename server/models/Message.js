@@ -5,7 +5,9 @@ const MessageSchema = new mongoose.Schema({
   englishName: String,
   emailAddr: String,
   country: String,
+  missEarth: String,
   message: String,
+  translation: String,
   language: String,
   recordingLink: String,
   creationDate: { type: Date, default: Date.now }

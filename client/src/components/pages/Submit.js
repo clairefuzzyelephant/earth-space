@@ -20,7 +20,9 @@ function Submit(props) {
     const [englishName, setEnglishName] = useState("");
     const [emailAddr, setEmailAddr] = useState("");
     const [countryVal, setCountryVal] = useState("");
+    const [missEarth, setMissEarth] = useState("");
     const [message, setMessage] = useState("");
+    const [translation, setTranslation] = useState("");
     const [language, setLanguage] = useState("");
 
     const [isChecked, setIsChecked] = useState(false);
@@ -56,7 +58,7 @@ function Submit(props) {
 
     const handleSubmit = () => {
         console.log(countryVal);
-        const body = {legalName: legalName, englishName: englishName, emailAddr: emailAddr, country: countryVal, message: message, language: language, buffer: buffer};
+        const body = {legalName: legalName, englishName: englishName, emailAddr: emailAddr, country: countryVal, missEarth: missEarth, message: message, translation: translation, language: language, buffer: buffer};
         if (acceptedTerms && legalName !== "" && countryVal !== "" && message !== "" && emailAddr !== "") {
             post("/api/submitMessage", body).then((result) => {
                 if (result !== null) {
@@ -64,8 +66,10 @@ function Submit(props) {
                     setLegalName("");
                     setEnglishName("");
                     setCountryVal("");
+                    setMissEarth("");
                     setMessage("");
                     setEmailAddr("");
+                    setTranslation("");
                     setLanguage("");
                     setBuffer(null);
                     setBlob(null);
@@ -163,18 +167,20 @@ function Submit(props) {
                     <input className="Submit-smallField" placeholder="Legal Name (required)" value={legalName} onChange={e => setLegalName(e.target.value)} />
                     <input className="Submit-smallField" placeholder="English Name (optional)" value={englishName} onChange={e => setEnglishName(e.target.value)}/>
                     <input className="Submit-smallField" placeholder="Email address (required)" value={emailAddr} onChange={e => setEmailAddr(e.target.value)}/>
-                    <div>
+                    <div className="Submit-countrySection">
                         <CountryDropdown className="Submit-dropdown" showDefaultOption={true} defaultOptionLabel="No Country Selected (required)" value={countryVal} onChange={e => setCountryVal(e)} />
+                        <div className="Submit-countryDisclaimer">Country list provided by react-country-region-selector.</div>
                     </div>
+                    <textarea className="Submit-mediumField" placeholder="If you go to space, what would be the thing that you miss most about Earth? (optional)" value={missEarth} onChange={e => setMissEarth(e.target.value)}/>
                     <div className="Submit-legalCheckbox">
                         <div><input type="checkbox" checked={isChecked} onChange={() => toggleCheckbox()} /></div>
-                        <div>I accept the legal terms and conditions.</div>
+                        <div>I accept the legal terms and conditions.</div>  
                     </div>
                 </div>
                 <div className="Submit-inputInfoRight">
                     <textarea className="Submit-largeField" placeholder="Type your message here... (Max 200 characters)" maxLength={200} value={message} onChange={e => setMessage(e.target.value)}/>
+                    <textarea className="Submit-mediumField" placeholder="English translation of message (optional)" maxLength={500} value={translation} onChange={e => setTranslation(e.target.value)}/>
                     <input className="Submit-smallField" placeholder="Language of message (required)" value={language} onChange={e => setLanguage(e.target.value)}/>
-
                     {/** Audio stuff */}
                     <div className="Submit-audioSection">
                         <div className="Submit-recordButton" onClick={() => {

@@ -11,18 +11,24 @@ function NavBar(props) {
 
     return (
         <div className="NavBar-container">
-            <Link to="/mission" className="NavBar-link">
-                <img src={earth} /> Mission
+            <Link to="/" className="NavBar-title">
+                MIT HUMANS
             </Link>
-            <Link to="/team" className="NavBar-link">
-                <img src={team} /> Team
-            </Link>
-            <Link to="/submit" className="NavBar-link">
-                <img src={satellite} /> Submit
-            </Link>
-            <div className="NavBar-link">
-                <img src={terms} /> Terms
+            <div className="NavBar-linkContainer">  
+                <Link to="/mission" className="NavBar-link">
+                    Mission
+                </Link>
+                <Link to="/team" className="NavBar-link">
+                    Team
+                </Link>
+                <Link to="/submit" className="NavBar-link">
+                    Submit
+                </Link>
+                <div className="NavBar-link">
+                    Terms
+                </div>
             </div>
+            
         </div>
     )
 }

@@ -2,26 +2,37 @@
 
 .Submit-container {
   width: 100vw;
-  height: 700px;
+  height: 900px;
   background-image: url("../../../dist/poster.jpeg");
+  background-size: cover;
   color: white;
   font-family: "Montserrat", "sans-serif";
   text-align: center;
 }
 
+@keyframes fadeIn3 {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
 .Submit-backgroundOverlay {
   width: 100vw;
-  height: 700px;
+  height: 900px;
   background-color: rgba(0, 0, 0, 0.65);
 }
 
 .Submit-title {
-  font-size: 50px;
+  font-size: 40px;
   width: 1000px;
   margin-left: calc(50vw - 500px);
-  padding-top: 10vh;
+  padding-top: 15vh;
   font-family: "Orbitron", sans-serif;
   text-shadow: 2px 4px rgb(21, 21, 21);
+  animation: fadeIn 2s 1;
 }
 
 .Submit-introText {
@@ -37,7 +48,8 @@
   justify-content: space-evenly;
   width: 80vw;
   margin-left: 10vw;
-  margin-top: 20px;
+  padding-top: 20px;
+  animation: fadeIn3 2s 1;
 }
 
 .Submit-inputInfoLeft {
@@ -57,7 +69,16 @@
   font-family: "Montserrat";
 }
 
-
+.Submit-inputInfoLeft .Submit-mediumField {
+  margin-top: 30px;
+  height: 60px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
+  padding: 10px 10px;
+  font-family: "Montserrat";
+}
 
 .Submit-dropdown {
   height: 50px;
@@ -92,6 +113,14 @@
   cursor: pointer;
 }
 
+.Submit-countryDisclaimer {
+  font-size: 8px;
+}
+
+.Submit-countrySection {
+  text-align: right;
+}
+
 .Submit-inputInfoRight {
   display: flex;
   flex-direction: column;
@@ -111,6 +140,20 @@
   font-family: "Montserrat";
 }
 
+.Submit-inputInfoRight .Submit-mediumField {
+  margin-top: 30px;
+  height: 100px;
+  width: 100%;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
+  padding: 10px 10px;
+  font-family: "Montserrat";
+}
+
+
+
 .Submit-inputInfoRight input {
   margin-top: 30px;
   width: 100%;
@@ -124,6 +167,7 @@
 }
 
 .Submit-submitButton {
+  animation: fadeIn3 4s 1;
   width: 150px;
   background-color: white;
   color: rgb(21, 21, 21);

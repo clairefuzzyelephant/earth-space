@@ -11,7 +11,9 @@ function Home(props) {
       <div className="Home-container">
         <div className="Home-backgroundOverlay">
           <div className="Home-title">
-            Insert Project Name Here
+            <span>H</span>umanity <span>U</span>nited with <span>M</span>IT <span>A</span>rt and <span>N</span>anotechnology in <span>S</span>pace
+            <br />
+            A Record of Our Voices
           </div>
           <div className="Home-introText">
             In a year of unending crises, MIT sends—for the first time from space—messages of peace and unity in various languages representing all countries around the world using MIT Nanotechnology!

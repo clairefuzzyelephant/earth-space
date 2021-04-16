@@ -3,14 +3,21 @@
   top: 0;
   left: 0;
   color: white;
-  height: 30vh;
-  width: 10vw;
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-  padding-left: 20px;
-  margin-top: 20px;
+  height: 6vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 20vw;
+  padding: 20px;
+  align-items: center;
+  /* padding-top: 20px; */
   animation: slideIn 2s 1;
+  background-color: rgba(41, 41, 41, 0.5);
+}
+
+.NavBar-linkContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 @keyframes slideIn {
@@ -26,6 +33,18 @@
   width: 50px;
   height: 50px;
   margin-right: 10px;
+}
+
+.NavBar-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 30px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  text-shadow: 2px 1px rgba(179, 179, 179, 0.5);
 }
 
 .NavBar-link {

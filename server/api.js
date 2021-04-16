@@ -67,7 +67,9 @@ router.post("/submitMessage", (req, res) => {
         englishName: req.body.englishName,
         emailAddr: req.body.emailAddr,
         country: req.body.country,
+        missEarth: req.body.missEarth,
         message: req.body.message,
+        translation: req.body.translation,
         language: req.body.language,
         recordingLink: linkToRecording,
       });
