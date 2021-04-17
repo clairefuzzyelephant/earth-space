@@ -23,9 +23,11 @@
 @keyframes slideIn {
   0% {
     left: -500px;
+    background-color: rgba(41, 41, 41, 0);
   }
   100% {
     left: 0;
+    background-color: rgba(41, 41, 41, 0.5);
   }
 }
 

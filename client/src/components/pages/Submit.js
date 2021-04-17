@@ -164,14 +164,17 @@ function Submit(props) {
             </div>
             <div className="Submit-inputSection">
                 <div className="Submit-inputInfoLeft">
-                    <input className="Submit-smallField" placeholder="Legal Name (required)" value={legalName} onChange={e => setLegalName(e.target.value)} />
-                    <input className="Submit-smallField" placeholder="English Name (optional)" value={englishName} onChange={e => setEnglishName(e.target.value)}/>
+                    <input className="Submit-smallField" placeholder="Legal Full Name (required)" value={legalName} onChange={e => setLegalName(e.target.value)} />
+                    {/* <input className="Submit-smallField" placeholder="Legal Name (if different from above)" value={englishName} onChange={e => setEnglishName(e.target.value)}/> */}
                     <input className="Submit-smallField" placeholder="Email address (required)" value={emailAddr} onChange={e => setEmailAddr(e.target.value)}/>
                     <div className="Submit-countrySection">
                         <CountryDropdown className="Submit-dropdown" showDefaultOption={true} defaultOptionLabel="No Country Selected (required)" value={countryVal} onChange={e => setCountryVal(e)} />
                         <div className="Submit-countryDisclaimer">Country list provided by react-country-region-selector.</div>
                     </div>
-                    <textarea className="Submit-mediumField" placeholder="If you go to space, what would be the thing that you miss most about Earth? (optional)" value={missEarth} onChange={e => setMissEarth(e.target.value)}/>
+                    {/* <div>
+                        Note: add region
+                    </div> */}
+                    {/* <textarea className="Submit-mediumField" placeholder="If you go to space, what would be the thing that you miss most about Earth? (optional)" value={missEarth} onChange={e => setMissEarth(e.target.value)}/> */}
                     <div className="Submit-legalCheckbox">
                         <div><input type="checkbox" checked={isChecked} onChange={() => toggleCheckbox()} /></div>
                         <div>I accept the legal terms and conditions.</div>  
