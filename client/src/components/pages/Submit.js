@@ -42,17 +42,16 @@ function Submit(props) {
     const [blob, setBlob] = useState(null);
     const [buffer, setBuffer] = useState(null);
 
-    useEffect(() => {
-        navigator.getUserMedia({ audio: true },
-            () => {
-              console.log('Permission Granted');
-              setIsBlocked(false);
-            },
-            () => {
-              console.log('Permission Denied');
+    useEffect(async () => {
+        micAllowed = await navigator.mediaDevices.getUserMedia( {audio: true}) || navigator.getUserMedia({audio: true}) || navigator.webkitGetUserMedia({audio: true}) || navigator.mozGetUserMedia({audio: true}) || navigator.msGetUserMedia({audio: true});
+        if (micAllowed) {
+            console.log('Permission Granted');
+            setIsBlocked(false);
+        } 
+        else {
+            console.log('Permission Denied');
               setIsBlocked(true);
-            },
-          );
+        }
     }, [])
     
 
