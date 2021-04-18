@@ -1,12 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Orbitron:wght@700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Abel&family=Mulish&family=Nunito+Sans&family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Montserrat&family=Montserrat+Sans&family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400&family=Lexend:wght@300&family=Manrope:wght@300&family=Monda&family=Overpass:wght@200&family=Red+Hat+Display&family=Spartan&display=swap');
+
 .Home-container {
   width: 100vw;
   height: 900px;
   background-image: url("../../../dist/poster.jpeg");
   background-size: cover;
   color: white;
-  font-family: "Mulish", "sans-serif";
+  font-family: "Red Hat Display", "sans-serif";
   /* font-family: "Abel", sans-serif; */
   text-align: center;
 }
@@ -22,7 +24,7 @@
   width: 1000px;
   margin-left: calc(50vw - 500px);
   padding-top: 20vh;
-  font-family: "Mulish", sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   /* font-family: "Abel", sans-serif; */
   text-shadow: 2px 6px rgb(21, 21, 21);
   animation: fadeIn 2s 1;
@@ -81,7 +83,7 @@
   padding: 20px;
   border-radius: 20px;
   /* font-family: "Abel", sans-serif; */
-  font-family: "Mulish", sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   font-size: 25px;
 
   box-shadow: 2px 2px 2px 3px rgb(79, 79, 79);

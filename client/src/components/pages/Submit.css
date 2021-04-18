@@ -225,6 +225,7 @@
 }
 
 audio {
-  width: 200px;
+  width: 20vw;
+  height: 5vh;
   opacity: 60%;
 }
