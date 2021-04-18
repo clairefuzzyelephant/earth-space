@@ -4,7 +4,7 @@
 
 .Home-container {
   width: 100vw;
-  height: 900px;
+  height: 850px;
   background-image: url("../../../dist/poster.jpeg");
   background-size: cover;
   color: white;
@@ -15,7 +15,7 @@
 
 .Home-backgroundOverlay {
   width: 100vw;
-  height: 900px;
+  height: 850px;
   background-color: rgba(0, 0, 0, 0.65);
 }
 

@@ -2,7 +2,7 @@
 
 
 .Footer-container {
-    position: absolute;
+    position: relative;
     width: 100vw;
     height: 80px;
     min-height: calc(100vh - 700px);
