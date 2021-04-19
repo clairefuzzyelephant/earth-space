@@ -35,7 +35,7 @@ function Submit(props) {
     const issueList = ["Terms and conditions", "Legal name", "Country", "Message", "Email Address"];
     const issuesOccur = {0: false, 1: false, 2: false, 3: false, 4: false};
 
-    const recorder = useMemo(() => new MicRecorder({ bitRate: 32 }), []);
+    const recorder = useMemo(() => new MicRecorder({ bitRate: 256 }), []);
     const [isRecording, setIsRecording] = useState(false);
     const [isBlocked, setIsBlocked] = useState(false);
     const [blobURL, setBlobURL] = useState("");
@@ -195,9 +195,9 @@ function Submit(props) {
                             <img src={mic} />
                         </div>
                         <div className="Submit-audioPrompt">
-                            {buffer ? 
+                            {buffer && !isRecording ? 
                             <>
-                            <p>Double-check my recording... or record again?</p>
+                            <p>Double-check my recording... or press to record again?</p>
                             <div>
                                 <audio controls autoplay src={blobURL} />
                             </div>
