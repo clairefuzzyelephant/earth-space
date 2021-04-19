@@ -35,7 +35,7 @@ function Submit(props) {
     const issueList = ["Terms and conditions", "Legal name", "Country", "Message", "Email Address"];
     const issuesOccur = {0: false, 1: false, 2: false, 3: false, 4: false};
 
-    const recorder = useMemo(() => new MicRecorder({ bitRate: 64 }), []);
+    const recorder = useMemo(() => new MicRecorder({ bitRate: 128 }), []);
     const [isRecording, setIsRecording] = useState(false);
     const [isBlocked, setIsBlocked] = useState(false);
     const [blobURL, setBlobURL] = useState("");
