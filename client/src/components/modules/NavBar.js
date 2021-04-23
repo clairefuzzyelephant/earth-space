@@ -33,7 +33,7 @@ function NavBar(props) {
             </div>
             
         </div>
-        <div className="NavBar-hamburgerContainer" onClick={() => handleClick()}>
+        <div className="NavBar-hamburgerContainer">
             
             {open ? <div className="NavBar-Hamburger">
                 <Link to="/mission" className="NavBar-link" onClick={() => handleClick()}>
