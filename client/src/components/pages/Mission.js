@@ -8,8 +8,8 @@ function Mission(props) {
 
   return (
     <>
-      <div className="Home-container">
-        <div className="Home-backgroundOverlay">
+      <div className="Mission-container">
+        <div className="Mission-backgroundOverlay">
           <div className="Mission-title">
             Our Mission
           </div>

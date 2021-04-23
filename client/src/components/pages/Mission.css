@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400&family=Lexend:wght@300&family=Manrope:wght@300&family=Monda&family=Overpass:wght@200&family=Red+Hat+Display&family=Spartan&display=swap');
+
 .Mission-introText {
     font-size: 15px;
     width: 70vw;
@@ -14,7 +17,64 @@
     width: 1000px;
     margin-left: calc(50vw - 500px);
     padding-top: 15vh;
-    font-family: "Orbitron", sans-serif;
+    font-family: "Red Hat Display", sans-serif;
     text-shadow: 2px 4px rgb(21, 21, 21);
     animation: fadeIn 2s 1;
   }
+
+.Mission-container {
+    width: 100vw;
+    height: 850px;
+    background-image: url("../../../dist/poster.jpeg");
+    background-size: contain;
+    color: white;
+    font-family: "Red Hat Display", sans-serif;
+    /* font-family: "Abel", sans-serif; */
+    text-align: center;
+  }
+  
+  .Mission-backgroundOverlay {
+    width: 100vw;
+    height: 850px;
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+
+@media (max-width: 1000px) {
+    .Mission-introText {
+        font-size: 15px;
+        width: 70vw;
+        max-height: 1000px;
+        margin-left: 15vw;
+        margin-top: 40px;
+        text-shadow: 2px 2px rgb(21, 21, 21);
+        animation: fadeIn 4s 1;
+        overflow-y: scroll;
+    }
+    
+    .Mission-title {
+        font-size: 40px;
+        width: 80vw;
+        margin-left: 10vw;
+        padding-top: 15vh;
+        font-family: "Red Hat Display", sans-serif;
+        text-shadow: 2px 4px rgb(21, 21, 21);
+        animation: fadeIn 2s 1;
+      }
+
+      .Mission-container {
+        width: 100vw;
+        height: 1400px;
+        background-image: url("../../../dist/poster.jpeg");
+        background-size: contain;
+        color: white;
+        font-family: "Red Hat Display", sans-serif;
+        /* font-family: "Abel", sans-serif; */
+        text-align: center;
+      }
+      
+      .Mission-backgroundOverlay {
+        width: 100vw;
+        height: 1400px;
+        background-color: rgba(0, 0, 0, 0.65);
+      }
+}

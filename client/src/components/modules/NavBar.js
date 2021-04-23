@@ -1,15 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "@reach/router";
 import "./NavBar.css"
-
-import earth from "../../../dist/earth-white-icon.png";
-import satellite from "../../../dist/satellite_icon_white.png";
-import terms from "../../../dist/terms-white-icon.png";
-import team from "../../../dist/team_icon_white.png";
+import HamburgerMenu from "react-hamburger-menu";
 
 function NavBar(props) {
 
+    const [open, setOpen] = useState(false);
+
+    function handleClick() {
+        setOpen(!open);
+    }
+
     return (
+        <>
         <div className="NavBar-container">
             <Link to="/" className="NavBar-title">
                 MIT HUMANS
@@ -30,6 +33,36 @@ function NavBar(props) {
             </div>
             
         </div>
+        <div className="NavBar-hamburgerContainer" onClick={() => handleClick()}>
+            
+            {open ? <div className="NavBar-Hamburger">
+                <Link to="/mission" className="NavBar-link" onClick={() => handleClick()}>
+                    Mission
+                </Link>
+                <Link to="/team" className="NavBar-link" onClick={() => handleClick()}>
+                    Team
+                </Link>
+                <Link to="/submit" className="NavBar-link" onClick={() => handleClick()}>
+                    Submit
+                </Link>
+                <div className="NavBar-link" onClick={() => handleClick()}>
+                    Terms
+                </div>
+            </div> : null}
+            <HamburgerMenu
+                className="NavBar-HamburgerIcon"
+                isOpen={open}
+                menuClicked={() => handleClick()}
+                width={30}
+                height={30}
+                strokeWidth={2}
+                rotate={0}
+                color='white'
+                borderRadius={0}
+                animationDuration={0.5}
+            />
+        </div>
+      </>
     )
 }
 

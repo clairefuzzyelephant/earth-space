@@ -1,24 +1,61 @@
-.NavBar-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  color: white;
-  height: 6vh;
-  width: 100vw;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  column-gap: 20vw;
-  padding: 20px;
-  align-items: center;
-  /* padding-top: 20px; */
-  animation: slideIn 2s 1;
-  background-color: rgba(41, 41, 41, 0.5);
+@import url("https://fonts.googleapis.com/css2?family=Red Hat Display&family=Orbitron:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+
+@media (min-width: 1000px) {
+  .NavBar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: white;
+    height: 6vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 20vw;
+    padding: 20px;
+    align-items: center;
+    /* padding-top: 20px; */
+    animation: slideIn 2s 1;
+    background-color: rgba(41, 41, 41, 0.5);
+    display: visible;
+  }
+  
+  .NavBar-hamburgerContainer {
+    display: none;
+  }
+  
+  .NavBar-linkContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .NavBar-container img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .NavBar-title {
+    font-family: "Orbitron", sans-serif;
+    /* font-family: "Montserrat"; */
+    font-size: 30px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    text-shadow: 2px 1px rgba(179, 179, 179, 0.5);
+  }
+  .NavBar-link {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+  }
 }
 
-.NavBar-linkContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
 
 @keyframes slideIn {
   0% {
@@ -31,28 +68,56 @@
   }
 }
 
-.NavBar-container img {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
+@keyframes hamburgerSlide {
+  0% {
+    left: -100vw;
+  }
+  100% {
+    left: 0;
+  }
 }
 
-.NavBar-title {
-  font-family: "Orbitron", sans-serif;
-  font-size: 30px;
-  padding-left: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: white;
-  text-shadow: 2px 1px rgba(179, 179, 179, 0.5);
-}
 
-.NavBar-link {
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: white;
+
+
+
+@media (max-width: 1000px) {
+  .NavBar-hamburgerContainer {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+  }
+
+  .NavBar-HamburgerIcon {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  .NavBar-Hamburger {
+    display: visible;
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    height: 50vh;
+    padding-top: 10vh;
+    font-size: 10vw;
+    text-align: center;
+    background-color: rgba(38, 38, 38, 0.817);
+    display: flex;
+    flex-direction: column;
+    animation: hamburgerSlide 0.5s 1 ease-in-out;
+  }
+  .NavBar-link {
+    width: 100vw;
+    margin-bottom: 15%;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+  }
+  .NavBar-container {
+    display: none;
+  }
 }

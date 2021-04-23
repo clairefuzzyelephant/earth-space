@@ -1,22 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Orbitron:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Red Hat Display&family=Orbitron:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400&family=Lexend:wght@300&family=Manrope:wght@300&family=Monda&family=Overpass:wght@200&family=Red+Hat+Display&family=Spartan&display=swap');
 
 .Submit-container {
   width: 100vw;
   height: 1200px;
   background-image: url("../../../dist/poster.jpeg");
-  background-size: cover;
+  background-size: contain;
   color: white;
-  font-family: "Montserrat", "sans-serif";
+  font-family: "Red Hat Display", "sans-serif";
   text-align: center;
 }
 
 @media (max-width: 1000px) {
   .Submit-title {
-    font-size: 5vw;
-    /* width: 1000px; */
-    /* margin-left: calc(50vw - 500px); */
+    font-size: 40px;
+    width: 80vw;
+    margin-left: 10vw;
     padding-top: 15vh;
-    font-family: "Montserrat", "sans-serif";
+    font-family: "Red Hat Display", "sans-serif";
     /* font-family: "Orbitron", sans-serif; */
     text-shadow: 2px 4px rgb(21, 21, 21);
     animation: fadeIn 2s 1;
@@ -34,7 +35,7 @@
   .Submit-inputSection {
     width: 80vw;
     margin-left: 10vw;
-    padding-top: 80px;
+    padding-top: 20px;
     animation: fadeIn3 2s 1;
   }
   .Submit-inputInfoLeft {
@@ -51,7 +52,7 @@
     border: none;
     box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
     padding: 2px 10px;
-    font-family: "Montserrat";
+    font-family: "Red Hat Display";
   }
   textarea {
     margin-top: 30px;
@@ -62,7 +63,7 @@
     border: none;
     box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
     padding: 10px 10px;
-    font-family: "Montserrat";
+    font-family: "Red Hat Display";
   }
 
   .Submit-dropdown {
@@ -74,7 +75,7 @@
     font-size: 14px;
     padding-left: 5px;
     box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
-    font-family: "Montserrat";
+    font-family: "Red Hat Display";
   }
   .Submit-countryDisclaimer {
     font-size: 8px;
@@ -82,6 +83,17 @@
   
   .Submit-countrySection {
     text-align: right;
+  }
+
+  .Submit-legalCheckbox {
+    height: 50px;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    align-items: center;
+    width: 80vw;
+    font-size: 14px;
   }
 
   .Submit-inputInfoRight input {
@@ -93,7 +105,7 @@
     border: none;
     box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
     padding: 2px 10px;
-    font-family: "Montserrat";
+    font-family: "Red Hat Display";
   }
   audio {
     width: 60vw;
@@ -112,11 +124,11 @@
   }
   
   .Submit-title {
-    font-size: 2em;
+    font-size: 40px;;
     width: 1000px;
     margin-left: calc(50vw - 500px);
     padding-top: 15vh;
-    font-family: "Montserrat", "sans-serif";
+    font-family: "Red Hat Display", "sans-serif";
     /* font-family: "Orbitron", sans-serif; */
     text-shadow: 2px 4px rgb(21, 21, 21);
     animation: fadeIn 2s 1;
@@ -154,7 +166,7 @@
     border: none;
     box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
     padding: 2px 10px;
-    font-family: "Montserrat";
+    font-family: "Red Hat Display";
   }
   
   .Submit-inputInfoLeft .Submit-mediumField {
@@ -165,7 +177,7 @@
     border: none;
     box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
     padding: 10px 10px;
-    font-family: "Montserrat";
+    font-family: "Red Hat Display";
   }
   
   .Submit-dropdown {
@@ -177,10 +189,19 @@
     font-size: 14px;
     padding-left: 5px;
     box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
-    font-family: "Montserrat";
+    font-family: "Red Hat Display";
   }
   
-
+  .Submit-legalCheckbox {
+    height: 50px;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    align-items: center;
+    width: 50vw;
+    font-size: 14px;
+  }
   
 
   
@@ -209,7 +230,7 @@
     border: none;
     box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
     padding: 10px 10px;
-    font-family: "Montserrat";
+    font-family: "Red Hat Display";
   }
   
   .Submit-inputInfoRight .Submit-mediumField {
@@ -221,7 +242,7 @@
     border: none;
     box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
     padding: 10px 10px;
-    font-family: "Montserrat";
+    font-family: "Red Hat Display";
   }
   
   
@@ -235,7 +256,7 @@
     border: none;
     box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
     padding: 2px 10px;
-    font-family: "Montserrat";
+    font-family: "Red Hat Display";
   }
 
   audio {
@@ -262,7 +283,7 @@
   color: rgb(21, 21, 21);
   padding: 10px;
   border-radius: 20px;
-  font-family: "Montserrat", "sans-serif";
+  font-family: "Red Hat Display", "sans-serif";
   /* font-family: "Orbitron", sans-serif; */
   font-size: 20px;
   margin-top: 30px;
@@ -302,16 +323,7 @@
   cursor: pointer;
 }
 
-.Submit-legalCheckbox {
-  height: 50px;
-  margin-top: 25px;
-  display: flex;
-  flex-direction: row;
-  /* justify-content: space-between; */
-  align-items: center;
-  width: 50vw;
-  font-size: 14px;
-}
+
 
 .Submit-recordButton:hover {
   cursor: pointer;

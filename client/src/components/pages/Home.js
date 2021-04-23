@@ -13,6 +13,8 @@ function Home(props) {
           <div className="Home-title">
             <span>H</span>umanity <span>U</span>nited with <span>M</span>IT <span>A</span>rt and <span>N</span>anotechnology in <span>S</span>pace
             <br />
+          </div>
+          <div className="Home-subtitle">
             A Record of Our Voices
           </div>
           <div className="Home-introText">

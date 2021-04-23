@@ -4,26 +4,56 @@ import { Link } from "@reach/router";
 import "../../utilities.css";
 import "./Team.css";
 
+import claire from "../../../dist/claire.jpeg";
+
 function Team(props) {
 
   return (
     <>
-      <div className="Home-container">
-        <div className="Home-backgroundOverlay">
+      <div className="Team-container">
+        <div className="Team-backgroundOverlay">
           <div className="Team-title">
             Our Team
           </div>
-          <div>
-            3 of us + Jeff Hoffman
+          <div className="Team-section">
+            <div className="Team-member">
+              <img src={claire} />
+              <b>Claire Cheng</b>
+              <p>Web Developer</p>
+            </div>
+            <div className="Team-member">
+              <img src={claire} />
+              <b>Claire Cheng</b>
+              <p>Web Developer</p>
+            </div>
+            <div className="Team-member">
+              <img src={claire} />
+              <b>Claire Cheng</b>
+              <p>Web Developer</p>
+            </div>
+            <div className="Team-member">
+              <img src={claire} />
+              <b>Claire Cheng</b>
+              <p>Web Developer</p>
+            </div>
           </div>
-          <div>
-            Extended Collaborators: Nourie
+          <div className="Team-title">
+            Space Exploration Initiative (SEI) Team
           </div>
-          <div>
-            Space Exploration Initative (SEI) Team
+          <div className="Team-section">
+            <img src={claire} />
+            <img src={claire} />
+            <img src={claire} />
+            <img src={claire} />
           </div>
-          <div>
-            Lawyers, etc.
+          <div className="Team-title">
+            Additional Collaborators and Legal
+          </div>
+          <div className="Team-section">
+            <img src={claire} />
+            <img src={claire} />
+            <img src={claire} />
+            <img src={claire} />
           </div>
 
           <div className="Home-introText">

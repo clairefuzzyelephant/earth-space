@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Orbitron:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Red Hat Display&family=Orbitron:wght@700&display=swap");
 
 
 .Footer-container {
@@ -10,6 +10,13 @@
     left: 0;
     background-image: url("../../../dist/poster.jpeg");
     text-align: center;
+    font-size: 15px;
+}
+
+@media (max-width: 1000px) {
+    .Footer-container {
+        font-size: 15px;
+    }
 }
 
 .Footer-overlay {
@@ -25,10 +32,15 @@
 .Footer-contact {
     position: relative;
     color: rgb(220, 220, 220);
-    padding-top: 20px;
+    padding-top: 30px;
     text-shadow: 2px 1px rgb(21, 21, 21);
-    font-family: "Montserrat", "sans-serif";
+    font-family: "Red Hat Display", "sans-serif";
     z-index: 3;
+}
+
+.Footer-contact a {
+    color: rgb(220, 220, 220);
+    text-decoration: none;
 }
 
 .iconDisclaimer {

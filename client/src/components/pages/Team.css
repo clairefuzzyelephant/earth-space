@@ -3,7 +3,102 @@
     width: 1000px;
     margin-left: calc(50vw - 500px);
     padding-top: 15vh;
-    font-family: "Orbitron", sans-serif;
+    font-family: "Red Hat Display", sans-serif;
     text-shadow: 2px 4px rgb(21, 21, 21);
     animation: fadeIn 2s 1;
+}
+
+.Team-container {
+    width: 100vw;
+    height: 2600px;
+    background-image: url("../../../dist/poster.jpeg");
+    background-size: contain;
+    color: white;
+    font-family: "Red Hat Display", sans-serif;
+    /* font-family: "Abel", sans-serif; */
+    text-align: center;
+  }
+  
+  .Team-backgroundOverlay {
+    width: 100vw;
+    height: 2600px;
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+
+.Team-section {
+    padding-top: 60px;
+    width: 40vw;
+    margin-left: 30vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 100px;
+    animation: fadeIn 2s 1;
+    font-size: 2vw;
+}
+
+@media (max-width: 1000px) {
+    .Team-title {
+        font-size: 40px;
+        width: 80vw;
+        margin-left: 10vw;
+        padding-top: 15vh;
+        font-family: "Red Hat Display", sans-serif;
+        text-shadow: 2px 4px rgb(21, 21, 21);
+        animation: fadeIn 2s 1;
+    }
+    .Team-section {
+        padding-top: 60px;
+        width: 80vw;
+        margin-left: 10vw;
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 100px;
+        animation: fadeIn 2s 1;
+        font-size: 4vw;
+    }
+    .Team-container {
+        width: 100vw;
+        height: 4500px;
+        background-image: url("../../../dist/poster.jpeg");
+        background-size: contain;
+        color: white;
+        font-family: "Red Hat Display", sans-serif;
+        /* font-family: "Abel", sans-serif; */
+        text-align: center;
+      }
+      
+      .Team-backgroundOverlay {
+        width: 100vw;
+        height: 4500px;
+        background-color: rgba(0, 0, 0, 0.65);
+      }
+      .Team-section img {
+        width: 100%;
+        margin-left: 25%;
+        border-radius: 15px;
+        margin-bottom: 10px;
+        animation: fadeInImg 2s 1;
+    }
+}
+
+.Team-section img {
+    width: 50%;
+    margin-left: 25%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    animation: fadeInImg 2s 1;
+}
+
+@keyframes fadeInImg {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+} 
+
+.Team-member {
+    display: flex;
+    flex-direction: column;
 }
