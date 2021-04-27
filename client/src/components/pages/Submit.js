@@ -3,7 +3,6 @@ import { CountryDropdown } from 'react-country-region-selector';
 import { countryData } from '../../data.js';
 import Select from 'react-select';
 import MicRecorder from 'mic-recorder-to-mp3';
-import vmsg from 'vmsg';
 
 import LegalPopup from "../modules/LegalPopup.js";
 
