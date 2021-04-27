@@ -33,7 +33,7 @@
     grid-template-columns: 1fr 1fr;
     row-gap: 100px;
     animation: fadeIn 2s 1;
-    font-size: 2vw;
+    font-size: 20px;
 }
 
 @media (max-width: 1000px) {

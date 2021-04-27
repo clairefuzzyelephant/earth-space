@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { CountryDropdown } from 'react-country-region-selector';
+import { countryData } from '../../data.js';
+import Select from 'react-select';
 import MicRecorder from 'mic-recorder-to-mp3';
+import vmsg from 'vmsg';
 
 import LegalPopup from "../modules/LegalPopup.js";
 
@@ -30,21 +33,34 @@ function Submit(props) {
     const [acceptedTerms, setAcceptedTerms] = useState(false);
     const [displayWarning, setDisplayWarning] = useState(false);
 
+    const countryOptions = countryData();
+    const options = [ {value: 'EAP', label: 'East Asia and Pacific'}, {value: 'ECA', label: 'Europe and Central Asia'}, {value: 'LAC', label: 'Latin America & Caribbean'}, {value: 'MENA', label: 'Middle East and North Africa'}, {value: 'NAM', label: 'North America'}, {value: 'SAS', label: 'South Asia'}, {value: 'SSA', label: 'Sub-Saharan Africa'}];
+    const [region, setRegion] = useState("");
+
     const [issues, setIssues] = useState([]);
 
-    const issueList = ["Terms and conditions", "Legal name", "Country", "Message", "Email Address"];
+    const issueList = ["Terms and conditions", "Legal name", "Country", "Message", "Email Address", "Region"];
     const issuesOccur = {0: false, 1: false, 2: false, 3: false, 4: false};
 
-    const recorder = useMemo(() => new MicRecorder({ bitRate: 256 }), []);
+    const recorder = useMemo(() => new MicRecorder({ bitRate: 64 }), []);
     const [isRecording, setIsRecording] = useState(false);
     const [isBlocked, setIsBlocked] = useState(false);
     const [blobURL, setBlobURL] = useState("");
     const [blob, setBlob] = useState(null);
     const [buffer, setBuffer] = useState(null);
 
+    const customStyles = {
+        multiValue: (styles) => ({
+            ... styles,
+            borderRadius: 30,
+            color: 'red',
+            backgroundColor: 'black',
+        }),
+    }
+
     useEffect(() => {
         async function detectMicAllowed() {
-            micAllowed = await navigator.mediaDevices.getUserMedia( {audio: true}) || navigator.getUserMedia({audio: true}) || navigator.webkitGetUserMedia({audio: true}) || navigator.mozGetUserMedia({audio: true}) || navigator.msGetUserMedia({audio: true});
+            const micAllowed = await navigator.mediaDevices.getUserMedia( {audio: true}) || navigator.getUserMedia({audio: true}) || navigator.webkitGetUserMedia({audio: true}) || navigator.mozGetUserMedia({audio: true}) || navigator.msGetUserMedia({audio: true});
             if (micAllowed) {
                 console.log('Permission Granted');
                 setIsBlocked(false);
@@ -61,7 +77,7 @@ function Submit(props) {
     const handleSubmit = () => {
         console.log(countryVal);
         const body = {legalName: legalName, englishName: englishName, emailAddr: emailAddr, country: countryVal, missEarth: missEarth, message: message, translation: translation, language: language, buffer: buffer};
-        if (acceptedTerms && legalName !== "" && countryVal !== "" && message !== "" && emailAddr !== "") {
+        if (acceptedTerms && legalName !== "" && region !== "" && countryVal !== "" && message !== "" && emailAddr !== "") {
             post("/api/submitMessage", body).then((result) => {
                 if (result !== null) {
                     console.log("Success!");
@@ -97,6 +113,9 @@ function Submit(props) {
             }
             if (emailAddr == "" || !emailAddr) {
                 issuesOccur[4] = true;
+            }
+            if (region == "" || !region) {
+                issuesOccur[5] = true;
             }
             setIssues(issueList.filter(function(i) {
                 return issuesOccur[issueList.indexOf(i)]
@@ -142,6 +161,21 @@ function Submit(props) {
           }
     }
 
+    // const record = async () => {
+    //     if (isRecording) {
+    //         const tempBlob = await recorder.stopRecording();
+    //         setBlob(tempBlob);
+    //         setIsRecording(false);
+    //         setBlobURL(URL.createObjectURL(tempBlob))
+    //     }
+    //     else {
+    //         await recorder.initAudio();
+    //         await recorder.initWorker();
+    //         recorder.startRecording();
+    //         setIsRecording(true);
+    //     }
+    // }
+
     const stopRecording = () => {
         recorder.stop().getMp3()
         .then(([buffer, blob]) => {
@@ -162,7 +196,7 @@ function Submit(props) {
         <div className="Submit-container">
             <div className="Submit-backgroundOverlay">
             <div className="Submit-title">
-                Submit your message!
+                Send your message of peace to space!
             </div>
             <div className="Submit-inputSection">
                 <div className="Submit-inputInfoLeft">
@@ -170,27 +204,33 @@ function Submit(props) {
                     {/* <input className="Submit-smallField" placeholder="Legal Name (if different from above)" value={englishName} onChange={e => setEnglishName(e.target.value)}/> */}
                     <input className="Submit-smallField" placeholder="Email address (required)" value={emailAddr} onChange={e => setEmailAddr(e.target.value)}/>
                     <div className="Submit-countrySection">
-                        <CountryDropdown className="Submit-dropdown" showDefaultOption={true} defaultOptionLabel="No Country Selected (required)" value={countryVal} onChange={e => setCountryVal(e)} />
-                        <div className="Submit-countryDisclaimer">Country list provided by react-country-region-selector.</div>
+                        {/* <CountryDropdown className="Submit-dropdown" showDefaultOption={true} defaultOptionLabel="No Country Selected (required)" value={countryVal} onChange={e => setCountryVal(e)} /> */}
+                        <Select options={countryOptions} styles={customStyles} value={countryVal} className="Submit-dropdown" isSearchable={false} placeholder="Select your country" onChange={e => setCountryVal(e)} />
+                        <div className="Submit-countryDisclaimer">Country list provided by country-region-data repo.</div>
                     </div>
+                    <div className="Submit-countrySection">
+                        <Select options={options} styles={customStyles} className="Submit-dropdown" isSearchable={false} value={region} placeholder="Select your region" onChange={e => setRegion(e)} />
+                        <div className="Submit-countryDisclaimer">Region list as classified by the World Bank.</div>
+                    </div>
+
                     {/* <div>
                         Note: add region
                     </div> */}
                     {/* <textarea className="Submit-mediumField" placeholder="If you go to space, what would be the thing that you miss most about Earth? (optional)" value={missEarth} onChange={e => setMissEarth(e.target.value)}/> */}
-                    <div className="Submit-legalCheckbox">
-                        <div><input type="checkbox" checked={isChecked} onChange={() => toggleCheckbox()} /></div>
-                        <div>I accept the legal terms and conditions.</div>  
-                    </div>
+                    
                 </div>
                 <div className="Submit-inputInfoRight">
+                    <div className="Submit-messagingText">
+                        What does peace and unity mean to me in my own language?
+                    </div>
                     <textarea className="Submit-largeField" placeholder="Type your message here... (Max 200 characters)" maxLength={200} value={message} onChange={e => setMessage(e.target.value)}/>
-                    <textarea className="Submit-mediumField" placeholder="English translation of message (optional)" maxLength={500} value={translation} onChange={e => setTranslation(e.target.value)}/>
                     <input className="Submit-smallField" placeholder="Language of message (required)" value={language} onChange={e => setLanguage(e.target.value)}/>
+                    <textarea className="Submit-mediumField" placeholder="English translation of message (optional)" maxLength={500} value={translation} onChange={e => setTranslation(e.target.value)}/>
                     {/** Audio stuff */}
                     <div className="Submit-audioSection">
                         <div className="Submit-recordButton" onClick={() => {
-                            if (!isRecording) startRecording()
-                            else stopRecording()
+                            if (isRecording) stopRecording()
+                            else startRecording()
                         }}>
                             <img src={mic} />
                         </div>
@@ -206,7 +246,10 @@ function Submit(props) {
                         </div>
                         
                     </div>
-                    
+                    <div className="Submit-legalCheckbox">
+                        <div><input type="checkbox" checked={isChecked} onChange={() => toggleCheckbox()} /></div>
+                        <div>I accept the legal terms and conditions.</div>  
+                    </div>
                     
                 </div>
             </div>
