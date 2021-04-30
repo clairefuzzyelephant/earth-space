@@ -18,9 +18,9 @@
   max-height: 60vh;
   overflow-y: scroll;
   top: 15vh;
-  left: 30vw;
+  left: calc(30vw - 30px);
   font-size: 12px;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   box-shadow: 2px 2px 5px 3px rgb(79, 79, 79);
 }
@@ -71,4 +71,8 @@
 .Popup-cancelButton:hover {
   cursor: pointer;
   background-color: rgb(118, 118, 118);
+}
+
+h3 {
+  color: red;
 }

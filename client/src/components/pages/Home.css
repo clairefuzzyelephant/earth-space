@@ -4,7 +4,7 @@
 
 .Home-container {
   width: 100vw;
-  height: 700px;
+  height: 1500px;
   background-image: url("../../../dist/poster.jpeg");
   background-size: contain;
   color: white;
@@ -15,7 +15,7 @@
 
 .Home-backgroundOverlay {
   width: 100vw;
-  height: 700px;
+  height: 1500px;
   background-color: rgba(0, 0, 0, 0.65);
 }
 
@@ -121,7 +121,7 @@
 @media (max-width: 1000px) {
   .Home-container {
     width: 100vw;
-    height: 1000px;
+    height: 1500px;
     background-image: url("../../../dist/poster.jpeg");
     background-size: contain;
     color: white;
@@ -132,7 +132,7 @@
   
   .Home-backgroundOverlay {
     width: 100vw;
-    height: 1000px;
+    height: 1500px;
     background-color: rgba(0, 0, 0, 0.65);
   }
   
@@ -169,5 +169,36 @@
     text-shadow: 2px 2px rgb(21, 21, 21);
     animation: fadeIn 4s 1;
   }
+
   
+  
+}
+
+.Home-worldMap {
+  position: relative;
+  margin-top: 200px;
+  margin-left: 10vw;
+  width: 80vw;
+  transform: scale(1.5, 1.5);
+}
+
+.map-selected {
+  fill: rgb(0, 0, 220);
+}
+
+.map-unselected {
+  fill: rgb(172, 198, 255);
+}
+
+.map-selected:hover, .map-unselected:hover {
+  cursor: pointer;
+}
+
+.Home-mapCaption {
+  font-size: 20px;
+  width: 800px;
+  margin-left: calc(50vw - 400px);
+  margin-top: 100px;
+  text-shadow: 2px 2px rgb(21, 21, 21);
+  animation: fadeIn 4s 1;
 }

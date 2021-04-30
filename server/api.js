@@ -45,71 +45,62 @@ router.post("/submitMessage", (req, res) => {
   const buf = req.body.buffer;
   const arr = [];
 
-  for (i = 0; i < buf.length; i++) {
-    arr.push(Buffer.from(Object.values(buf[i])));
-  }
-  uploadParams.Body = Buffer.concat(arr);
-
-  const fileName = generateFileName(req.body.emailAddr);
-  uploadParams.Key = path.basename(fileName + '.mp3');
-
-  let linkToRecording = "";
-  // call S3 to retrieve upload file to specified bucket
-  s3.upload (uploadParams, function (err, data) {
-    if (err) {
-      console.log("Error", err);
-      res.send(err);
-    } if (data) {
-      console.log("Upload Success");
-      linkToRecording = data.Location;
-      const newMessage = new Message({
-        legalName: req.body.legalName,
-        englishName: req.body.englishName,
-        emailAddr: req.body.emailAddr,
-        country: req.body.country,
-        missEarth: req.body.missEarth,
-        message: req.body.message,
-        translation: req.body.translation,
-        language: req.body.language,
-        recordingLink: linkToRecording,
-      });
-      newMessage.save().then(() => res.send(newMessage));
+  if (buf !== null) {
+    for (i = 0; i < buf.length; i++) {
+      arr.push(Buffer.from(Object.values(buf[i])));
     }
-  });
+    uploadParams.Body = Buffer.concat(arr);
+  
+    const fileName = generateFileName(req.body.emailAddr);
+    uploadParams.Key = path.basename(fileName + '.mp3');
+  
+    let linkToRecording = "";
+    // call S3 to retrieve upload file to specified bucket
+    s3.upload (uploadParams, function (err, data) {
+      if (err) {
+        console.log("Error", err);
+        res.send(err);
+      } if (data) {
+        console.log("Upload Success");
+        linkToRecording = data.Location;
+        const newMessage = new Message({
+          legalName: req.body.legalName,
+          englishName: req.body.englishName,
+          emailAddr: req.body.emailAddr,
+          country: req.body.country,
+          missEarth: req.body.missEarth,
+          message: req.body.message,
+          translation: req.body.translation,
+          language: req.body.language,
+          recordingLink: linkToRecording,
+        });
+        newMessage.save().then(() => res.send(newMessage));
+      }
+    });
+  }
+  else {
+    const newMessage = new Message({
+      legalName: req.body.legalName,
+      emailAddr: req.body.emailAddr,
+      country: req.body.country,
+      region: req.body.region,
+      message: req.body.message,
+      translation: req.body.translation,
+      language: req.body.language,
+      recordingLink: "",
+    });
+    newMessage.save().then(() => res.send(newMessage));
+  }
+  
   
 })
 
-// router.post("/submitRecording", (req, res) => {
-//   const buf = req.body.buffer;
-//   const arr = [];
 
-//   for (i = 0; i < buf.length; i++) {
-//     arr.push(Buffer.from(Object.values(buf[i])));
-//   }
-//   // fs.writeFileSync('test.mp3', Buffer.concat(arr), 'binary');
-//   // let fileStream = fs.createReadStream('test.mp3');
-//   // fileStream.on('error', function(err) {
-//   //   console.log('File Error', err);
-//   // });
-//   uploadParams.Body = Buffer.concat(arr);
-//   uploadParams.Key = path.basename('hum.mp3');
-
-//   let linkToRecording = "";
-//   // call S3 to retrieve upload file to specified bucket
-//   s3.upload (uploadParams, function (err, data) {
-//     if (err) {
-//       console.log("Error", err);
-//       res.send(err);
-//     } if (data) {
-//       console.log("Upload Success");
-//       linkToRecording = data.Location;
-//       const newRecording = new Recording({
-//         fileLink: linkToRecording,
-//       });
-//       newRecording.save().then(() => res.send(newRecording));
-//     }
-//   });
-// })
+router.get("/allSubmissions", (req, res) => {
+  Message.find({}).then((messages) => {
+    res.send(messages);
+  })
+})
 
 
 router.all("*", (req, res) => {

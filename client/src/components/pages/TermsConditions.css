@@ -1,0 +1,54 @@
+.Terms-body {
+    width: 70vw;
+    margin-left: 15vw;
+    line-height: 25px;
+}
+
+.Terms-body a {
+    color: white;
+}
+
+.Terms-body br {
+    line-height: 30px;
+}
+
+.Terms-body h3 {
+    color: white;
+    margin-top: 50px;
+}
+
+.Terms-container {
+    width: 100vw;
+    height: 3300px;
+    background-image: url("../../../dist/poster.jpeg");
+    background-size: contain;
+    color: white;
+    font-family: "Red Hat Display", sans-serif;
+    /* font-family: "Abel", sans-serif; */
+    text-align: center;
+  }
+  
+  .Terms-backgroundOverlay {
+    width: 100vw;
+    height: 3300px;
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+
+  @media (max-width: 1000px) {
+    .Terms-container {
+        width: 100vw;
+        height: 1025vh;
+        background-image: url("../../../dist/poster.jpeg");
+        background-size: contain;
+        color: white;
+        font-family: "Red Hat Display", sans-serif;
+        /* font-family: "Abel", sans-serif; */
+        text-align: center;
+      }
+      
+      .Terms-backgroundOverlay {
+        width: 100vw;
+        height: 1025vh;
+        background-color: rgba(0, 0, 0, 0.65);
+      }
+  }

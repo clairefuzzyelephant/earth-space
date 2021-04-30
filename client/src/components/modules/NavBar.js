@@ -27,9 +27,9 @@ function NavBar(props) {
                 <Link to="/submit" className="NavBar-link">
                     Submit
                 </Link>
-                <div className="NavBar-link">
+                <Link to="/terms" className="NavBar-link">
                     Terms
-                </div>
+                </Link>
             </div>
             
         </div>
@@ -45,9 +45,9 @@ function NavBar(props) {
                 <Link to="/submit" className="NavBar-link" onClick={() => handleClick()}>
                     Submit
                 </Link>
-                <div className="NavBar-link" onClick={() => handleClick()}>
+                <Link to="/terms" className="NavBar-link" onClick={() => handleClick()}>
                     Terms
-                </div>
+                </Link>
             </div> : null}
             <HamburgerMenu
                 className="NavBar-HamburgerIcon"

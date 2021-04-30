@@ -10,6 +10,7 @@ import Footer from "./modules/Footer.js";
 import "../utilities.css";
 import Mission from "./pages/Mission.js";
 import Team from "./pages/Team.js";
+import TermsConditions from "./pages/TermsConditions.js";
 
 function App (props) {
 
@@ -28,6 +29,9 @@ function App (props) {
         />
         <Submit 
           path="/submit"
+        />
+        <TermsConditions 
+          path="/terms"
         />
         <NotFound default />
       </Router>

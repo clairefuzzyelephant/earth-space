@@ -2,10 +2,9 @@ const mongoose = require("mongoose");
 
 const MessageSchema = new mongoose.Schema({
   legalName: String,
-  englishName: String,
   emailAddr: String,
   country: String,
-  missEarth: String,
+  region: String,
   message: String,
   translation: String,
   language: String,

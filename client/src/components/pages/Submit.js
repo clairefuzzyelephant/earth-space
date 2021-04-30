@@ -19,10 +19,8 @@ import "./Submit.css";
 
 function Submit(props) {
     const [legalName, setLegalName] = useState("");
-    const [englishName, setEnglishName] = useState("");
     const [emailAddr, setEmailAddr] = useState("");
     const [countryVal, setCountryVal] = useState("");
-    const [missEarth, setMissEarth] = useState("");
     const [message, setMessage] = useState("");
     const [translation, setTranslation] = useState("");
     const [language, setLanguage] = useState("");
@@ -33,12 +31,14 @@ function Submit(props) {
     const [displayWarning, setDisplayWarning] = useState(false);
 
     const countryOptions = countryData();
-    const options = [ {value: 'EAP', label: 'East Asia and Pacific'}, {value: 'ECA', label: 'Europe and Central Asia'}, {value: 'LAC', label: 'Latin America & Caribbean'}, {value: 'MENA', label: 'Middle East and North Africa'}, {value: 'NAM', label: 'North America'}, {value: 'SAS', label: 'South Asia'}, {value: 'SSA', label: 'Sub-Saharan Africa'}];
+    // const options = [ {value: 'EAP', label: 'East Asia and Pacific'}, {value: 'ECA', label: 'Europe and Central Asia'}, {value: 'LAC', label: 'Latin America & Caribbean'}, {value: 'MENA', label: 'Middle East and North Africa'}, {value: 'NAM', label: 'North America'}, {value: 'SAS', label: 'South Asia'}, {value: 'SSA', label: 'Sub-Saharan Africa'}];
+    const options = [ {value: 'NA', label: 'North America'}, {value: 'SA', label: 'South America'}, {value: 'AF', label: 'Africa'}, {value: 'EU', label: 'Europe'}, {value: 'AS', label: 'Asia'}, {value: 'OC', label: 'Oceania'} ];
+
     const [region, setRegion] = useState("");
 
     const [issues, setIssues] = useState([]);
 
-    const issueList = ["Terms and conditions", "Legal name", "Country", "Message", "Email Address", "Region"];
+    const issueList = ["Terms and conditions", "Legal name", "Email Address", "Region", "Message", "Language of Message", "Enter a valid email address"];
     const issuesOccur = {0: false, 1: false, 2: false, 3: false, 4: false};
 
     const recorder = useMemo(() => new MicRecorder({ bitRate: 64 }), []);
@@ -75,15 +75,13 @@ function Submit(props) {
 
     const handleSubmit = () => {
         console.log(countryVal);
-        const body = {legalName: legalName, englishName: englishName, emailAddr: emailAddr, country: countryVal, missEarth: missEarth, message: message, translation: translation, language: language, buffer: buffer};
-        if (acceptedTerms && legalName !== "" && region !== "" && countryVal !== "" && message !== "" && emailAddr !== "") {
+        const body = {legalName: legalName, emailAddr: emailAddr, country: countryVal["value"], region: region["value"], message: message, translation: translation, language: language, buffer: buffer};
+        if (acceptedTerms && legalName !== "" && region !== "" && message !== "" && emailAddr !== "" && emailAddr.indexOf('@') !== -1 && language !== "") {
             post("/api/submitMessage", body).then((result) => {
                 if (result !== null) {
                     console.log("Success!");
                     setLegalName("");
-                    setEnglishName("");
                     setCountryVal("");
-                    setMissEarth("");
                     setMessage("");
                     setEmailAddr("");
                     setTranslation("");
@@ -104,17 +102,20 @@ function Submit(props) {
             if (legalName == "" || !legalName) {
                 issuesOccur[1] = true;
             }
-            if (countryVal == "" || !countryVal) {
+            if (emailAddr == "" || !emailAddr) {
                 issuesOccur[2] = true;
             }
-            if (message == "" || !message) {
+            if (region == "" || !region) {
                 issuesOccur[3] = true;
             }
-            if (emailAddr == "" || !emailAddr) {
+            if (message == "" || !message) {
                 issuesOccur[4] = true;
             }
-            if (region == "" || !region) {
+            if (language == "" || !language) {
                 issuesOccur[5] = true;
+            }
+            if (emailAddr !== "" && emailAddr.indexOf("@") == -1) {
+                issuesOccur[6] = true;
             }
             setIssues(issueList.filter(function(i) {
                 return issuesOccur[issueList.indexOf(i)]
@@ -204,18 +205,13 @@ function Submit(props) {
                     <input className="Submit-smallField" placeholder="Email address (required)" value={emailAddr} onChange={e => setEmailAddr(e.target.value)}/>
                     <div className="Submit-countrySection">
                         {/* <CountryDropdown className="Submit-dropdown" showDefaultOption={true} defaultOptionLabel="No Country Selected (required)" value={countryVal} onChange={e => setCountryVal(e)} /> */}
-                        <Select options={countryOptions} styles={customStyles} value={countryVal} className="Submit-dropdown" isSearchable={false} placeholder="Select your country" onChange={e => setCountryVal(e)} />
+                        <Select options={countryOptions} value={countryVal} className="Submit-dropdown" isSearchable={false} placeholder="Select your country" onChange={e => setCountryVal(e)} />
                         <div className="Submit-countryDisclaimer">Country list provided by country-region-data repo.</div>
                     </div>
                     <div className="Submit-countrySection">
-                        <Select options={options} styles={customStyles} className="Submit-dropdown" isSearchable={false} value={region} placeholder="Select your region" onChange={e => setRegion(e)} />
-                        <div className="Submit-countryDisclaimer">Region list as classified by the World Bank.</div>
+                        <Select options={options} className="Submit-dropdown" isSearchable={false} value={region} placeholder="Select your region" onChange={e => setRegion(e)} />
+                        {/* <div className="Submit-countryDisclaimer">Region list as classified by the World Bank.</div> */}
                     </div>
-
-                    {/* <div>
-                        Note: add region
-                    </div> */}
-                    {/* <textarea className="Submit-mediumField" placeholder="If you go to space, what would be the thing that you miss most about Earth? (optional)" value={missEarth} onChange={e => setMissEarth(e.target.value)}/> */}
                     
                 </div>
                 <div className="Submit-inputInfoRight">
