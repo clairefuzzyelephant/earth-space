@@ -10,7 +10,7 @@
 
 .Team-container {
     width: 100vw;
-    height: 2600px;
+    height: 3000px;
     background-image: url("../../../dist/poster.jpeg");
     background-size: contain;
     color: white;
@@ -21,7 +21,7 @@
   
   .Team-backgroundOverlay {
     width: 100vw;
-    height: 2600px;
+    height: 3000px;
     background-color: rgba(0, 0, 0, 0.65);
   }
 
@@ -33,7 +33,7 @@
     grid-template-columns: 1fr 1fr;
     row-gap: 100px;
     animation: fadeIn 2s 1;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 @media (max-width: 1000px) {
@@ -84,10 +84,23 @@
 .Team-section img {
     width: 180px;
     height: 180px;
-    margin-left: 25%;
+    object-fit: cover;
     border-radius: 15px;
     margin-bottom: 10px;
     animation: fadeInImg 2s 1;
+}
+
+.Team-member-text {
+    width: 220px;
+}
+
+.Team-member-text b {
+    line-height: 30px;
+    font-size: 20px;
+}
+
+.Team-member-text p {
+    line-height: 15px;
 }
 
 @keyframes fadeInImg {
@@ -102,4 +115,9 @@
 .Team-member {
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.Team-member:hover {
+    cursor: pointer;
 }

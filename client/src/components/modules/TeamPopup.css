@@ -1,0 +1,33 @@
+.TeamPopup-container {
+    position: fixed;
+    z-index: 100;
+    background-color: white;
+    color: rgb(29, 29, 29);
+    width: 40vw;
+    height: fit-content;
+    max-height: 60vh;
+    top: 15vh;
+    left: calc(30vw - 30px);
+    font-size: 12px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 3px rgb(79, 79, 79);
+}
+
+.TeamPopup-container img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.TeamPopup-quit {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: rgb(74, 74, 74);
+}
+
+.TeamPopup-quit:hover {
+    cursor: pointer;
+}
