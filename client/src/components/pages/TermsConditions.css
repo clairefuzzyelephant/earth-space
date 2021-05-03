@@ -2,6 +2,8 @@
     width: 70vw;
     margin-left: 15vw;
     line-height: 25px;
+    text-align: left;
+    font-size: 18px;
 }
 
 .Terms-body a {

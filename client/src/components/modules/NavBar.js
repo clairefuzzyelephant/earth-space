@@ -15,7 +15,7 @@ function NavBar(props) {
         <>
         <div className="NavBar-container">
             <Link to="/" className="NavBar-title">
-                MIT HUMANS
+                HUMANS
             </Link>
             <div className="NavBar-linkContainer">  
                 <Link to="/mission" className="NavBar-link">
