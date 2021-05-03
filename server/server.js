@@ -9,6 +9,7 @@ const session = require("express-session"); // library that stores info about ea
 const mongoose = require("mongoose"); // library to connect to MongoDB
 const path = require("path"); // provide utilities for working with file and directory paths
 const bodyParser = require('body-parser');
+const enforce = require('express-sslify');
 
 const api = require("./api");
 
@@ -29,6 +30,7 @@ mongoose
 // create a new express server
 const app = express();
 app.use(validator.checkRoutes);
+app.use(enforce.HTTPS({trustProtoHeader: true})); // enforces HTTPS
 
 // allow us to process POST requests
 // app.use(express.json());
