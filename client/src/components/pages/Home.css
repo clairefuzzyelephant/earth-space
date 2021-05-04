@@ -173,17 +173,7 @@
     width: 50vw;
     transform: scale(0.45, 0.45);
   }
-  .map-selected {
-    fill: rgb(0, 0, 220);
-  }
-  
-  .map-unselected {
-    fill: rgb(172, 198, 255);
-  }
-  
-  .map-selected:hover, .map-unselected:hover {
-    cursor: pointer;
-  }
+
   .Home-mapCaption {
     font-size: 4vw;
     width: 50vw;
@@ -205,18 +195,7 @@
     width: 80vw;
     transform: scale(1.5, 1.5);
   }
-  
-  .map-selected {
-    fill: rgb(0, 0, 220);
-  }
-  
-  .map-unselected {
-    fill: rgb(172, 198, 255);
-  }
-  
-  .map-selected:hover, .map-unselected:hover {
-    cursor: pointer;
-  }
+
   
   .Home-mapCaption {
     font-size: 20px;
@@ -226,5 +205,17 @@
     text-shadow: 2px 2px rgb(21, 21, 21);
     animation: fadeIn 4s 1;
   }
+}
+
+.map-selected {
+  fill: rgb(225, 191, 0);
+}
+
+.map-unselected {
+  fill: rgba(223, 205, 0, 0.557);
+}
+
+.map-selected:hover, .map-unselected:hover {
+  cursor: pointer;
 }
 

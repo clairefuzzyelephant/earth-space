@@ -198,6 +198,11 @@ function Submit(props) {
             <div className="Submit-title">
                 Send your message of peace to space!
             </div>
+            <div className="Submit-introText">
+            In a year of unending crises, MIT sends—for the first time from space—messages of peace and unity in various languages representing all countries around the world using MIT Nanotechnology!
+            Space is a "space" for everyone!
+            Send your message of peace to space!
+            </div>
             <div className="Submit-inputSection">
                 <div className="Submit-inputInfoLeft">
                     <input className="Submit-smallField" placeholder="Legal Full Name (required)" value={legalName} onChange={e => setLegalName(e.target.value)} />
