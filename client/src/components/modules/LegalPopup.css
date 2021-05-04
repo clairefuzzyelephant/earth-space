@@ -78,3 +78,69 @@
 h3 {
   color: red;
 }
+
+@media (max-width: 1000px) {
+  .Popup-container {
+    position: fixed;
+    z-index: 100;
+    background-color: white;
+    color: rgb(29, 29, 29);
+    width: 80vw;
+    height: fit-content;
+    max-height: 60vh;
+    overflow-y: scroll;
+    top: 15vh;
+    left: calc(10vw - 5vw);
+    font-size: 12px;
+    padding: 5vw;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 3px rgb(79, 79, 79);
+    text-align: left;
+  }
+  
+  .Popup-buttonGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* width: 20vw; */
+    width: 60vw;
+    position: relative;
+    align-self: center;
+    left: 10vw;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-family: "Red Hat Display", sans-serif;
+  }
+  
+  .Popup-acceptButton {
+    width: 40%;
+    background-color: rgb(2, 2, 2);
+    color: rgb(240, 240, 240);
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 12px;
+    box-shadow: 2px 2px 3px 1px rgb(79, 79, 79);
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+    margin-left: 20px;
+    height: 10px;
+    
+  }
+  
+  .Popup-acceptButton:hover {
+    color: rgb(7, 7, 7);
+    background-color: rgb(247, 247, 247);
+    cursor: pointer;
+  }
+  
+  .Popup-cancelButton {
+    width: 40%;
+    background-color: rgb(69, 69, 69);
+    color: rgb(240, 240, 240);
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 12px;
+    box-shadow: 2px 2px 3px 1px rgb(79, 79, 79);
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+    height: 10px;
+  }
+}
