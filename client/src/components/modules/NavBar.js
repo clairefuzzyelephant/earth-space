@@ -36,6 +36,9 @@ function NavBar(props) {
         <div className="NavBar-hamburgerContainer">
             
             {open ? <div className="NavBar-Hamburger">
+                <Link to="/" className="NavBar-link" onClick={() => handleClick()}>
+                    Home
+                </Link>
                 <Link to="/mission" className="NavBar-link" onClick={() => handleClick()}>
                     Mission
                 </Link>

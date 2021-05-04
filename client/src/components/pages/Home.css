@@ -121,7 +121,7 @@
 @media (max-width: 1000px) {
   .Home-container {
     width: 100vw;
-    height: 1500px;
+    height: 1200px;
     background-image: url("../../../dist/poster.jpeg");
     background-size: contain;
     color: white;
@@ -132,17 +132,15 @@
   
   .Home-backgroundOverlay {
     width: 100vw;
-    height: 1500px;
+    height: 1200px;
     background-color: rgba(0, 0, 0, 0.65);
   }
   
   .Home-title {
-    word-spacing: 1000rem;
-    display: table-caption;
-    text-align: left;
+    text-align: center;
     font-size: 5vw;
-    width: fit-content;
-    margin-left: 40vw;
+    width: 80vw;
+    margin-left: 10vw;
     padding-top: 15vh;
     font-family: "Red Hat Display", sans-serif;
     /* font-family: "Abel", sans-serif; */
@@ -163,9 +161,34 @@
   
   .Home-introText {
     font-size: 4vw;
-    width: 80vw;
+    width: 80%;
     margin-left: 10vw;
     margin-top: 40px;
+    text-shadow: 2px 2px rgb(21, 21, 21);
+    animation: fadeIn 4s 1;
+  }
+  .Home-worldMap {
+    position: relative;
+    margin-top: 5vh;
+    width: 50vw;
+    transform: scale(0.45, 0.45);
+  }
+  .map-selected {
+    fill: rgb(0, 0, 220);
+  }
+  
+  .map-unselected {
+    fill: rgb(172, 198, 255);
+  }
+  
+  .map-selected:hover, .map-unselected:hover {
+    cursor: pointer;
+  }
+  .Home-mapCaption {
+    font-size: 4vw;
+    width: 50vw;
+    margin-left: 25vw;
+    margin-top: 1vh;
     text-shadow: 2px 2px rgb(21, 21, 21);
     animation: fadeIn 4s 1;
   }
@@ -174,31 +197,34 @@
   
 }
 
-.Home-worldMap {
-  position: relative;
-  margin-top: 200px;
-  margin-left: 10vw;
-  width: 80vw;
-  transform: scale(1.5, 1.5);
+@media (min-width: 1000px) {
+  .Home-worldMap {
+    position: relative;
+    margin-top: 200px;
+    margin-left: 10vw;
+    width: 80vw;
+    transform: scale(1.5, 1.5);
+  }
+  
+  .map-selected {
+    fill: rgb(0, 0, 220);
+  }
+  
+  .map-unselected {
+    fill: rgb(172, 198, 255);
+  }
+  
+  .map-selected:hover, .map-unselected:hover {
+    cursor: pointer;
+  }
+  
+  .Home-mapCaption {
+    font-size: 20px;
+    width: 800px;
+    margin-left: calc(50vw - 400px);
+    margin-top: 100px;
+    text-shadow: 2px 2px rgb(21, 21, 21);
+    animation: fadeIn 4s 1;
+  }
 }
 
-.map-selected {
-  fill: rgb(0, 0, 220);
-}
-
-.map-unselected {
-  fill: rgb(172, 198, 255);
-}
-
-.map-selected:hover, .map-unselected:hover {
-  cursor: pointer;
-}
-
-.Home-mapCaption {
-  font-size: 20px;
-  width: 800px;
-  margin-left: calc(50vw - 400px);
-  margin-top: 100px;
-  text-shadow: 2px 2px rgb(21, 21, 21);
-  animation: fadeIn 4s 1;
-}

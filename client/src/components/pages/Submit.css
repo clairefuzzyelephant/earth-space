@@ -9,6 +9,7 @@
   color: white;
   font-family: "Red Hat Display", "sans-serif";
   text-align: center;
+  padding-bottom: 100px;
 }
 
 .Submit-messagingText {
@@ -36,6 +37,7 @@
     width: 100vw;
     height: 190vh;
     background-color: rgba(0, 0, 0, 0.65);
+    padding-bottom: 100px;
   }
   .Submit-inputSection {
     width: 80vw;
@@ -126,6 +128,7 @@
     width: 100vw;
     height: 1450px;
     background-color: rgba(0, 0, 0, 0.65);
+    padding-bottom: 100px;
   }
   
   .Submit-title {
@@ -307,6 +310,8 @@
   text-align: center;
   margin-top: 15px;
   font-size: 12px;
+  width: 80vw;
+  margin-left: 10vw;
 }
 
 .Submit-recordButton {

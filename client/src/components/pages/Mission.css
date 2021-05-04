@@ -43,12 +43,14 @@
     font-family: "Red Hat Display", sans-serif;
     /* font-family: "Abel", sans-serif; */
     text-align: center;
+    padding-bottom: 100px;
   }
   
   .Mission-backgroundOverlay {
     width: 100vw;
     height: 1450px;
     background-color: rgba(0, 0, 0, 0.65);
+    padding-bottom: 100px;
   }
 
 @media (max-width: 1000px) {
@@ -60,7 +62,6 @@
         margin-top: 40px;
         text-shadow: 2px 2px rgb(21, 21, 21);
         animation: fadeIn 4s 1;
-        overflow-y: scroll;
     }
     
     .Mission-title {
@@ -75,18 +76,20 @@
 
       .Mission-container {
         width: 100vw;
-        height: 1400px;
+        height: 2400px;
         background-image: url("../../../dist/poster.jpeg");
         background-size: contain;
         color: white;
         font-family: "Red Hat Display", sans-serif;
         /* font-family: "Abel", sans-serif; */
         text-align: center;
+        padding-bottom: 100px;
       }
       
       .Mission-backgroundOverlay {
         width: 100vw;
-        height: 1400px;
+        min-height: 2400px;
         background-color: rgba(0, 0, 0, 0.65);
+        padding-bottom: 100px;
       }
 }
