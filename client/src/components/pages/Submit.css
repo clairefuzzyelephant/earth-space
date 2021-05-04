@@ -29,15 +29,18 @@
     animation: fadeIn 2s 1;
   }
   .Submit-container {
-    height: 190vh;
+    height: 1500px;
+    position: relative;
+    z-index: 0;
   }
   .Submit-backgroundOverlay {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 190vh;
+    height: 1500px;
     background-color: rgba(0, 0, 0, 0.65);
     padding-bottom: 100px;
+    z-index: -5;
   }
   .Submit-inputSection {
     width: 80vw;
@@ -74,16 +77,20 @@
   }
 
   .Submit-dropdown {
+    position: fixed;
     height: 50px;
     width: 80vw;
     border-radius: 30px;
     color: rgb(125, 125, 125);
     margin-top: 30px;
+    margin-bottom: 30px;
     font-size: 14px;
     box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
     font-family: "Red Hat Display";
     text-align: left;
+    
   }
+
   .Submit-countryDisclaimer {
     font-size: 8px;
   }
