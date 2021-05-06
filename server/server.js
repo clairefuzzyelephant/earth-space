@@ -30,7 +30,7 @@ mongoose
 // create a new express server
 const app = express();
 app.use(validator.checkRoutes);
-app.use(enforce.HTTPS({trustProtoHeader: true})); // enforces HTTPS
+// app.use(enforce.HTTPS({trustProtoHeader: true})); // enforces HTTPS
 
 // allow us to process POST requests
 // app.use(express.json());

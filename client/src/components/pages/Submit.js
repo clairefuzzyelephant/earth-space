@@ -3,6 +3,7 @@ import { CountryDropdown } from 'react-country-region-selector';
 import { countryData } from '../../data.js';
 import Select from 'react-select';
 import MicRecorder from 'mic-recorder-to-mp3';
+import S3 from "react-aws-s3";
 
 import LegalPopup from "../modules/LegalPopup.js";
 
@@ -42,20 +43,18 @@ function Submit(props) {
     const issuesOccur = {0: false, 1: false, 2: false, 3: false, 4: false};
 
     const recorder = useMemo(() => new MicRecorder({ bitRate: 64 }), []);
+    // const [recorder, setRecorder] = useState(null);
     const [isRecording, setIsRecording] = useState(false);
     const [isBlocked, setIsBlocked] = useState(false);
     const [blobURL, setBlobURL] = useState("");
     const [blob, setBlob] = useState(null);
     const [buffer, setBuffer] = useState(null);
 
-    const customStyles = {
-        multiValue: (styles) => ({
-            ... styles,
-            borderRadius: 30,
-            color: 'red',
-            backgroundColor: 'black',
-        }),
-    }
+    const [chunks, setChunks] = useState([]);
+
+    const [file, setFile] = useState("");
+
+
 
     useEffect(() => {
         async function detectMicAllowed() {
@@ -70,11 +69,23 @@ function Submit(props) {
             }
         }
         detectMicAllowed();
+
+
     }, [isBlocked])
     
 
+    // if (recorder !== null) {
+    //     recorder.ondataavailable = function(e) {
+    //         chunks.push(e.data);
+    //     }
+    // }
+
     const handleSubmit = () => {
-        console.log(countryVal);
+        if (file !== null || file !== "") {
+            let newFilename = file.name;
+            
+        }
+
         const body = {legalName: legalName, emailAddr: emailAddr, country: countryVal["value"], region: region["value"], message: message, translation: translation, language: language, buffer: buffer};
         if (acceptedTerms && legalName !== "" && region !== "" && message !== "" && emailAddr !== "" && emailAddr.indexOf('@') !== -1 && language !== "") {
             post("/api/submitMessage", body).then((result) => {
@@ -177,6 +188,18 @@ function Submit(props) {
     // }
 
     const stopRecording = () => {
+        // recorder.stop();
+        // console.log(recorder.state)
+        // setIsRecording(false);
+        // console.log(chunks);
+        // let tempBlob = new Blob(chunks, {'type': 'audio/ogg;codecs=opus'});
+        // setBlob(tempBlob);
+        // console.log(tempBlob);
+        // const blobURL = window.URL.createObjectURL(tempBlob);
+        // console.log(blobURL);
+        // setBlobURL(blobURL);
+        // setChunks([]);
+        
         recorder.stop().getMp3()
         .then(([buffer, blob]) => {
         setIsRecording(false);
@@ -243,9 +266,11 @@ function Submit(props) {
                             </div>
                             </>
                          : isRecording ? <p>Recording...</p> : <p>Record your message (optional)</p>}
-                        </div>
-                        
+                        </div>  
                     </div>
+                    {/* <div className="Submit-audioPrompt">
+                            <input type="file" onChange={e => setFile(e.target.files[0])}/>
+                        </div> */}
                     <div className="Submit-legalCheckbox">
                         <div><input type="checkbox" checked={isChecked} onChange={() => toggleCheckbox()} /></div>
                         <div>I accept the legal terms and conditions.</div>  

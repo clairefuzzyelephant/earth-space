@@ -212,7 +212,7 @@
 }
 
 .map-unselected {
-  fill: rgba(223, 205, 0, 0.557);
+  fill: rgba(165, 152, 0, 0.557);
 }
 
 .map-selected:hover, .map-unselected:hover {

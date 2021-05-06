@@ -25,10 +25,13 @@ let uploadParams = {Bucket: 'earth-space', Key: '', Body: '', ContentType: 'bina
 
 const fs = require('fs');
 const path = require('path');
-const Buffer = require('buffer/').Buffer  // note: the trailing slash is important!
+const Buffer = require('buffer/').Buffer;  // note: the trailing slash is important!
+// const { reduce } = require("core-js/core/array");
 
+console.log("HELLOOOOOO")
 
 const generateFileName = (emailAddr) => {
+  console.log("generating FILENAME")
   let fileName = "";
   ind = emailAddr.indexOf("@");
   if (ind !== -1) {
@@ -42,10 +45,14 @@ const generateFileName = (emailAddr) => {
 }
 
 router.post("/submitMessage", (req, res) => {
+  console.log("what the fuck");
   const buf = req.body.buffer;
   const arr = [];
-
+  let linkToRecording = "";
+  let linkToFile = "";
+  console.log("we here??");
   if (buf !== null) {
+    console.log("HIOI");
     for (i = 0; i < buf.length; i++) {
       arr.push(Buffer.from(Object.values(buf[i])));
     }
@@ -61,36 +68,38 @@ router.post("/submitMessage", (req, res) => {
         console.log("Error", err);
         res.send(err);
       } if (data) {
-        console.log("Upload Success");
+        console.log("Upload Buffer Success");
         linkToRecording = data.Location;
-        const newMessage = new Message({
-          legalName: req.body.legalName,
-          englishName: req.body.englishName,
-          emailAddr: req.body.emailAddr,
-          country: req.body.country,
-          missEarth: req.body.missEarth,
-          message: req.body.message,
-          translation: req.body.translation,
-          language: req.body.language,
-          recordingLink: linkToRecording,
-        });
-        newMessage.save().then(() => res.send(newMessage));
       }
-    });
-  }
-  else {
-    const newMessage = new Message({
-      legalName: req.body.legalName,
-      emailAddr: req.body.emailAddr,
-      country: req.body.country,
-      region: req.body.region,
-      message: req.body.message,
-      translation: req.body.translation,
-      language: req.body.language,
-      recordingLink: "",
-    });
-    newMessage.save().then(() => res.send(newMessage));
-  }
+    }
+  )}
+  if (req.body.file !== "" || req.body.file !== null) {
+      console.log("HII");
+      const fileName = generateFileName(req.body.emailAddr);
+      let uploadParams2 = {Bucket: 'earth-space', Key: path.basename(fileName + '.mp3'), Body: req.body.file};
+      s3.upload(uploadParams2, function (err, data) {
+        if (err) {
+          console.log("whatup")
+          console.log("Error", err);
+          res.send(err);
+        } if (data) {
+          console.log("Upload File Success");
+          linkToFile = data.Location;
+        }
+      }
+  )}
+  const newMessage = new Message({
+    legalName: req.body.legalName,
+    emailAddr: req.body.emailAddr,
+    country: req.body.country,
+    region: req.body.region,
+    message: req.body.message,
+    translation: req.body.translation,
+    language: req.body.language,
+    recordingLink: linkToRecording,
+    fileLink: linkToFile,
+  });
+  newMessage.save().then(() => res.send(newMessage));
   
   
 })
