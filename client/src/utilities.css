@@ -38,6 +38,8 @@ body {
   font-weight: 300;
   /* overflow: hidden; */
   background-color: black;
+  overflow: auto;
+  position: relative;
 }
 
 form {

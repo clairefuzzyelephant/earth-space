@@ -4,6 +4,8 @@ import { Link } from "@reach/router";
 import "../../utilities.css";
 import "./Mission.css";
 
+import poster from "../../../dist/poster.jpeg";
+
 function Mission(props) {
 
   return (
@@ -25,6 +27,7 @@ function Mission(props) {
             In this open call, we are collecting names and quotes, in submitters' native languages, under the themes of peace, love and unity, in addition to optional audio or video recordings of the quotes. Later, we will use nanotechnology to etch the submissions on the surface of the Golden Record 2.0, similar to the process used in the One.MIT project. The end goal is to promote international space collaboration and how space should remain a "space" for all mankind to unite, instead of isolating from each other. This project would be in parallel with MIT.nano’s upcoming One.WORLD project.
             </p>
           </div>
+          {/* <img className="poster" src={poster} /> */}
         </div>
       </div>
     </>

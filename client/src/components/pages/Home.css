@@ -4,8 +4,8 @@
 
 .Home-container {
   width: 100vw;
-  height: 1500px;
-  background-image: url("../../../dist/poster.jpeg");
+  height: 1400px;
+  background-image: url("../../../dist/stars.jpeg");
   background-size: contain;
   color: white;
   font-family: "Red Hat Display", sans-serif;
@@ -15,8 +15,8 @@
 
 .Home-backgroundOverlay {
   width: 100vw;
-  height: 1500px;
-  background-color: rgba(0, 0, 0, 0.65);
+  height: 1400px;
+  background-color: rgba(0, 0, 0, 0.30);
 }
 
 .Home-title {
@@ -122,7 +122,7 @@
   .Home-container {
     width: 100vw;
     height: 1200px;
-    background-image: url("../../../dist/poster.jpeg");
+    background-image: url("../../../dist/stars.jpeg");
     background-size: contain;
     color: white;
     font-family: "Red Hat Display", sans-serif;
@@ -133,7 +133,7 @@
   .Home-backgroundOverlay {
     width: 100vw;
     height: 1200px;
-    background-color: rgba(0, 0, 0, 0.65);
+    background-color: rgba(0, 0, 0, 0.30);
   }
   
   .Home-title {
@@ -160,7 +160,7 @@
   }
   
   .Home-introText {
-    font-size: 4vw;
+    font-size: 2vw;
     width: 80%;
     margin-left: 10vw;
     margin-top: 40px;
@@ -170,12 +170,12 @@
   .Home-worldMap {
     position: relative;
     margin-top: 5vh;
-    width: 50vw;
-    transform: scale(0.45, 0.45);
+    margin-left: calc(50vw - 336px );
+    transform: scale(0.5, 0.5);
   }
 
   .Home-mapCaption {
-    font-size: 4vw;
+    font-size: 2vw;
     width: 50vw;
     margin-left: 25vw;
     margin-top: 1vh;
@@ -212,10 +212,14 @@
 }
 
 .map-unselected {
-  fill: rgba(165, 152, 0, 0.557);
+  fill: rgba(165, 151, 0, 0.886);
 }
 
 .map-selected:hover, .map-unselected:hover {
   cursor: pointer;
+}
+
+.poster {
+  width: 100vw;
 }
 

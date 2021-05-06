@@ -11,7 +11,7 @@
 .Team-container {
     width: 100vw;
     height: 3000px;
-    background-image: url("../../../dist/poster.jpeg");
+    background-image: url("../../../dist/stars.jpeg");
     background-size: contain;
     color: white;
     font-family: "Red Hat Display", sans-serif;
@@ -22,7 +22,7 @@
   .Team-backgroundOverlay {
     width: 100vw;
     height: 3000px;
-    background-color: rgba(0, 0, 0, 0.65);
+    background-color: rgba(0, 0, 0, 0.30);
   }
 
 .Team-section {
@@ -54,12 +54,12 @@
         grid-template-columns: 1fr;
         row-gap: 100px;
         animation: fadeIn 2s 1;
-        font-size: 4vw;
+        font-size: 2vw;
     }
     .Team-container {
         width: 100vw;
         height: 4500px;
-        background-image: url("../../../dist/poster.jpeg");
+        background-image: url("../../../dist/stars.jpeg");
         background-size: contain;
         color: white;
         font-family: "Red Hat Display", sans-serif;
@@ -70,7 +70,7 @@
       .Team-backgroundOverlay {
         width: 100vw;
         height: 4500px;
-        background-color: rgba(0, 0, 0, 0.65);
+        background-color: rgba(0, 0, 0, 0.30);
       }
       .Team-section img {
         width: 100%;

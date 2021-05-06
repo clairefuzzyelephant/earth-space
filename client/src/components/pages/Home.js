@@ -2,6 +2,8 @@ import React, { useState, useEffect} from "react";
 import { Link } from "@reach/router";
 import WorldMap from "react-world-map";
 
+import poster from "../../../dist/poster.jpeg";
+
 import "../../utilities.css";
 import "./Home.css";
 
@@ -80,8 +82,9 @@ function Home(props) {
             <br></br>
             Click on a region to check out how many people have submitted!
             <br></br>
-            {select ? <>{regionMap[select]}: {mapToCount[select]}</> : null}
+            {select ? <>{regionMap[select]}: {mapToCount[select]}</> : "(None selected)"}
           </div>
+          {/* <img className="poster" src={poster} /> */}
         </div>
       </div>
     </>

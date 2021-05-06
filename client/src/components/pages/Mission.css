@@ -2,10 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400&family=Lexend:wght@300&family=Manrope:wght@300&family=Monda&family=Overpass:wght@200&family=Red+Hat+Display&family=Spartan&display=swap');
 
 .Mission-introText {
-    font-size: 20px;
+    font-size: 1.5vw;
     line-height: 40px;
     width: 70vw;
-    max-height: 60vh;
     margin-left: 15vw;
     margin-top: 40px;
     text-shadow: 2px 2px rgb(21, 21, 21);
@@ -36,8 +35,8 @@
 
 .Mission-container {
     width: 100vw;
-    height: 1450px;
-    background-image: url("../../../dist/poster.jpeg");
+    height: 1100px;
+    background-image: url("../../../dist/stars.jpeg");
     background-size: contain;
     color: white;
     font-family: "Red Hat Display", sans-serif;
@@ -48,16 +47,16 @@
   
   .Mission-backgroundOverlay {
     width: 100vw;
-    height: 1450px;
-    background-color: rgba(0, 0, 0, 0.65);
+    height: 1100px;
+    background-color: rgba(0, 0, 0, 0.30);
     padding-bottom: 100px;
   }
 
 @media (max-width: 1000px) {
     .Mission-introText {
-        font-size: 15px;
+        font-size: 2vw;
         width: 70vw;
-        max-height: 1000px;
+        height: 1000px;
         margin-left: 15vw;
         margin-top: 40px;
         text-shadow: 2px 2px rgb(21, 21, 21);
@@ -76,8 +75,8 @@
 
       .Mission-container {
         width: 100vw;
-        height: 2400px;
-        background-image: url("../../../dist/poster.jpeg");
+        height: 1500px;
+        background-image: url("../../../dist/stars.jpeg");
         background-size: contain;
         color: white;
         font-family: "Red Hat Display", sans-serif;
@@ -88,8 +87,8 @@
       
       .Mission-backgroundOverlay {
         width: 100vw;
-        min-height: 2400px;
-        background-color: rgba(0, 0, 0, 0.65);
+        min-height: 1500px;
+        background-color: rgba(0, 0, 0, 0.30);
         padding-bottom: 100px;
       }
 }
