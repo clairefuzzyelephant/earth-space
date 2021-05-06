@@ -39,19 +39,33 @@
   @media (max-width: 1000px) {
     .Terms-container {
         width: 100vw;
-        height: 800vh;
+        height: 1250vw;
+        /* min-height: 6500px; */
         background-image: url("../../../dist/stars.jpeg");
         background-size: contain;
         color: white;
         font-family: "Red Hat Display", sans-serif;
         /* font-family: "Abel", sans-serif; */
         text-align: center;
-        font-size: 1.5vw;
       }
+
+      .Terms-body {
+        width: 70vw;
+        margin-left: 15vw;
+        line-height: 5vw;
+        text-align: left;
+        font-size: 3vw;
+    }
+
+    .Terms-body h3 {
+      color: white;
+      margin-top: 6vw;
+  }
       
       .Terms-backgroundOverlay {
         width: 100vw;
-        height: 800vh;
+        height: 1250vw;
+        /* min-height: 6500px; */
         background-color: rgba(0, 0, 0, 0.30);
       }
   }
