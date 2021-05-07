@@ -121,7 +121,7 @@
 @media (max-width: 1000px) {
   .Home-container {
     width: 100vw;
-    height: 1200px;
+    height: 1300px;
     background-image: url("../../../dist/stars.jpeg");
     background-size: contain;
     color: white;
@@ -132,7 +132,7 @@
   
   .Home-backgroundOverlay {
     width: 100vw;
-    height: 1200px;
+    height: 1300px;
     background-color: rgba(0, 0, 0, 0.30);
   }
   
@@ -160,7 +160,7 @@
   }
   
   .Home-introText {
-    font-size: 2vw;
+    font-size: 15px;
     width: 80%;
     margin-left: 10vw;
     margin-top: 40px;
@@ -170,12 +170,12 @@
   .Home-worldMap {
     position: relative;
     margin-top: 5vh;
-    margin-left: calc(50vw - 336px );
+    margin-left: calc(50vw - 300px );
     transform: scale(0.5, 0.5);
   }
 
   .Home-mapCaption {
-    font-size: 2vw;
+    font-size: 15px;
     width: 50vw;
     margin-left: 25vw;
     margin-top: 1vh;

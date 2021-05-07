@@ -27,6 +27,10 @@ const fs = require('fs');
 const path = require('path');
 const Buffer = require('buffer/').Buffer;  // note: the trailing slash is important!
 // const { reduce } = require("core-js/core/array");
+const FileReader = require('filereader');
+var toWav = require('audiobuffer-to-wav');
+var xhr = require('xhr');
+
 
 console.log("HELLOOOOOO")
 
@@ -45,21 +49,57 @@ const generateFileName = (emailAddr) => {
 }
 
 router.post("/submitMessage", (req, res) => {
-  console.log("what the fuck");
-  const buf = req.body.buffer;
+  // const buf = req.body.buffer;
+  // console.log(buf);
+  // let context = new AudioContext();
+  let tempBuf = toWav(req.body.buffer);
+  console.log(tempBuf);
+  var chunk = new Uint8Array(tempBuf);
+  console.log(chunk);
+  const buf = new Buffer(chunk);
+
+  // const wavFile = null;
+
+        // const fileReader = new FileReader();
+
+    //     const reader = new FileReader();
+
+    //     reader.readAsDataURL(buf);
+    //     reader.onloadend = () => {
+    //     let base64 = reader.result + '';
+    //     base64 = base64.split(',')[1];
+    //     const ab = new ArrayBuffer(base64.length);
+    //     const buff = new Buffer.from(base64, 'base64');
+    //     const view = new Uint8Array(ab);
+    //     for (let i = 0; i < buff.length; ++i) {
+    //         view[i] = buff[i];
+    //     }
+    //     const context = new AudioContext();
+    //     context.decodeAudioData(ab, (buffer) => {
+    //         wavFile = toWav(buffer);
+    //         console.log(wavFile);
+    //     })
+    // }
   const arr = [];
   let linkToRecording = "";
   let linkToFile = "";
   console.log("we here??");
+  console.log("buf is " + buf);
   if (buf !== null) {
     console.log("HIOI");
+    console.log(buf.length)
     for (i = 0; i < buf.length; i++) {
       arr.push(Buffer.from(Object.values(buf[i])));
+      // arr.push(Buffer.from(buf[i]));
+      // arr.push(buf[i]);
     }
+    console.log(arr);
     uploadParams.Body = Buffer.concat(arr);
+    // uploadParams.Body = Buffer.from(req.body.buffer);
+    // uploadParams.Body = req.body.buffer;
   
     const fileName = generateFileName(req.body.emailAddr);
-    uploadParams.Key = path.basename(fileName + '.mp3');
+    uploadParams.Key = path.basename(fileName + '.wav');
   
     let linkToRecording = "";
     // call S3 to retrieve upload file to specified bucket
@@ -70,42 +110,45 @@ router.post("/submitMessage", (req, res) => {
       } if (data) {
         console.log("Upload Buffer Success");
         linkToRecording = data.Location;
+        console.log(linkToRecording);
+        const newMessage = new Message({
+          legalName: req.body.legalName,
+          emailAddr: req.body.emailAddr,
+          country: req.body.country,
+          region: req.body.region,
+          message: req.body.message,
+          translation: req.body.translation,
+          language: req.body.language,
+          recordingLink: linkToRecording,
+          fileLink: linkToFile,
+        });
+        newMessage.save().then(() => res.send(newMessage));
       }
     }
   )}
-  if (req.body.file !== "" || req.body.file !== null) {
-      console.log("HII");
-      const fileName = generateFileName(req.body.emailAddr);
-      let uploadParams2 = {Bucket: 'earth-space', Key: path.basename(fileName + '.mp3'), Body: req.body.file};
-      s3.upload(uploadParams2, function (err, data) {
-        if (err) {
-          console.log("whatup")
-          console.log("Error", err);
-          res.send(err);
-        } if (data) {
-          console.log("Upload File Success");
-          linkToFile = data.Location;
-        }
-      }
-  )}
-  const newMessage = new Message({
-    legalName: req.body.legalName,
-    emailAddr: req.body.emailAddr,
-    country: req.body.country,
-    region: req.body.region,
-    message: req.body.message,
-    translation: req.body.translation,
-    language: req.body.language,
-    recordingLink: linkToRecording,
-    fileLink: linkToFile,
-  });
-  newMessage.save().then(() => res.send(newMessage));
+  // if (req.body.file !== "" || req.body.file !== null) {
+  //     console.log("HII");
+  //     const fileName = generateFileName(req.body.emailAddr);
+  //     let uploadParams2 = {Bucket: 'earth-space', Key: path.basename(fileName + '.mp3'), Body: req.body.file};
+  //     s3.upload(uploadParams2, function (err, data) {
+  //       if (err) {
+  //         console.log("whatup")
+  //         console.log("Error", err);
+  //         res.send(err);
+  //       } if (data) {
+  //         console.log("Upload File Success");
+  //         linkToFile = data.Location;
+  //       }
+  //     }
+  // )}
+  
   
   
 })
 
 
 router.get("/allSubmissions", (req, res) => {
+  console.log("HI?")
   Message.find({}).then((messages) => {
     res.send(messages);
   })

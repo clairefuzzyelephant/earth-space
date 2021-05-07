@@ -19,7 +19,7 @@
 
 @media (max-width: 1000px) {
   .Submit-title {
-    font-size: 40px;
+    font-size: 30px;
     width: 80vw;
     margin-left: 10vw;
     padding-top: 15vh;
@@ -28,16 +28,25 @@
     text-shadow: 2px 4px rgb(21, 21, 21);
     animation: fadeIn 2s 1;
   }
+  .Submit-introText {
+    font-size: 15px;
+    width: 80vw;
+    margin-left: 10vw;
+    margin-top: 10vh;
+    text-shadow: 2px 2px rgb(21, 21, 21);
+  }
+  
   .Submit-container {
-    height: 1500px;
+    height: 300vh;
     position: relative;
     z-index: 0;
+    font-size: 15px;
   }
   .Submit-backgroundOverlay {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 1500px;
+    height: 300vh;
     background-color: rgba(0, 0, 0, 0.30);
     padding-bottom: 100px;
     z-index: -5;
@@ -45,7 +54,7 @@
   .Submit-inputSection {
     width: 80vw;
     margin-left: 10vw;
-    padding-top: 20px;
+    padding-top: 10vh;
     animation: fadeIn3 2s 1;
   }
   .Submit-inputInfoLeft {
@@ -55,8 +64,8 @@
     /* margin-left: 10vw; */
   }
   input {
-    margin-top: 5vw;
-    height: 10vw;
+    margin-top: 10vh;
+    height: 5vh;
     border-radius: 4px;
     outline: none;
     border: none;
@@ -65,8 +74,8 @@
     font-family: "Red Hat Display";
   }
   textarea {
-    margin-top: 10vw;
-    height: 30vw;
+    margin-top: 10vh;
+    height: 20vh;
     width: calc(80vw - 20px);
     border-radius: 4px;
     outline: none;
@@ -78,12 +87,12 @@
 
   .Submit-dropdown {
     position: fixed;
-    height: 10vw;
+    height: 10vh;
     width: 80vw;
     border-radius: 30px;
     color: rgb(125, 125, 125);
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
     font-size: 14px;
     box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
     font-family: "Red Hat Display";
@@ -100,20 +109,20 @@
   }
 
   .Submit-legalCheckbox {
-    height: 50px;
-    margin-top: 25px;
+    height: 15vw;
+    margin-top: 10vh;
     display: flex;
     flex-direction: row;
     /* justify-content: space-between; */
     align-items: center;
     width: 80vw;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .Submit-inputInfoRight > input {
-    margin-top: 30px;
+    margin-top: 10vh;
     width: calc(100% - 20px);
-    height: 40px;
+    height: 10vw;
     border-radius: 4px;
     outline: none;
     border: none;

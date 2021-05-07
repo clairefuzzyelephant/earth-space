@@ -25,31 +25,44 @@ function Home(props) {
   useEffect(() => {
     async function getSubmissions() {
         get("/api/allSubmissions").then((messages) => {
+          console.log(messages);
           setTotalSubs(messages.length);
+          let naCount = 0;
+          let saCount = 0;
+          let afCount = 0;
+          let euCount = 0;
+          let asCount = 0;
+          let ocCount = 0;
           for (let i = 0; i < messages.length; i++) {
             if (messages[i].region == "NA") {
-              setNA(na + 1);
+              naCount = naCount + 1;
             }
             else if (messages[i].region == "SA") {
-              setSA(sa + 1);
+              saCount = saCount + 1;
             }
             else if (messages[i].region == "AF") {
-              setAF(af + 1);
+              afCount = afCount + 1;
             }
             else if (messages[i].region == "EU") {
-              setEU(eu + 1);
+              euCount = euCount + 1;
             }
             else if (messages[i].region == "AS") {
-              setAS(as + 1);
+              asCount = asCount + 1;
             }
             else if (messages[i].region == "OC") {
-              setOC(oc + 1);
+              ocCount = ocCount + 1;
             }
           }
+          setNA(naCount);
+          setSA(saCount);
+          setAF(afCount);
+          setEU(euCount);
+          setAS(asCount);
+          setOC(ocCount);
         })
     }
     getSubmissions();
-}, [totalSubs])
+}, [totalSubs, na, sa, af, eu, as, oc])
 
 
   return (

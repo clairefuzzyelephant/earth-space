@@ -1,22 +1,17 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { CountryDropdown } from 'react-country-region-selector';
 import { countryData } from '../../data.js';
 import Select from 'react-select';
 import MicRecorder from 'mic-recorder-to-mp3';
-import S3 from "react-aws-s3";
 
 import LegalPopup from "../modules/LegalPopup.js";
 
 import { post } from "../../utilities.js";
+import { Mp3Encoder } from 'lamejs';
 
 import mic from "../../../dist/mic-icon-white.png";
 
 import "../../utilities.css";
 import "./Submit.css";
-
-/**
- * TODO: message character limit, audio input, terms & conditions
- */
 
 function Submit(props) {
     const [legalName, setLegalName] = useState("");
@@ -42,8 +37,9 @@ function Submit(props) {
     const issueList = ["Terms and conditions", "Legal name", "Email Address", "Region", "Message", "Language of Message", "Enter a valid email address"];
     const issuesOccur = {0: false, 1: false, 2: false, 3: false, 4: false};
 
-    const recorder = useMemo(() => new MicRecorder({ bitRate: 64 }), []);
-    // const [recorder, setRecorder] = useState(null);
+    // const recorder = useMemo(() => new MicRecorder({ bitRate: 64 }), []);
+    const [audioStream, setAudioStream] = useState(null);
+    const [recorder, setRecorder] = useState(null);
     const [isRecording, setIsRecording] = useState(false);
     const [isBlocked, setIsBlocked] = useState(false);
     const [blobURL, setBlobURL] = useState("");
@@ -55,30 +51,103 @@ function Submit(props) {
     const [file, setFile] = useState("");
 
 
-
-    useEffect(() => {
-        async function detectMicAllowed() {
-            const micAllowed = await navigator.mediaDevices.getUserMedia( {audio: true}) || navigator.getUserMedia({audio: true}) || navigator.webkitGetUserMedia({audio: true}) || navigator.mozGetUserMedia({audio: true}) || navigator.msGetUserMedia({audio: true});
-            if (micAllowed) {
-                console.log('Permission Granted');
-                setIsBlocked(false);
-            } 
-            else {
-                console.log('Permission Denied');
+    function getAudioStream() {
+        // Older browsers might not implement mediaDevices at all, so we set an empty object first
+        if (navigator.mediaDevices === undefined) {
+          navigator.mediaDevices = {};
+        }
+    
+        // Some browsers partially implement mediaDevices. We can't just assign an object
+        // with getUserMedia as it would overwrite existing properties.
+        // Here, we will just add the getUserMedia property if it's missing.
+        if (navigator.mediaDevices.getUserMedia === undefined) {
+          navigator.mediaDevices.getUserMedia = function (constraints) {
+            // First get ahold of the legacy getUserMedia, if present
+            var getUserMedia =
+              navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+    
+            // Some browsers just don't implement it - return a rejected promise with an error
+            // to keep a consistent interface
+            if (!getUserMedia) {
                 setIsBlocked(true);
+              return Promise.reject(
+                new Error("getUserMedia is not implemented in this browser")
+              );
+            }
+    
+            // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
+            return new Promise(function (resolve, reject) {
+              getUserMedia.call(navigator, constraints, resolve, reject);
+            });
+          };
+        }
+    
+        const params = { audio: true, video: false };
+        setIsBlocked(false);
+        return navigator.mediaDevices.getUserMedia(params);
+      }
+
+      useEffect(() => {
+        (async () => {
+            if (recorder == null) {
+                const as = await getAudioStream();
+                setAudioStream(as);
+                setRecorder(new MediaRecorder(as, {mimeType: 'audio/webm'}));
+            }
+            if (isRecording && recorder !== null) {
+                recorder.start();
+                recorder.ondataavailable = async (event) => {
+                    
+                    const blobURL = URL.createObjectURL(event.data);
+                    let blob = new Blob([event.data], {
+                        type: 'audio/webm'
+                    });
+
+                    setBlobURL(blobURL);
+
+                    // let tempBlob = new Blob(event.data);
+                    // console.log(tempBlob.arrayBuffer())
+                    console.log(blob);
+                    // setBuffer(blob);
+
+                    // Set up file reader on loaded end event
+                    const fileReader = new FileReader();
+                    const audioContext = new AudioContext();
+                    // const lameEncoder = new Encoder({
+                    //     // 128 or 160 kbit/s – mid-range bitrate quality
+                    //     bitRate: 128,
+                    //     startRecordingAt: 300,
+                    //     deviceId: null,
+                    //   });
+
+                    fileReader.onloadend = () => {
+
+                        const arrayBuffer = fileReader.result;
+                        var binary = '';
+                        var bytes = new Int8Array( arrayBuffer );
+
+                        const channels = 1; //1 for mono or 2 for stereo
+                        // setBuffer(Array.from(bytes));
+                        console.log(Array.from(bytes));
+                        
+                        // Convert array buffer into audio buffer
+                        audioContext.decodeAudioData(arrayBuffer, (audioBuffer) => {
+                            
+                            setBuffer(audioBuffer);
+                            console.log(audioBuffer);
+
+                        })
+
+                    }
+                    fileReader.readAsArrayBuffer(event.data);
+                }
+            }
+            if (recorder !== null && !isRecording && recorder.state == "recording") {
+                recorder.stop();
             }
         }
-        detectMicAllowed();
-
-
-    }, [isBlocked])
-    
-
-    // if (recorder !== null) {
-    //     recorder.ondataavailable = function(e) {
-    //         chunks.push(e.data);
-    //     }
-    // }
+        )();
+      }, [isRecording]);
 
     const handleSubmit = () => {
         if (file !== null || file !== "") {
@@ -93,12 +162,14 @@ function Submit(props) {
                     console.log("Success!");
                     setLegalName("");
                     setCountryVal("");
+                    setRegion("");
                     setMessage("");
                     setEmailAddr("");
                     setTranslation("");
                     setLanguage("");
                     setBuffer(null);
                     setBlob(null);
+                    setBlobURL("");
                     setIsChecked(false);
                 }
                 else {
@@ -164,33 +235,21 @@ function Submit(props) {
         if (isBlocked) {
             console.log('Permission Denied');
           } else {
-            recorder
-              .start()
-              .then(() => {
-                setIsRecording(true);
-              }).catch((e) => console.error(e));
+            // recorder.start();
+            setIsRecording(true);
+            // recorder
+            //   .start()
+            //   .then(() => {
+            //     setIsRecording(true);
+            //   }).catch((e) => console.error(e));
           }
     }
 
-    // const record = async () => {
-    //     if (isRecording) {
-    //         const tempBlob = await recorder.stopRecording();
-    //         setBlob(tempBlob);
-    //         setIsRecording(false);
-    //         setBlobURL(URL.createObjectURL(tempBlob))
-    //     }
-    //     else {
-    //         await recorder.initAudio();
-    //         await recorder.initWorker();
-    //         recorder.startRecording();
-    //         setIsRecording(true);
-    //     }
-    // }
 
     const stopRecording = () => {
         // recorder.stop();
         // console.log(recorder.state)
-        // setIsRecording(false);
+        setIsRecording(false);
         // console.log(chunks);
         // let tempBlob = new Blob(chunks, {'type': 'audio/ogg;codecs=opus'});
         // setBlob(tempBlob);
@@ -200,17 +259,19 @@ function Submit(props) {
         // setBlobURL(blobURL);
         // setChunks([]);
         
-        recorder.stop().getMp3()
-        .then(([buffer, blob]) => {
-        setIsRecording(false);
-        const blobURL = URL.createObjectURL(blob)
-        setBlobURL(blobURL);
-        setBlob(blob);
-        setBuffer(buffer);
-        console.log(typeof(buffer))
-        console.log(buffer);
-        console.log(blob);
-        })
+        // recorder.stop().getMp3()
+        // .then(([buffer, blob]) => {
+        // setIsRecording(false);
+        // const blobURL = URL.createObjectURL(new Blob(chunks));
+        // console.log(chunks);
+        // // const blobURL = URL.createObjectURL(blob);
+        // setBlobURL(blobURL);
+        // setBlob(blob);
+        // setBuffer(buffer);
+        // console.log(typeof(buffer))
+        // console.log(buffer);
+        // console.log(blob);
+        // })
     }
 
 
@@ -258,11 +319,11 @@ function Submit(props) {
                             <img src={mic} />
                         </div>
                         <div className="Submit-audioPrompt">
-                            {buffer && !isRecording ? 
+                            {blobURL && !isRecording ? 
                             <>
                             <p>Double-check my recording... or press to record again?</p>
                             <div>
-                                <audio controls autoplay src={blobURL} />
+                                <audio controls src={blobURL} />
                             </div>
                             </>
                          : isRecording ? <p>Recording...</p> : <p>Record your message (optional)</p>}
