@@ -323,7 +323,7 @@ function Submit(props) {
                             <>
                             <p>Double-check my recording... or press to record again?</p>
                             <div>
-                                <audio controls src={blobURL} />
+                                <audio controls autoPlay src={blobURL} />
                             </div>
                             </>
                          : isRecording ? <p>Recording...</p> : <p>Record your message (optional)</p>}

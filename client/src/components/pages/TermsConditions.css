@@ -22,7 +22,8 @@
 .Terms-container {
     width: 100vw;
     height: 420vw;
-    background-image: url("../../../dist/stars.jpeg");
+    /* background-image: url("../../../dist/stars.jpeg"); */
+    background-color: rgb(18, 18, 18);
     background-size: contain;
     color: white;
     font-family: "Red Hat Display", sans-serif;
