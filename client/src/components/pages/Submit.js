@@ -63,8 +63,8 @@ function Submit(props) {
         if (navigator.mediaDevices.getUserMedia === undefined) {
           navigator.mediaDevices.getUserMedia = function (constraints) {
             // First get ahold of the legacy getUserMedia, if present
-            var getUserMedia =
-              navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+            let getUserMedia =
+            await navigator.mediaDevices.getUserMedia( {audio: true}) || navigator.getUserMedia({audio: true}) || navigator.webkitGetUserMedia({audio: true}) || navigator.mozGetUserMedia({audio: true}) || navigator.msGetUserMedia({audio: true});
     
             // Some browsers just don't implement it - return a rejected promise with an error
             // to keep a consistent interface
