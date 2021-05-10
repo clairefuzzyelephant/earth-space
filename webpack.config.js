@@ -61,7 +61,17 @@ module.exports = {
   resolve: {
     extensions: ["*", ".js", ".jsx"],
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({ // <-- key to reducing React's size
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.DedupePlugin(), //dedupe similar code 
+    new webpack.optimize.UglifyJsPlugin(), //minify everything
+    new webpack.optimize.AggressiveMergingPlugin()//Merge chunks 
+  ],
   devServer: {
     historyApiFallback: true,
     contentBase: "./client/dist",
