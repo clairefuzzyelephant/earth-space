@@ -50,6 +50,22 @@ function Submit(props) {
 
     const [file, setFile] = useState("");
 
+    const customStyles = {
+        control: base => ({
+          ...base,
+        })
+      };
+
+
+    function supportsRecording(mimeType)
+        {
+            if (!window.MediaRecorder)
+                return false;
+            if (!MediaRecorder.isTypeSupported)
+                return mimeType.startsWith("audio/mp4") || mimeType.startsWith("video/mp4");
+            return MediaRecorder.isTypeSupported(mimeType);
+        }
+
 
     function getAudioStream() {
         // Older browsers might not implement mediaDevices at all, so we set an empty object first
@@ -57,17 +73,12 @@ function Submit(props) {
           navigator.mediaDevices = {};
         }
     
-        // Some browsers partially implement mediaDevices. We can't just assign an object
-        // with getUserMedia as it would overwrite existing properties.
-        // Here, we will just add the getUserMedia property if it's missing.
         if (navigator.mediaDevices.getUserMedia === undefined) {
           navigator.mediaDevices.getUserMedia = function (constraints) {
             // First get ahold of the legacy getUserMedia, if present
-            let getUserMedia =
-            await navigator.mediaDevices.getUserMedia( {audio: true}) || navigator.getUserMedia({audio: true}) || navigator.webkitGetUserMedia({audio: true}) || navigator.mozGetUserMedia({audio: true}) || navigator.msGetUserMedia({audio: true});
-    
-            // Some browsers just don't implement it - return a rejected promise with an error
-            // to keep a consistent interface
+            const params = { audio: true, video: false };
+            let getUserMedia = navigator.mediaDevices.getUserMedia( params) || navigator.getUserMedia(params) || navigator.webkitGetUserMedia(params) || navigator.mozGetUserMedia(params) || navigator.msGetUserMedia(params);
+
             if (!getUserMedia) {
                 setIsBlocked(true);
               return Promise.reject(
@@ -82,9 +93,9 @@ function Submit(props) {
           };
         }
     
-        const params = { audio: true, video: false };
+        
         setIsBlocked(false);
-        return navigator.mediaDevices.getUserMedia(params);
+        return navigator.mediaDevices.getUserMedia({ audio: true, video: false });
       }
 
       useEffect(() => {
@@ -112,7 +123,10 @@ function Submit(props) {
 
                     // Set up file reader on loaded end event
                     const fileReader = new FileReader();
-                    const audioContext = new AudioContext();
+
+                    const ac = window.AudioContext || window.webkitAudioContext;
+                    const audioContext = new ac();
+                    // const audioContext = new AudioContext();
                     // const lameEncoder = new Encoder({
                     //     // 128 or 160 kbit/s – mid-range bitrate quality
                     //     bitRate: 128,
@@ -294,11 +308,11 @@ function Submit(props) {
                     <input className="Submit-smallField" placeholder="Email address (required)" value={emailAddr} onChange={e => setEmailAddr(e.target.value)}/>
                     <div className="Submit-countrySection">
                         {/* <CountryDropdown className="Submit-dropdown" showDefaultOption={true} defaultOptionLabel="No Country Selected (required)" value={countryVal} onChange={e => setCountryVal(e)} /> */}
-                        <Select options={countryOptions} value={countryVal} className="Submit-dropdown" isSearchable={false} placeholder="Select your country" onChange={e => setCountryVal(e)} />
+                        <Select styles={customStyles} options={countryOptions} value={countryVal} className="Submit-dropdown" isSearchable={false} placeholder="Select your country" onChange={e => setCountryVal(e)} />
                         <div className="Submit-countryDisclaimer">Country list provided by country-region-data repo.</div>
                     </div>
                     <div className="Submit-countrySection">
-                        <Select options={options} className="Submit-dropdown" isSearchable={false} value={region} placeholder="Select your region" onChange={e => setRegion(e)} />
+                        <Select styles={customStyles} options={options} className="Submit-dropdown" isSearchable={false} value={region} placeholder="Select your region" onChange={e => setRegion(e)} />
                         {/* <div className="Submit-countryDisclaimer">Region list as classified by the World Bank.</div> */}
                     </div>
                     

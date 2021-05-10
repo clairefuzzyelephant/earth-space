@@ -65,7 +65,7 @@
   }
   input {
     margin-top: 10vh;
-    height: 5vh;
+    height: 10vw;
     border-radius: 4px;
     outline: none;
     border: none;
@@ -87,12 +87,12 @@
 
   .Submit-dropdown {
     position: fixed;
-    height: 10vh;
+    /* height: 10vh; */
     width: 80vw;
     border-radius: 30px;
     color: rgb(125, 125, 125);
     margin-top: 10vh;
-    margin-bottom: 10vh;
+    /* margin-bottom: 10vh; */
     font-size: 14px;
     box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
     font-family: "Red Hat Display";
@@ -134,6 +134,10 @@
     width: 60vw;
     height: 5vh;
     opacity: 60%;
+  }
+
+  .checkbox {
+    background-color: white;
   }
 }
 
