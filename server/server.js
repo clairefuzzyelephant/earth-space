@@ -8,8 +8,6 @@ const express = require("express"); // backend framework for our node server.
 const session = require("express-session"); // library that stores info about each connected user
 const mongoose = require("mongoose"); // library to connect to MongoDB
 const path = require("path"); // provide utilities for working with file and directory paths
-const bodyParser = require('body-parser');
-const enforce = require('express-sslify');
 
 
 const api = require("./api");
@@ -75,12 +73,6 @@ app.use((err, req, res, next) => {
     status: status,
     message: err.message,
   });
-});
-
-app.get('*.js', function (req, res, next) {
-  req.url = req.url + '.gz';
-  res.set('Content-Encoding', 'gzip');
-  next();
 });
 
 

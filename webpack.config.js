@@ -22,7 +22,6 @@ const outputDir = path.resolve(__dirname, "client", "dist");
 
 const webpack = require("webpack");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   entry: ["@babel/polyfill", entryFile],
@@ -66,14 +65,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks 
-    new BundleAnalyzerPlugin(),
-    new CompressionPlugin({
-      filename: "[path].gz[query]",
-      algorithm: "gzip",
-      test: /\.js$|\.css$|\.html$/,
-      threshold: 10240,
-      minRatio: 0.8
-    })
+    // new BundleAnalyzerPlugin(),
   ],
   devServer: {
     historyApiFallback: true,
