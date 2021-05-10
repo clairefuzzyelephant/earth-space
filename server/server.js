@@ -11,6 +11,7 @@ const path = require("path"); // provide utilities for working with file and dir
 const bodyParser = require('body-parser');
 const enforce = require('express-sslify');
 
+
 const api = require("./api");
 
 const mongoConnectionURL = process.env.ATLAS_SRV;
@@ -74,6 +75,12 @@ app.use((err, req, res, next) => {
     status: status,
     message: err.message,
   });
+});
+
+app.get('*.js', function (req, res, next) {
+  req.url = req.url + '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
 });
 
 

@@ -49,14 +49,14 @@ const generateFileName = (emailAddr) => {
 }
 
 router.post("/submitMessage", (req, res) => {
-  // const buf = req.body.buffer;
-  // console.log(buf);
+  const buf = req.body.buffer;
+  console.log(buf);
   // let context = new AudioContext();
-  let tempBuf = toWav(req.body.buffer);
-  console.log(tempBuf);
-  var chunk = new Uint8Array(tempBuf);
-  console.log(chunk);
-  const buf = new Buffer(chunk);
+  // let tempBuf = toWav(req.body.buffer);
+  // console.log(tempBuf);
+  // var chunk = new Uint8Array(tempBuf);
+  // console.log(chunk);
+  // const buf = new Buffer(chunk);
 
   // const wavFile = null;
 
@@ -126,6 +126,20 @@ router.post("/submitMessage", (req, res) => {
       }
     }
   )}
+  else {
+    const newMessage = new Message({
+      legalName: req.body.legalName,
+      emailAddr: req.body.emailAddr,
+      country: req.body.country,
+      region: req.body.region,
+      message: req.body.message,
+      translation: req.body.translation,
+      language: req.body.language,
+      recordingLink: "",
+      fileLink: linkToFile,
+    });
+    newMessage.save().then(() => res.send(newMessage));
+  }
   // if (req.body.file !== "" || req.body.file !== null) {
   //     console.log("HII");
   //     const fileName = generateFileName(req.body.emailAddr);
