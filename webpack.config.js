@@ -68,7 +68,7 @@ module.exports = {
     new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks 
     new BundleAnalyzerPlugin(),
     new CompressionPlugin({
-      asset: "[path].gz[query]",
+      filename: "[path].gz[query]",
       algorithm: "gzip",
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
