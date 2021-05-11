@@ -75,7 +75,7 @@
 
       .Mission-container {
         width: 100vw;
-        height: 1800px;
+        height: 2500px;
         background-image: url("../../../dist/stars.jpeg");
         background-size: contain;
         color: white;
@@ -87,7 +87,7 @@
       
       .Mission-backgroundOverlay {
         width: 100vw;
-        min-height: 1800px;
+        min-height: 2500px;
         background-color: rgba(0, 0, 0, 0.30);
         padding-bottom: 100px;
       }

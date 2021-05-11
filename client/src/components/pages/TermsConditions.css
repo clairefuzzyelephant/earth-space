@@ -40,7 +40,7 @@
   @media (max-width: 1000px) {
     .Terms-container {
         width: 100vw;
-        height: 1250vw;
+        height: 6400px;
         /* min-height: 6500px; */
         /* background-image: url("../../../dist/stars.jpeg"); */
         background-size: contain;
@@ -65,7 +65,7 @@
       
       .Terms-backgroundOverlay {
         width: 100vw;
-        height: 1250vw;
+        height: 6400px;
         /* min-height: 6500px; */
         background-color: rgba(0, 0, 0, 0.30);
       }

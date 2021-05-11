@@ -11,6 +11,7 @@
     font-size: 12px;
     padding: 30px;
     border-radius: 10px;
+    overflow-y: scroll;
     box-shadow: 2px 2px 5px 3px rgb(79, 79, 79);
 }
 
@@ -30,4 +31,23 @@
 
 .TeamPopup-quit:hover {
     cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+    .TeamPopup-container {
+        position: fixed;
+        z-index: 100;
+        background-color: white;
+        color: rgb(29, 29, 29);
+        width: 70vw;
+        height: fit-content;
+        max-height: 80vh;
+        top: 10vh;
+        left: calc(15vw - 30px);
+        font-size: 1em;
+        padding: 30px;
+        border-radius: 10px;
+        overflow-y: scroll;
+        box-shadow: 2px 2px 5px 3px rgb(79, 79, 79);
+    }
 }

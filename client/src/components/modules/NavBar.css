@@ -106,14 +106,14 @@
     padding-top: 10vh;
     font-size: 2.5vw;
     text-align: center;
-    background-color: rgba(38, 38, 38, 0.817);
+    background-color: rgba(18, 18, 18, 0.9);
     display: flex;
     flex-direction: column;
     animation: hamburgerSlide 0.5s 1 ease-in-out;
   }
   .NavBar-link {
     width: 100vw;
-    font-size: 3vw;
+    font-size: 2em;
     margin-bottom: 10vh;
     text-align: center;
     text-decoration: none;
