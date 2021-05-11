@@ -54,7 +54,7 @@
 
 @media (max-width: 1000px) {
     .Mission-introText {
-        font-size: 2vw;
+        font-size: 1em;
         width: 70vw;
         height: 1000px;
         margin-left: 15vw;
@@ -75,7 +75,7 @@
 
       .Mission-container {
         width: 100vw;
-        height: 1500px;
+        height: 1800px;
         background-image: url("../../../dist/stars.jpeg");
         background-size: contain;
         color: white;
@@ -87,7 +87,7 @@
       
       .Mission-backgroundOverlay {
         width: 100vw;
-        min-height: 1500px;
+        min-height: 1800px;
         background-color: rgba(0, 0, 0, 0.30);
         padding-bottom: 100px;
       }

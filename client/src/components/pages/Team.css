@@ -54,7 +54,7 @@
         grid-template-columns: 1fr;
         row-gap: 100px;
         animation: fadeIn 2s 1;
-        font-size: 2vw;
+        font-size: 1em;
     }
     .Team-container {
         width: 100vw;
