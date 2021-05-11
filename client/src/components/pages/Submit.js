@@ -51,10 +51,23 @@ function Submit(props) {
 
     const [file, setFile] = useState("");
 
+    const targetHeight = 40;
     const customStyles = {
-        control: base => ({
-          ...base,
-        })
+        // control: base => ({
+        //     ...base,
+        //     minHeight: targetHeight,
+        //     height: targetHeight,
+        //   }),
+        //   valueContainer: base => ({
+        //     ...base,
+        //     height: `${targetHeight - 1 - 1}px`,
+        //     padding: '2px 10px',
+        //     color: '#575757',
+        //   }),
+        //   singleValue: base => ({
+        //       ...base,
+        //       marginTop: 120,
+        //   })
       };
 
 
@@ -348,7 +361,7 @@ function Submit(props) {
                             <input type="file" onChange={e => setFile(e.target.files[0])}/>
                         </div> */}
                     <div className="Submit-legalCheckbox">
-                        <div><input type="checkbox" checked={isChecked} onChange={() => toggleCheckbox()} /></div>
+                        <div><input type="checkbox" style={{ minHeight: "20px", minWidth: "20px"}} checked={isChecked} onChange={() => toggleCheckbox()} /></div>
                         <div>I accept the legal terms and conditions.</div>  
                     </div>
                     
