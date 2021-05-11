@@ -47,7 +47,7 @@
     left: 0;
     width: 100vw;
     height: 300vh;
-    background-color: rgba(0, 0, 0, 0.30);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
     padding-bottom: 100px;
     z-index: -5;
   }
@@ -157,7 +157,7 @@
     left: 0;
     width: 100vw;
     height: 1450px;
-    background-color: rgba(0, 0, 0, 0.30);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
     padding-bottom: 100px;
   }
   

@@ -34,7 +34,7 @@
   .Terms-backgroundOverlay {
     width: 100vw;
     height: 320vw;
-    background-color: rgba(0, 0, 0, 0.30);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
   }
 
   @media (max-width: 1000px) {
@@ -67,6 +67,6 @@
         width: 100vw;
         height: 6400px;
         /* min-height: 6500px; */
-        background-color: rgba(0, 0, 0, 0.30);
+        background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
       }
   }

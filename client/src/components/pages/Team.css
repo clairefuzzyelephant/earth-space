@@ -22,7 +22,7 @@
   .Team-backgroundOverlay {
     width: 100vw;
     height: 3000px;
-    background-color: rgba(0, 0, 0, 0.30);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
   }
 
 .Team-section {
@@ -70,7 +70,7 @@
       .Team-backgroundOverlay {
         width: 100vw;
         height: 4500px;
-        background-color: rgba(0, 0, 0, 0.30);
+        background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
       }
       .Team-section img {
         width: 100%;

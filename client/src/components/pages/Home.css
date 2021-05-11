@@ -16,7 +16,8 @@
 .Home-backgroundOverlay {
   width: 100vw;
   height: 1400px;
-  background-color: rgba(0, 0, 0, 0.30);
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0)); */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
 }
 
 .Home-title {
@@ -133,7 +134,7 @@
   .Home-backgroundOverlay {
     width: 100vw;
     height: 1300px;
-    background-color: rgba(0, 0, 0, 0.30);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
   }
   
   .Home-title {
