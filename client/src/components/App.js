@@ -35,7 +35,7 @@ function App (props) {
         />
         <NotFound default />
       </Router>
-      <Footer />
+      {/* <Footer /> */}
       
     </>
   );

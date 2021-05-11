@@ -3,6 +3,7 @@ import { Link } from "@reach/router";
 
 import "../../utilities.css";
 import "./TermsConditions.css";
+import AltFooter from "../modules/AltFooter.js";
 
 function TermsConditions(props) {
 
@@ -101,6 +102,7 @@ function TermsConditions(props) {
           </div>
         </div>
       </div>
+      <AltFooter />
     </>
   );
 }

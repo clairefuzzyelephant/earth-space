@@ -21,7 +21,7 @@
 
 .Terms-container {
     width: 100vw;
-    height: 420vw;
+    height: 320vw;
     /* background-image: url("../../../dist/stars.jpeg"); */
     background-color: rgb(18, 18, 18);
     background-size: contain;
@@ -33,7 +33,7 @@
   
   .Terms-backgroundOverlay {
     width: 100vw;
-    height: 420vw;
+    height: 320vw;
     background-color: rgba(0, 0, 0, 0.30);
   }
 

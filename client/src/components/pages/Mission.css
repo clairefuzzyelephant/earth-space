@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400&family=Lexend:wght@300&family=Manrope:wght@300&family=Monda&family=Overpass:wght@200&family=Red+Hat+Display&family=Spartan&display=swap');
 
 .Mission-introText {
-    font-size: 1.5vw;
+    font-size: 1.25em;
     line-height: 40px;
     width: 70vw;
     margin-left: 15vw;

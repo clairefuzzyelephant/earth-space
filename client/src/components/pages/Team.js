@@ -11,6 +11,7 @@ import lydia from "../../../dist/people/lydia.jpeg";
 import jeff from "../../../dist/people/jeff.jpeg";
 import xin from "../../../dist/people/xin.jpeg";
 import ariel from "../../../dist/people/ariel.jpeg";
+import Footer from "../modules/Footer.js";
 
 function Team(props) {
 
@@ -88,6 +89,7 @@ function Team(props) {
         <div>{popupStatus ? <TeamPopup image={popupPerson["img"]} name={popupPerson["name"]} role={popupPerson["role"]} title={popupPerson["title"]} bio={popupPerson["bio"]} closePopup={() => setPopupStatus(false)} /> : null}</div>
 
       </div>
+      <Footer />
     </>
   );
 }

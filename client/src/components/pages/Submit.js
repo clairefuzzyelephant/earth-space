@@ -12,6 +12,7 @@ import mic from "../../../dist/mic-icon-white.png";
 
 import "../../utilities.css";
 import "./Submit.css";
+import Footer from "../modules/Footer.js";
 
 function Submit(props) {
     const [legalName, setLegalName] = useState("");
@@ -374,6 +375,7 @@ function Submit(props) {
 
             <div>{showPopup ? <LegalPopup acceptFunction={() => acceptTerms()} cancelFunction={() => cancelTerms()} /> : null}</div>
         </div>
+        <Footer />
         </>
     );
 }

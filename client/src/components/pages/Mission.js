@@ -5,6 +5,7 @@ import "../../utilities.css";
 import "./Mission.css";
 
 import poster from "../../../dist/poster.jpeg";
+import Footer from "../modules/Footer.js";
 
 function Mission(props) {
 
@@ -30,6 +31,7 @@ function Mission(props) {
           {/* <img className="poster" src={poster} /> */}
         </div>
       </div>
+      <Footer />
     </>
   );
 }

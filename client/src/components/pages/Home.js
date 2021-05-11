@@ -9,6 +9,8 @@ import "./Home.css";
 
 import { get } from "../../utilities.js";
 
+import Footer from "../modules/Footer.js";
+
 function Home(props) {
 
   const [select, setSelect] = useState(null);
@@ -100,6 +102,7 @@ function Home(props) {
           {/* <img className="poster" src={poster} /> */}
         </div>
       </div>
+      <Footer />
     </>
   );
 }
