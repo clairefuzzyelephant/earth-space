@@ -1,7 +1,7 @@
 .Terms-body {
     width: 70vw;
     margin-left: 15vw;
-    line-height: 2.5vw;
+    line-height: 1.25em;
     text-align: left;
     font-size: 1em;
 }
@@ -21,7 +21,7 @@
 
 .Terms-container {
     width: 100vw;
-    height: 320vw;
+    height: 3300px;
     /* background-image: url("../../../dist/stars.jpeg"); */
     background-color: rgb(18, 18, 18);
     background-size: contain;
@@ -33,14 +33,34 @@
   
   .Terms-backgroundOverlay {
     width: 100vw;
-    height: 320vw;
+    height: 3300px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
+  }
+
+  @media (max-width: 1500px) {
+    .Terms-container {
+      width: 100vw;
+      height: 4000px;
+      /* min-height: 6500px; */
+      /* background-image: url("../../../dist/stars.jpeg"); */
+      background-size: contain;
+      color: white;
+      font-family: "Red Hat Display", sans-serif;
+      /* font-family: "Abel", sans-serif; */
+      text-align: center;
+    }
+    .Terms-backgroundOverlay {
+      width: 100vw;
+      height: 4000px;
+      /* min-height: 6500px; */
+      background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
+    }
   }
 
   @media (max-width: 1000px) {
     .Terms-container {
         width: 100vw;
-        height: 6400px;
+        height: 4500px;
         /* min-height: 6500px; */
         /* background-image: url("../../../dist/stars.jpeg"); */
         background-size: contain;
@@ -53,19 +73,54 @@
       .Terms-body {
         width: 70vw;
         margin-left: 15vw;
-        line-height: 5vw;
+        line-height: 1.25em;
         text-align: left;
         font-size: 1em;
     }
 
-    .Terms-body h3 {
-      color: white;
-      margin-top: 6vw;
-  }
+      .Terms-body h3 {
+        color: white;
+        margin-top: 6vw;
+    }
       
       .Terms-backgroundOverlay {
         width: 100vw;
-        height: 6400px;
+        height: 4500px;
+        /* min-height: 6500px; */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
+      }
+  }
+
+
+  @media (max-width: 700px) {
+    .Terms-container {
+        width: 100vw;
+        height: 6900px;
+        /* min-height: 6500px; */
+        /* background-image: url("../../../dist/stars.jpeg"); */
+        background-size: contain;
+        color: white;
+        font-family: "Red Hat Display", sans-serif;
+        /* font-family: "Abel", sans-serif; */
+        text-align: center;
+      }
+
+      .Terms-body {
+        width: 70vw;
+        margin-left: 15vw;
+        line-height: 1.25em;
+        text-align: left;
+        font-size: 1em;
+    }
+
+      .Terms-body h3 {
+        color: white;
+        margin-top: 6vw;
+    }
+      
+      .Terms-backgroundOverlay {
+        width: 100vw;
+        height: 6900px;
         /* min-height: 6500px; */
         background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
       }

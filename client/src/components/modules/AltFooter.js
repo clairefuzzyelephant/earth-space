@@ -6,7 +6,7 @@ function Footer(props) {
 
     return (
         <div className="AltFooter-container">
-        <div className="Footer-overlay"></div>
+        <div className="AltFooter-overlay"></div>
             <div className="Footer-contact">Questions? Contact us at <a href="mailto:humans_info@mit.edu">humans_info@mit.edu</a>!
             <br></br>Accessibility information: <a href="https://accessibility.mit.edu/">accessibility.mit.edu</a></div>
             <div className="iconDisclaimer">

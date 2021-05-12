@@ -41,6 +41,15 @@
     z-index: 1;
 }
 
+.AltFooter-overlay {
+    position: absolute;
+    width: 100vw;
+    height: 80px;
+    background-color: rgba(21, 21, 21, 0.8);
+    left: 0;
+    z-index: 1;
+}
+
 .Footer-contact {
     position: relative;
     color: rgb(220, 220, 220);
