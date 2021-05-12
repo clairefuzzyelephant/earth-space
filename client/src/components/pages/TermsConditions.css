@@ -6,35 +6,60 @@
     font-size: 1em;
 }
 
+.Terms-title {
+    font-size: 40px;
+    width: 1000px;
+    margin-left: calc(50vw - 500px);
+    padding-top: 15vh;
+    font-family: "Red Hat Display", sans-serif;
+    /* text-shadow: 2px 4px rgb(21, 21, 21); */
+    /* animation: fadeIn 2s 1; */
+    margin-bottom: 70px;
+}
+
 .Terms-body a {
-    color: white;
+    color: rgb(79, 79, 79);
 }
 
 .Terms-body br {
     line-height: 2vw;
 }
 
-.Terms-body h3 {
-    color: white;
-    margin-top: 50px;
+
+.Terms-header {
+  font-weight: 700;
+  margin-bottom: 20px;
+  margin-top: 50px;
+  text-decoration: underline;
 }
 
 .Terms-container {
     width: 100vw;
     height: 3300px;
     /* background-image: url("../../../dist/stars.jpeg"); */
-    background-color: rgb(18, 18, 18);
+    background-color: rgb(232, 232, 232);
     background-size: contain;
-    color: white;
+    color: rgb(36, 36, 36);
     font-family: "Red Hat Display", sans-serif;
     /* font-family: "Abel", sans-serif; */
     text-align: center;
+    animation: fadeBackground 2s 1;
+  }
+
+  @keyframes fadeBackground {
+    0% {
+      background-color:rgb(12, 29, 55);
+    }
+    100% {
+      background-color: rgb(232, 232, 232);
+
+    }
   }
   
   .Terms-backgroundOverlay {
     width: 100vw;
     height: 3300px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0)); */
   }
 
   @media (max-width: 1500px) {
@@ -44,7 +69,6 @@
       /* min-height: 6500px; */
       /* background-image: url("../../../dist/stars.jpeg"); */
       background-size: contain;
-      color: white;
       font-family: "Red Hat Display", sans-serif;
       /* font-family: "Abel", sans-serif; */
       text-align: center;
@@ -53,7 +77,6 @@
       width: 100vw;
       height: 4000px;
       /* min-height: 6500px; */
-      background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
     }
   }
 
@@ -64,7 +87,6 @@
         /* min-height: 6500px; */
         /* background-image: url("../../../dist/stars.jpeg"); */
         background-size: contain;
-        color: white;
         font-family: "Red Hat Display", sans-serif;
         /* font-family: "Abel", sans-serif; */
         text-align: center;
@@ -87,7 +109,6 @@
         width: 100vw;
         height: 4500px;
         /* min-height: 6500px; */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
       }
   }
 
@@ -99,7 +120,6 @@
         /* min-height: 6500px; */
         /* background-image: url("../../../dist/stars.jpeg"); */
         background-size: contain;
-        color: white;
         font-family: "Red Hat Display", sans-serif;
         /* font-family: "Abel", sans-serif; */
         text-align: center;
@@ -112,16 +132,10 @@
         text-align: left;
         font-size: 1em;
     }
-
-      .Terms-body h3 {
-        color: white;
-        margin-top: 6vw;
-    }
       
       .Terms-backgroundOverlay {
         width: 100vw;
         height: 6900px;
         /* min-height: 6500px; */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
       }
   }

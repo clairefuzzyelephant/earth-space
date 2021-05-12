@@ -11,7 +11,7 @@ function TermsConditions(props) {
     <>
       <div className="Terms-container">
         <div className="Terms-backgroundOverlay">
-          <div className="Mission-title">
+          <div className="Terms-title">
             Legal Terms and Conditions
           </div>
           <div className="Terms-body">
@@ -50,40 +50,40 @@ function TermsConditions(props) {
             You agree that any dispute arising out of or relating to these terms and conditions or your Submission of a Submission will be governed by the laws of the Commonwealth of Massachusetts, excluding its conflicts of law provisions.  You further consent to the personal jurisdiction of and exclusive venue in the federal and state courts located in and serving Boston, Massachusetts, as the legal forum for any such dispute.          
             <br></br><br></br>
           </div>
-          <div className="Mission-title">
+          <div className="Terms-title">
             Privacy Statement
           </div>
           <div className="Terms-body">
-          <h3>Introduction</h3>
-          <h3>The Humans: A Recording of Our Voices Project (the “Project”) is committed to supporting the privacy of those who seek to participate in the Project.  This Privacy Statement explains how we handle and use the personal information we collect as part of the submission process.  
-          </h3>
-          <h3>What personal information we collect </h3>
+          <div className="Terms-header">Introduction</div>
+          <div className="Terms-header">The Humans: A Recording of Our Voices Project (the “Project”) is committed to supporting the privacy of those who seek to participate in the Project.  This Privacy Statement explains how we handle and use the personal information we collect as part of the submission process.  
+          </div>
+          <div className="Terms-header">What personal information we collect </div>
           <li>While specific information may vary for particular individuals, we may collect, use, store and transfer different kinds of personal information about you, which we have grouped together as follows: 
           </li><li>Basic biographic/contact information – name, email addresses, and social media contact information
           </li><li>Personal audio recordings 
           </li><li>Analytical information – aggregated information related to web visitor activity and email marketing actions
           </li>
           <p>
-          <h3>How we collect personal information about you </h3>
+          <div className="Terms-header">How we collect personal information about you </div>
           </p><p>The only personal information we collect is that which you provide voluntarily for inclusion in the Project.  
           </p>
-          <h3>How we use your personal information</h3>
+          <div className="Terms-header">How we use your personal information</div>
           <p>We use your personal information for a number of legitimate purposes all in support of the Institute and its mission.  Here, we use your personal information for purposes of the Project only.  
           </p>
           <p>If you have concerns about any of these purposes, or how we communicate with you, please contact us at INSERT DLC CONTACT NAME. We will always respect a request by you to stop processing your personal information (subject to our legal obligations).
           </p>
-          <h3>When we share your personal information</h3>
+          <div className="Terms-header">When we share your personal information</div>
           <p>We do not share your personal information with any third parties.  
           </p>
-          <h3>How your information is stored and secured</h3>
+          <div className="Terms-header">How your information is stored and secured</div>
           <p>MIT uses risk-assessed administrative, technical and physical security measures to protect your personal information.  [INCLUDE DETAILS ABOUT HOW INFORMATION IS STORED AND SECURED]. 
           </p>
           
-          <h3>How long we keep your personal information</h3>
+          <div className="Terms-header">How long we keep your personal information</div>
           <p>[DETERMINE WHAT YOUR RETENTION PERIOD IS. IF YOU DO NOT HAVE A CURRENT RETENTION PERIOD, CONSIDER RETAINING IN ACCORDANCE WITH APPLICABLE LAW, MIT POLICY, OR UNTIL YOU HAVE BEEN ASKED TO DELETE.]
           </p>
 
-          <h3>Rights for Individuals in the European Economic Area</h3>
+          <div className="Terms-header">Rights for Individuals in the European Economic Area</div>
           <p>You have the right in certain circumstances to (1) access your personal information; (2) to correct or erase information; (3) restrict processing; and (4) object to communications, direct marketing, or profiling.  To the extent applicable, the EU’s General Data Protection Regulation provides further information about your rights.  You also have the right to lodge complaints with your national or regional data protection authority.  
           </p><p>
           If you are inclined to exercise these rights, we request an opportunity to discuss with you any concerns you may have. To protect the personal information we hold, we may also request further information to verify your identity when exercising these rights.  Upon a request to erase information, we will maintain a core set of personal data to ensure we do not contact you inadvertently in the future, as well as any information necessary for MIT archival purposes.  We may also need to retain some financial information for legal purposes, including US IRS compliance.  In the event of an actual or threatened legal claim, we may retain your information for purposes of establishing, defending against or exercising our rights with respect to such claim.
@@ -93,7 +93,7 @@ function TermsConditions(props) {
           You are under no statutory or contractual obligation to provide any personal data to us.
           </p>
 
-          <h3>Additional Information</h3>
+          <div className="Terms-header">Additional Information</div>
           <p>We may change this Privacy Statement from time to time.  If we make any significant changes in the way we treat your personal information we will make this clear on our MIT websites or by contacting you directly. 
           </p>
           
