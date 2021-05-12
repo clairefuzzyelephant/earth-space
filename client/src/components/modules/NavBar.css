@@ -19,6 +19,7 @@
     animation: slideIn 2s 1;
     background-color: rgba(41, 41, 41, 0.5);
     display: visible;
+    z-index: 3;
   }
   
   .NavBar-hamburgerContainer {

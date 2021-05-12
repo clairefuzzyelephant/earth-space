@@ -89,7 +89,7 @@ function Home(props) {
             </Link>
           </div>
 
-          <img className="poster" src={poster} />
+          <img className="Home-poster" src={poster} />
 
           <div className="Home-worldMap">
             <WorldMap selected= {select} onSelect={setSelect} />

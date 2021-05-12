@@ -184,7 +184,7 @@
     animation: fadeIn 4s 1;
   }
 
-  .poster {
+  .Home-poster {
     margin-top: 8vh;
   }
 
@@ -224,11 +224,20 @@
   cursor: pointer;
 }
 
-.poster {
+.Home-poster {
+  position: relative;
   transform: scale(0.7, 0.7);
   width: 100vw;
   border-radius: 20px;
   box-shadow: 2px 2px 5px 3px rgba(65, 73, 123, 0.406);
+  
+}
 
+.Home-poster img {
+  z-index: -2;
+}
+
+.poster {
+  width: 100vw;
 }
 
