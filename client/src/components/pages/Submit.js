@@ -8,6 +8,9 @@ import LegalPopup from "../modules/LegalPopup.js";
 import { post } from "../../utilities.js";
 import { Mp3Encoder } from 'lamejs';
 
+import RecordRTC from 'recordrtc';
+import { StereoAudioRecorder } from 'recordrtc';
+
 import mic from "../../../dist/mic-icon-white.png";
 
 import "../../utilities.css";
@@ -41,6 +44,7 @@ function Submit(props) {
     // const recorder = useMemo(() => new MicRecorder({ bitRate: 64 }), []);
     const [audioStream, setAudioStream] = useState(null);
     const [recorder, setRecorder] = useState(null);
+    const [microphone, setMicrophone] = useState(null);
     const [isRecording, setIsRecording] = useState(false);
     const [isBlocked, setIsBlocked] = useState(false);
     const [blobURL, setBlobURL] = useState("");
@@ -115,9 +119,27 @@ function Submit(props) {
       useEffect(() => {
         (async () => {
             if (recorder == null) {
-                const as = await getAudioStream();
-                setAudioStream(as);
-                setRecorder(new MediaRecorder(as, {mimeType: 'audio/webm'}));
+                // const as = await getAudioStream();
+                // setAudioStream(as);
+                // setRecorder(new MediaRecorder(as, {mimeType: 'audio/webm'}));
+                // let params = {audio: true};
+                // let getUserMedia = navigator.mediaDevices.getUserMedia( params) || navigator.getUserMedia(params) || navigator.webkitGetUserMedia(params) || navigator.mozGetUserMedia(params) || navigator.msGetUserMedia(params);
+                // navigator.mediaDevices.getUserMedia({
+                //     video: false,
+                //     audio: true
+                // }).then(async function(stream) {
+                //     let recorder = RecordRTC(stream, {
+                //         type: 'audio'
+                //     });
+                //     recorder.startRecording();
+                
+                //     const sleep = m => new Promise(r => setTimeout(r, m));
+                //     await sleep(3000);
+                
+                //     recorder.stopRecording(function() {
+                //         let blob = recorder.getBlob();
+                //     });
+                // });
             }
             if (isRecording && recorder !== null) {
                 recorder.start();
@@ -302,7 +324,168 @@ function Submit(props) {
         // })
     }
 
+    function captureMicrophone(callback) {
+    
+        if(microphone) {
+            callback(microphone);
+            return;
+        }
+    
+        if(typeof navigator.mediaDevices === 'undefined' || !navigator.mediaDevices.getUserMedia) {
+            alert('This browser does not supports WebRTC getUserMedia API.');
+    
+            if(!!navigator.getUserMedia) {
+                alert('This browser seems supporting deprecated getUserMedia API.');
+            }
+        }
+    
+        navigator.mediaDevices.getUserMedia({
+            audio: isEdge ? true : {
+                echoCancellation: false
+            }
+        }).then(function(mic) {
+            callback(mic);
+        }).catch(function(error) {
+            alert('Unable to capture your microphone. Please check console logs.');
+            console.error(error);
+        });
+    }
 
+    function replaceAudio(src) {
+        setBlobURL(src);
+        // var newAudio = document.createElement('audio');
+        // newAudio.controls = true;
+        // newAudio.autoplay = true;
+    
+        // if(src) {
+        //     newAudio.src = src;
+        // }
+        
+        // var parentNode = audio.parentNode;
+        // parentNode.innerHTML = '';
+        // parentNode.appendChild(newAudio);
+    
+        // audio = newAudio;
+    }
+
+    function stopRecordingCallback() {
+        replaceAudio(URL.createObjectURL(recorder.getBlob()));
+        
+        // setTimeout(function() {
+        //     if(!audio.paused) return;
+    
+        //     setTimeout(function() {
+        //         if(!audio.paused) return;
+        //         audio.play();
+        //     }, 1000);
+            
+        //     audio.play();
+        // }, 300);
+    
+        // audio.play();
+    
+    
+        // if(isSafari) {
+        //     click(btnReleaseMicrophone);
+        // }
+    }
+
+    const isEdge = navigator.userAgent.indexOf('Edge') !== -1 && (!!navigator.msSaveOrOpenBlob || !!navigator.msSaveBlob);
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    // let microphone;
+
+    // let btnStartRecording = document.getElementById('btn-start-recording');
+    // let btnStopRecording = document.getElementById('btn-stop-recording');
+    // let btnReleaseMicrophone = document.querySelector('#btn-release-microphone');
+    // let btnDownloadRecording = document.getElementById('btn-download-recording');
+
+
+    const startRecordingRTC = () => {
+    
+        if (!microphone) {
+            captureMicrophone(function(mic) {
+                setMicrophone(mic);
+    
+                if(isSafari) {
+                    // replaceAudio();
+    
+                    // audio.muted = true;
+                    // audio.srcObject = microphone;
+    
+                    // btnStartRecording.disabled = false;
+                    // btnStartRecording.style.border = '1px solid red';
+                    // btnStartRecording.style.fontSize = '150%';
+    
+                    alert('Please click startRecording button again. First time we tried to access your microphone. Now we will record it.');
+                    return;
+                }
+    
+                // click(btnStartRecording);
+            });
+            return;
+        }
+    
+        // replaceAudio();
+    
+        // audio.muted = true;
+        // audio.srcObject = microphone;
+    
+        let options = {
+            type: 'audio/wav',
+            numberOfAudioChannels: 1,
+            // checkForInactiveTracks: true,
+            bufferSize: 256
+        };
+    
+        if(isSafari || isEdge) {
+            options.recorderType = StereoAudioRecorder;
+        }
+    
+        // if(navigator.platform && navigator.platform.toString().toLowerCase().indexOf('win') === -1) {
+        //     options.sampleRate = 48000; // or 44100 or remove this line for default
+        // }
+    
+        if(isSafari) {
+            console.log("IT IS SAFARI????")
+            options.sampleRate = 44100;
+            options.bufferSize = 256;
+            options.numberOfAudioChannels = 1;
+        }
+    
+        if(recorder !== null) {
+            setRecorder(null);
+        }
+    
+        let tempRecorder = RecordRTC(microphone, options);
+        console.log(tempRecorder);
+        setRecorder(tempRecorder);
+        tempRecorder.startRecording();
+        setIsRecording(true);
+        console.log("recording");
+    };
+    
+    const stopRecordingRTC = () => {
+        if (recorder !== null) {
+            recorder.stopRecording(stopRecordingCallback);
+            console.log("stopping");
+            setIsRecording(false);
+        }
+    };
+    
+    // btnReleaseMicrophone.onclick = function() {
+    //     btnStartRecording.disabled = false;
+    
+    //     if(microphone) {
+    //         microphone.stop();
+    //         microphone = null;
+    //     }
+    
+    //     if(recorder) {
+    //         // click(btnStopRecording);
+    //     }
+    // };
+    
     return (
         <>
         <div className="Submit-container">
@@ -341,8 +524,8 @@ function Submit(props) {
                     {/** Audio stuff */}
                     <div className="Submit-audioSection">
                         <div className="Submit-recordButton" onClick={() => {
-                            if (isRecording) stopRecording()
-                            else startRecording()
+                            if (isRecording) stopRecordingRTC()
+                            else startRecordingRTC()
                         }}>
                             <img src={mic} />
                         </div>
@@ -388,6 +571,10 @@ function Submit(props) {
 
             <div>{showPopup ? <LegalPopup acceptFunction={() => acceptTerms()} cancelFunction={() => cancelTerms()} /> : null}</div>
         </div>
+{/* 
+        <button className="startRecording" onClick={() => startRecordingRTC()}>start recording</button>
+        <button className="stopRecording" onClick={() => stopRecordingRTC()}>stop recording</button>
+        <audio controls src={blobURL} /> */}
         <Footer />
         </>
     );
