@@ -4,7 +4,7 @@
 
 .Home-container {
   width: 100vw;
-  height: 1400px;
+  height: 2500px;
   background-image: url("../../../dist/stars.jpeg");
   background-size: contain;
   color: white;
@@ -15,7 +15,7 @@
 
 .Home-backgroundOverlay {
   width: 100vw;
-  height: 1400px;
+  height: 2500px;
   /* background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0)); */
   background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
 }
@@ -122,7 +122,7 @@
 @media (max-width: 1000px) {
   .Home-container {
     width: 100vw;
-    height: 1300px;
+    height: 1700px;
     background-image: url("../../../dist/stars.jpeg");
     background-size: contain;
     color: white;
@@ -133,7 +133,7 @@
   
   .Home-backgroundOverlay {
     width: 100vw;
-    height: 1300px;
+    height: 1700px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
   }
   
@@ -170,7 +170,7 @@
   }
   .Home-worldMap {
     position: relative;
-    margin-top: 5vh;
+    margin-top: 2vh;
     margin-left: calc(50vw - 300px );
     transform: scale(0.5, 0.5);
   }
@@ -182,6 +182,10 @@
     margin-top: 1vh;
     text-shadow: 2px 2px rgb(21, 21, 21);
     animation: fadeIn 4s 1;
+  }
+
+  .poster {
+    margin-top: 8vh;
   }
 
   
@@ -221,6 +225,10 @@
 }
 
 .poster {
+  transform: scale(0.7, 0.7);
   width: 100vw;
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px 3px rgba(65, 73, 123, 0.406);
+
 }
 

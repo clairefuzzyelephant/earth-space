@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400&family=Lexend:wght@300&family=Manrope:wght@300&family=Monda&family=Overpass:wght@200&family=Red+Hat+Display&family=Spartan&display=swap');
 
 .Mission-introText {
-    font-size: 1.25em;
-    line-height: 40px;
+    font-size: 1.1em;
+    line-height: 2em;
     width: 70vw;
     margin-left: 15vw;
     margin-top: 40px;
@@ -55,6 +55,7 @@
 @media (max-width: 1000px) {
     .Mission-introText {
         font-size: 1em;
+        line-height: 1.7em;
         width: 70vw;
         height: 1000px;
         margin-left: 15vw;
@@ -75,7 +76,7 @@
 
       .Mission-container {
         width: 100vw;
-        height: 2500px;
+        height: 2000px;
         background-image: url("../../../dist/stars.jpeg");
         background-size: contain;
         color: white;
@@ -87,7 +88,7 @@
       
       .Mission-backgroundOverlay {
         width: 100vw;
-        min-height: 2500px;
+        min-height: 2000px;
         background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
         padding-bottom: 100px;
       }
