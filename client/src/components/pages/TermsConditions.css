@@ -9,7 +9,7 @@
 .Terms-title {
     font-size: 40px;
     width: 80vw;
-    margin-left: calc(50vw - 500px);
+    margin-left: 10vw;
     padding-top: 15vh;
     font-family: "Red Hat Display", sans-serif;
     /* text-shadow: 2px 4px rgb(21, 21, 21); */
@@ -83,7 +83,7 @@
   @media (max-width: 1000px) {
     .Terms-container {
         width: 100vw;
-        height: 4600px;
+        height: 4700px;
         /* min-height: 6500px; */
         /* background-image: url("../../../dist/stars.jpeg"); */
         background-size: contain;
@@ -107,7 +107,7 @@
       
       .Terms-backgroundOverlay {
         width: 100vw;
-        height: 4600px;
+        height: 4700px;
         /* min-height: 6500px; */
       }
   }
@@ -116,7 +116,7 @@
   @media (max-width: 700px) {
     .Terms-container {
         width: 100vw;
-        height: 7000px;
+        height: 7200px;
         /* min-height: 6500px; */
         /* background-image: url("../../../dist/stars.jpeg"); */
         background-size: contain;
@@ -135,7 +135,7 @@
       
       .Terms-backgroundOverlay {
         width: 100vw;
-        height: 7000px;
+        height: 7200px;
         /* min-height: 6500px; */
       }
   }
