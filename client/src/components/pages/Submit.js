@@ -73,169 +73,183 @@ function Submit(props) {
         //   })
       };
 
-    const config = { 
-        bucketName: process.env.REACT_APP_BUCKET_NAME,
-        region: "us-east-1",
-        accessKeyId: process.env.REACT_APP_ACCESS_ID,
-        secretAccessKey: process.env.REACT_APP_ACCESS_KEY
-    };
+
+    // function supportsRecording(mimeType)
+    //     {
+    //         if (!window.MediaRecorder)
+    //             return false;
+    //         if (!MediaRecorder.isTypeSupported)
+    //             return mimeType.startsWith("audio/mp4") || mimeType.startsWith("video/mp4");
+    //         return MediaRecorder.isTypeSupported(mimeType);
+    //     }
 
 
-    function supportsRecording(mimeType)
-        {
-            if (!window.MediaRecorder)
-                return false;
-            if (!MediaRecorder.isTypeSupported)
-                return mimeType.startsWith("audio/mp4") || mimeType.startsWith("video/mp4");
-            return MediaRecorder.isTypeSupported(mimeType);
-        }
-
-
-    function getAudioStream() {
-        // Older browsers might not implement mediaDevices at all, so we set an empty object first
-        if (navigator.mediaDevices === undefined) {
-          navigator.mediaDevices = {};
-        }
+    // function getAudioStream() {
+    //     // Older browsers might not implement mediaDevices at all, so we set an empty object first
+    //     if (navigator.mediaDevices === undefined) {
+    //       navigator.mediaDevices = {};
+    //     }
     
-        if (navigator.mediaDevices.getUserMedia === undefined) {
-          navigator.mediaDevices.getUserMedia = function (constraints) {
-            // First get ahold of the legacy getUserMedia, if present
-            const params = { audio: true, video: false };
-            let getUserMedia = navigator.mediaDevices.getUserMedia( params) || navigator.getUserMedia(params) || navigator.webkitGetUserMedia(params) || navigator.mozGetUserMedia(params) || navigator.msGetUserMedia(params);
+    //     if (navigator.mediaDevices.getUserMedia === undefined) {
+    //       navigator.mediaDevices.getUserMedia = function (constraints) {
+    //         // First get ahold of the legacy getUserMedia, if present
+    //         const params = { audio: true, video: false };
+    //         let getUserMedia = navigator.mediaDevices.getUserMedia( params) || navigator.getUserMedia(params) || navigator.webkitGetUserMedia(params) || navigator.mozGetUserMedia(params) || navigator.msGetUserMedia(params);
 
-            if (!getUserMedia) {
-                setIsBlocked(true);
-              return Promise.reject(
-                new Error("getUserMedia is not implemented in this browser")
-              );
-            }
+    //         if (!getUserMedia) {
+    //             setIsBlocked(true);
+    //           return Promise.reject(
+    //             new Error("getUserMedia is not implemented in this browser")
+    //           );
+    //         }
     
-            // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
-            return new Promise(function (resolve, reject) {
-              getUserMedia.call(navigator, constraints, resolve, reject);
-            });
-          };
-        }
+    //         // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
+    //         return new Promise(function (resolve, reject) {
+    //           getUserMedia.call(navigator, constraints, resolve, reject);
+    //         });
+    //       };
+    //     }
     
         
-        setIsBlocked(false);
-        return navigator.mediaDevices.getUserMedia({ audio: true, video: false });
-      }
+    //     setIsBlocked(false);
+    //     return navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+    //   }
 
-      useEffect(() => {
-        (async () => {
-            if (recorder == null) {
-                // const as = await getAudioStream();
-                // setAudioStream(as);
-                // setRecorder(new MediaRecorder(as, {mimeType: 'audio/webm'}));
-                // let params = {audio: true};
-                // let getUserMedia = navigator.mediaDevices.getUserMedia( params) || navigator.getUserMedia(params) || navigator.webkitGetUserMedia(params) || navigator.mozGetUserMedia(params) || navigator.msGetUserMedia(params);
-                // navigator.mediaDevices.getUserMedia({
-                //     video: false,
-                //     audio: true
-                // }).then(async function(stream) {
-                //     let recorder = RecordRTC(stream, {
-                //         type: 'audio'
-                //     });
-                //     recorder.startRecording();
+    //   useEffect(() => {
+    //     (async () => {
+    //         if (recorder == null) {
+    //             // const as = await getAudioStream();
+    //             // setAudioStream(as);
+    //             // setRecorder(new MediaRecorder(as, {mimeType: 'audio/webm'}));
+    //             // let params = {audio: true};
+    //             // let getUserMedia = navigator.mediaDevices.getUserMedia( params) || navigator.getUserMedia(params) || navigator.webkitGetUserMedia(params) || navigator.mozGetUserMedia(params) || navigator.msGetUserMedia(params);
+    //             // navigator.mediaDevices.getUserMedia({
+    //             //     video: false,
+    //             //     audio: true
+    //             // }).then(async function(stream) {
+    //             //     let recorder = RecordRTC(stream, {
+    //             //         type: 'audio'
+    //             //     });
+    //             //     recorder.startRecording();
                 
-                //     const sleep = m => new Promise(r => setTimeout(r, m));
-                //     await sleep(3000);
+    //             //     const sleep = m => new Promise(r => setTimeout(r, m));
+    //             //     await sleep(3000);
                 
-                //     recorder.stopRecording(function() {
-                //         let blob = recorder.getBlob();
-                //     });
-                // });
-            }
-            // if (isRecording && recorder !== null) {
-            //     recorder.start();
-            //     recorder.ondataavailable = async (event) => {
+    //             //     recorder.stopRecording(function() {
+    //             //         let blob = recorder.getBlob();
+    //             //     });
+    //             // });
+    //         }
+    //         // if (isRecording && recorder !== null) {
+    //         //     recorder.start();
+    //         //     recorder.ondataavailable = async (event) => {
                     
-            //         const blobURL = URL.createObjectURL(event.data);
-            //         let blob = new Blob([event.data], {
-            //             type: 'audio/webm'
-            //         });
+    //         //         const blobURL = URL.createObjectURL(event.data);
+    //         //         let blob = new Blob([event.data], {
+    //         //             type: 'audio/webm'
+    //         //         });
 
-            //         setBlobURL(blobURL);
+    //         //         setBlobURL(blobURL);
 
-            //         // let tempBlob = new Blob(event.data);
-            //         // console.log(tempBlob.arrayBuffer())
-            //         console.log(blob);
-            //         // setBuffer(blob);
+    //         //         // let tempBlob = new Blob(event.data);
+    //         //         // console.log(tempBlob.arrayBuffer())
+    //         //         console.log(blob);
+    //         //         // setBuffer(blob);
 
-            //         // Set up file reader on loaded end event
-            //         const fileReader = new FileReader();
+    //         //         // Set up file reader on loaded end event
+    //         //         const fileReader = new FileReader();
 
-            //         const ac = window.AudioContext || window.webkitAudioContext;
-            //         const audioContext = new ac();
-            //         // const audioContext = new AudioContext();
-            //         // const lameEncoder = new Encoder({
-            //         //     // 128 or 160 kbit/s – mid-range bitrate quality
-            //         //     bitRate: 128,
-            //         //     startRecordingAt: 300,
-            //         //     deviceId: null,
-            //         //   });
+    //         //         const ac = window.AudioContext || window.webkitAudioContext;
+    //         //         const audioContext = new ac();
+    //         //         // const audioContext = new AudioContext();
+    //         //         // const lameEncoder = new Encoder({
+    //         //         //     // 128 or 160 kbit/s – mid-range bitrate quality
+    //         //         //     bitRate: 128,
+    //         //         //     startRecordingAt: 300,
+    //         //         //     deviceId: null,
+    //         //         //   });
 
-            //         fileReader.onloadend = () => {
+    //         //         fileReader.onloadend = () => {
 
-            //             const arrayBuffer = fileReader.result;
-            //             var binary = '';
-            //             var bytes = new Int8Array( arrayBuffer );
+    //         //             const arrayBuffer = fileReader.result;
+    //         //             var binary = '';
+    //         //             var bytes = new Int8Array( arrayBuffer );
 
-            //             const channels = 1; //1 for mono or 2 for stereo
-            //             // setBuffer(Array.from(bytes));
-            //             console.log(Array.from(bytes));
+    //         //             const channels = 1; //1 for mono or 2 for stereo
+    //         //             // setBuffer(Array.from(bytes));
+    //         //             console.log(Array.from(bytes));
                         
-            //             // Convert array buffer into audio buffer
-            //             audioContext.decodeAudioData(arrayBuffer, (audioBuffer) => {
+    //         //             // Convert array buffer into audio buffer
+    //         //             audioContext.decodeAudioData(arrayBuffer, (audioBuffer) => {
                             
-            //                 setBuffer(audioBuffer);
-            //                 console.log(audioBuffer);
+    //         //                 setBuffer(audioBuffer);
+    //         //                 console.log(audioBuffer);
 
-            //             })
+    //         //             })
 
-            //         }
-            //         fileReader.readAsArrayBuffer(event.data);
-            //     }
-            // }
-            // if (recorder !== null && !isRecording && recorder.state == "recording") {
-            //     recorder.stop();
-            // }
-        }
-        )();
-      }, [isRecording]);
+    //         //         }
+    //         //         fileReader.readAsArrayBuffer(event.data);
+    //         //     }
+    //         // }
+    //         // if (recorder !== null && !isRecording && recorder.state == "recording") {
+    //         //     recorder.stop();
+    //         // }
+    //     }
+    //     )();
+    //   }, [isRecording]);
 
     const handleSubmit = () => {
-        if (file !== null || file !== "") {
-            let newFilename = file.name;
-            
-        }
+        const body = {legalName: legalName, emailAddr: emailAddr, country: countryVal["value"], region: region["value"], message: message, translation: translation, language: language, linkToRecording: ""};
 
-        submitAudioFile();
-
-        const body = {legalName: legalName, emailAddr: emailAddr, country: countryVal["value"], region: region["value"], message: message, translation: translation, language: language, buffer: buffer};
         if (acceptedTerms && legalName !== "" && region !== "" && message !== "" && emailAddr !== "" && emailAddr.indexOf('@') !== -1 && language !== "") {
-            post("/api/submitMessage", body).then((result) => {
-                if (result !== null) {
-                    console.log("Success!");
-                    setLegalName("");
-                    setCountryVal("");
-                    setRegion("");
-                    setMessage("");
-                    setEmailAddr("");
-                    setTranslation("");
-                    setLanguage("");
-                    setBuffer(null);
-                    setBlob(null);
-                    setBlobURL("");
-                    setIsChecked(false);
-                }
-                else {
-                    alert("We encountered an error while trying to submit. Please refresh and try again.")
-                }
-            })
-        }
-        else {
+            if (blob) {
+                submitAudioFile().then((result) => {
+                    if (result !== null) {
+                        body.linkToRecording = result.link;
+                        post("/api/submitMessage", body).then((result) => {
+                            if (result !== null) {
+                                console.log("Success!");
+                                setLegalName("");
+                                setCountryVal("");
+                                setRegion("");
+                                setMessage("");
+                                setEmailAddr("");
+                                setTranslation("");
+                                setLanguage("");
+                                setBuffer(null);
+                                setBlob(null);
+                                setBlobURL("");
+                                setIsChecked(false);
+                            }
+                            else {
+                                alert("We encountered an error while trying to submit. Please refresh and try again.")
+                            }
+                        })
+                    }
+                });
+            }
+            else {
+                post("/api/submitMessage", body).then((result) => {
+                    if (result !== null) {
+                        console.log("Success!");
+                        setLegalName("");
+                        setCountryVal("");
+                        setRegion("");
+                        setMessage("");
+                        setEmailAddr("");
+                        setTranslation("");
+                        setLanguage("");
+                        setBuffer(null);
+                        setBlob(null);
+                        setBlobURL("");
+                        setIsChecked(false);
+                    }
+                    else {
+                        alert("We encountered an error while trying to submit. Please refresh and try again.")
+                    }
+                })
+            }
+        } else {
             if (!acceptedTerms) {
                 issuesOccur[0] = true;
             }
@@ -263,6 +277,57 @@ function Submit(props) {
             setDisplayWarning(true);
             console.log(issues);
         }
+        
+        // const body = {legalName: legalName, emailAddr: emailAddr, country: countryVal["value"], region: region["value"], message: message, translation: translation, language: language};
+        // if (acceptedTerms && legalName !== "" && region !== "" && message !== "" && emailAddr !== "" && emailAddr.indexOf('@') !== -1 && language !== "") {
+        //     post("/api/submitMessage", body).then((result) => {
+        //         if (result !== null) {
+        //             console.log("Success!");
+        //             setLegalName("");
+        //             setCountryVal("");
+        //             setRegion("");
+        //             setMessage("");
+        //             setEmailAddr("");
+        //             setTranslation("");
+        //             setLanguage("");
+        //             setBuffer(null);
+        //             setBlob(null);
+        //             setBlobURL("");
+        //             setIsChecked(false);
+        //         }
+        //         else {
+        //             alert("We encountered an error while trying to submit. Please refresh and try again.")
+        //         }
+        //     })
+        // }
+        // else {
+        //     if (!acceptedTerms) {
+        //         issuesOccur[0] = true;
+        //     }
+        //     if (legalName == "" || !legalName) {
+        //         issuesOccur[1] = true;
+        //     }
+        //     if (emailAddr == "" || !emailAddr) {
+        //         issuesOccur[2] = true;
+        //     }
+        //     if (region == "" || !region) {
+        //         issuesOccur[3] = true;
+        //     }
+        //     if (message == "" || !message) {
+        //         issuesOccur[4] = true;
+        //     }
+        //     if (language == "" || !language) {
+        //         issuesOccur[5] = true;
+        //     }
+        //     if (emailAddr !== "" && emailAddr.indexOf("@") == -1) {
+        //         issuesOccur[6] = true;
+        //     }
+        //     setIssues(issueList.filter(function(i) {
+        //         return issuesOccur[issueList.indexOf(i)]
+        //     }))
+        //     setDisplayWarning(true);
+        //     console.log(issues);
+        // }
             
     }
 
@@ -289,48 +354,48 @@ function Submit(props) {
         setShowPopup(false);
     }
 
-    const startRecording = () => {
-        if (isBlocked) {
-            console.log('Permission Denied');
-          } else {
-            // recorder.start();
-            setIsRecording(true);
-            // recorder
-            //   .start()
-            //   .then(() => {
-            //     setIsRecording(true);
-            //   }).catch((e) => console.error(e));
-          }
-    }
+    // const startRecording = () => {
+    //     if (isBlocked) {
+    //         console.log('Permission Denied');
+    //       } else {
+    //         // recorder.start();
+    //         setIsRecording(true);
+    //         // recorder
+    //         //   .start()
+    //         //   .then(() => {
+    //         //     setIsRecording(true);
+    //         //   }).catch((e) => console.error(e));
+    //       }
+    // }
 
 
-    const stopRecording = () => {
-        // recorder.stop();
-        // console.log(recorder.state)
-        setIsRecording(false);
-        // console.log(chunks);
-        // let tempBlob = new Blob(chunks, {'type': 'audio/ogg;codecs=opus'});
-        // setBlob(tempBlob);
-        // console.log(tempBlob);
-        // const blobURL = window.URL.createObjectURL(tempBlob);
-        // console.log(blobURL);
-        // setBlobURL(blobURL);
-        // setChunks([]);
+    // const stopRecording = () => {
+    //     // recorder.stop();
+    //     // console.log(recorder.state)
+    //     setIsRecording(false);
+    //     // console.log(chunks);
+    //     // let tempBlob = new Blob(chunks, {'type': 'audio/ogg;codecs=opus'});
+    //     // setBlob(tempBlob);
+    //     // console.log(tempBlob);
+    //     // const blobURL = window.URL.createObjectURL(tempBlob);
+    //     // console.log(blobURL);
+    //     // setBlobURL(blobURL);
+    //     // setChunks([]);
         
-        // recorder.stop().getMp3()
-        // .then(([buffer, blob]) => {
-        // setIsRecording(false);
-        // const blobURL = URL.createObjectURL(new Blob(chunks));
-        // console.log(chunks);
-        // // const blobURL = URL.createObjectURL(blob);
-        // setBlobURL(blobURL);
-        // setBlob(blob);
-        // setBuffer(buffer);
-        // console.log(typeof(buffer))
-        // console.log(buffer);
-        // console.log(blob);
-        // })
-    }
+    //     // recorder.stop().getMp3()
+    //     // .then(([buffer, blob]) => {
+    //     // setIsRecording(false);
+    //     // const blobURL = URL.createObjectURL(new Blob(chunks));
+    //     // console.log(chunks);
+    //     // // const blobURL = URL.createObjectURL(blob);
+    //     // setBlobURL(blobURL);
+    //     // setBlob(blob);
+    //     // setBuffer(buffer);
+    //     // console.log(typeof(buffer))
+    //     // console.log(buffer);
+    //     // console.log(blob);
+    //     // })
+    // }
 
     function captureMicrophone(callback) {
     
@@ -412,11 +477,11 @@ function Submit(props) {
             captureMicrophone(function(mic) {
                 setMicrophone(mic);
     
-                if(isSafari) {
+                // if(isSafari) {
     
                     alert('Please click startRecording button again. First time we tried to access your microphone. Now we will record it.');
-                    return;
-                }
+                //     return;
+                // }
     
                 // click(btnStartRecording);
             });
@@ -466,78 +531,23 @@ function Submit(props) {
         }
     };
 
-    const submitAudioFile = () => {
+    const submitAudioFile = async () => {
         if (blob) {
             console.log(blob)
-            // let request = new XMLHttpRequest();
-            
-                // Now we can send the blob to a server...
-            // var serverUrl = '/upload'; //we've made a POST endpoint on the server at /upload
-            //build a HTTP POST request
-            // var httpRequestOptions = {
-            // method: 'POST',
-            // body: formdata , // with our form data packaged above
-            // headers: new Headers({
-            //     'enctype': 'multipart/form-data' // the enctype is important to work with multer on the server
-            // })
-            // };
-            // request.open('POST', '/api/upload');
             let formdata = new FormData() ; //create a from to of data to upload to the server
-            formdata.append('soundBlob', blob,  'myfiletosave.wav') ; // append the sound blob and the name of the file. third argument will show up on the server as req.file.originalname
+            formdata.append("soundBlob", blob,  'myfiletosave.wav') ; // append the sound blob and the name of the file. third argument will show up on the server as req.file.originalname
             console.log(formdata);
-            const body = {data: blob.arrayBuffer()}
-            post("/api/upload", body)
-            .then(response => response.json())
-            .then(result =>  {
-                console.log('Success uwuuu ', result);
-            })
-            .catch(error => {
-                console.error('Error:', error);
+            fetch("/api/uploadAudio", {
+                headers: { Accept: "application/json"},
+                method: "POST", 
+                body: formdata
+            }).then((result) =>  {
+                if (result !== null) {
+                    return true;
+                }
             });
-            // request.send(formdata);
-            
-            // let fileObj = new File([blob], "xd.webm", {
-            //     type: 'audio/webm'
-            // });
-            // console.log(fileObj);
-            // // invokeSaveAsDialog(fileObj);
-            // const bucket = new S3(config);
-            // // const params = {
-            // //     Bucket: "earth-space",
-            // //     Key: "whatthekeckkekcek.webm",
-            // //     Body: fileObj,
-            // // }
-            // bucket.uploadFile(fileObj, "xdddd.webm").then((data) => {
-            //     console.log(data);
-            //     if (data.status === 204) {
-            //         console.log("SUCCESSSSSS");
-            //         return true;
-            //     }
-            //     else {
-            //         console.log("FAIL?????!?E?!@?!??");
-            //         return false;
-            //     }
-            // })
-            
         }
-
-            // let params = {
-            //     type: 'audio/webm',
-            //     data: blob,
-            //     id: Math.floor(Math.random()*90000) + 10000
-            //   }
-        
-        
-            //   S3Upload(params)
-            //   .then((success) => {
-            //     console.log('enter then statement')
-            //     if(success) {
-            //       console.log(success)
-            //     }
-            //   }, (error) => {
-            //     alert(error, 'error occurred. check your aws settings and try again.')
-            //   })
-            // };
+        return false;
     }
 
     

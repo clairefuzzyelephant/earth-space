@@ -9,7 +9,6 @@ const MessageSchema = new mongoose.Schema({
   translation: String,
   language: String,
   recordingLink: String,
-  fileLink: String,
   creationDate: { type: Date, default: Date.now }
 });
 
