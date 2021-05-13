@@ -61,7 +61,7 @@ router.post('/uploadAudio', (req, res) => {
         res.send(null);
       } if (data) {
         console.log("Uploaded to S3: " + data.Location);
-        res.send({link: data.Location});
+        res.status(200).send(data.Location);
       }
     })
     if (errr) {

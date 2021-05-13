@@ -6,6 +6,7 @@ validator.checkSetup();
 const http = require("http");
 const express = require("express"); // backend framework for our node server.
 const session = require("express-session"); // library that stores info about each connected user
+const enforce = require('express-sslify');
 const mongoose = require("mongoose"); // library to connect to MongoDB
 const path = require("path"); // provide utilities for working with file and directory paths
 
@@ -28,7 +29,7 @@ mongoose
 // create a new express server
 const app = express();
 app.use(validator.checkRoutes);
-// app.use(enforce.HTTPS({trustProtoHeader: true})); // enforces HTTPS
+app.use(enforce.HTTPS({trustProtoHeader: true})); // enforces HTTPS
 
 // allow us to process POST requests
 // app.use(express.json());

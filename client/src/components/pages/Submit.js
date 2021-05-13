@@ -198,35 +198,34 @@ function Submit(props) {
     //     )();
     //   }, [isRecording]);
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const body = {legalName: legalName, emailAddr: emailAddr, country: countryVal["value"], region: region["value"], message: message, translation: translation, language: language, linkToRecording: ""};
 
         if (acceptedTerms && legalName !== "" && region !== "" && message !== "" && emailAddr !== "" && emailAddr.indexOf('@') !== -1 && language !== "") {
             if (blob) {
-                submitAudioFile().then((result) => {
-                    if (result !== null) {
-                        body.linkToRecording = result.link;
-                        post("/api/submitMessage", body).then((result) => {
-                            if (result !== null) {
-                                console.log("Success!");
-                                setLegalName("");
-                                setCountryVal("");
-                                setRegion("");
-                                setMessage("");
-                                setEmailAddr("");
-                                setTranslation("");
-                                setLanguage("");
-                                setBuffer(null);
-                                setBlob(null);
-                                setBlobURL("");
-                                setIsChecked(false);
-                            }
-                            else {
-                                alert("We encountered an error while trying to submit. Please refresh and try again.")
-                            }
-                        })
-                    }
-                });
+                const resultLink = await submitAudioFile();
+                if (resultLink !== undefined) {
+                    body.linkToRecording = resultLink;
+                    post("/api/submitMessage", body).then((result) => {
+                        if (result !== null) {
+                            console.log("Success!");
+                            setLegalName("");
+                            setCountryVal("");
+                            setRegion("");
+                            setMessage("");
+                            setEmailAddr("");
+                            setTranslation("");
+                            setLanguage("");
+                            setBuffer(null);
+                            setBlob(null);
+                            setBlobURL("");
+                            setIsChecked(false);
+                        }
+                        else {
+                            alert("We encountered an error while trying to submit. Please refresh and try again.")
+                        }
+                    })
+                };
             }
             else {
                 post("/api/submitMessage", body).then((result) => {
@@ -533,21 +532,17 @@ function Submit(props) {
 
     const submitAudioFile = async () => {
         if (blob) {
-            console.log(blob)
             let formdata = new FormData() ; //create a from to of data to upload to the server
             formdata.append("soundBlob", blob,  'myfiletosave.wav') ; // append the sound blob and the name of the file. third argument will show up on the server as req.file.originalname
-            console.log(formdata);
-            fetch("/api/uploadAudio", {
+            const res1 = await fetch("/api/uploadAudio", {
                 headers: { Accept: "application/json"},
                 method: "POST", 
                 body: formdata
-            }).then((result) =>  {
-                if (result !== null) {
-                    return true;
-                }
-            });
+            })
+            const text = await res1.text();
+            return text;
         }
-        return false;
+        return;
     }
 
     
@@ -570,11 +565,11 @@ function Submit(props) {
                     <input className="Submit-smallField" placeholder="Email address (required)" value={emailAddr} onChange={e => setEmailAddr(e.target.value)}/>
                     <div className="Submit-countrySection">
                         {/* <CountryDropdown className="Submit-dropdown" showDefaultOption={true} defaultOptionLabel="No Country Selected (required)" value={countryVal} onChange={e => setCountryVal(e)} /> */}
-                        <Select styles={customStyles} options={countryOptions} value={countryVal} className="Submit-dropdown" isSearchable={false} placeholder="Select your country" onChange={e => setCountryVal(e)} />
+                        <Select styles={customStyles} options={countryOptions} value={countryVal} className="Submit-dropdown" isSearchable={false} placeholder="Select your country (required)" onChange={e => setCountryVal(e)} />
                         <div className="Submit-countryDisclaimer">Country list provided by country-region-data repo.</div>
                     </div>
                     <div className="Submit-countrySection">
-                        <Select styles={customStyles} options={options} className="Submit-dropdown" isSearchable={false} value={region} placeholder="Select your region" onChange={e => setRegion(e)} />
+                        <Select styles={customStyles} options={options} className="Submit-dropdown" isSearchable={false} value={region} placeholder="Select your region (required)" onChange={e => setRegion(e)} />
                         {/* <div className="Submit-countryDisclaimer">Region list as classified by the World Bank.</div> */}
                     </div>
                     
@@ -583,9 +578,9 @@ function Submit(props) {
                     <div className="Submit-messagingText">
                         What does peace and unity mean to me in my own language?
                     </div>
-                    <textarea className="Submit-largeField" placeholder="Type your message here... (Max 200 characters)" maxLength={200} value={message} onChange={e => setMessage(e.target.value)}/>
+                    <textarea className="Submit-largeField" placeholder="Type your message here... (required, max 200 characters)" maxLength={200} value={message} onChange={e => setMessage(e.target.value)}/>
                     <input className="Submit-smallField" placeholder="Language of message (required)" value={language} onChange={e => setLanguage(e.target.value)}/>
-                    <textarea className="Submit-mediumField" placeholder="English translation of message (optional)" maxLength={500} value={translation} onChange={e => setTranslation(e.target.value)}/>
+                    <textarea className="Submit-mediumField" placeholder="English translation of message" maxLength={500} value={translation} onChange={e => setTranslation(e.target.value)}/>
                     {/** Audio stuff */}
                     <div className="Submit-audioSection">
                         <div className="Submit-recordButton" onClick={() => {
@@ -599,10 +594,10 @@ function Submit(props) {
                             <>
                             <p>Double-check my recording... or press to record again?</p>
                             <div>
-                                <audio controls autoPlay src={blobURL} />
+                                <audio controls src={blobURL} />
                             </div>
                             </>
-                         : isRecording ? <p>Recording...</p> : <p>Record your message (optional)</p>}
+                         : isRecording ? <p>Recording...</p> : <p>Record your message</p>}
                         </div>  
                     </div>
                     {/* <div className="Submit-audioPrompt">
@@ -610,7 +605,7 @@ function Submit(props) {
                         </div> */}
                     <div className="Submit-legalCheckbox">
                         <div><input type="checkbox" style={{ minHeight: "20px", minWidth: "20px"}} checked={isChecked} onChange={() => toggleCheckbox()} /></div>
-                        <div>I accept the legal terms and conditions.</div>  
+                        <div>I accept the legal terms and conditions. (required)</div>  
                     </div>
                     
                 </div>
