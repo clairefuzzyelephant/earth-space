@@ -31,6 +31,9 @@ const FileReader = require('filereader');
 var toWav = require('audiobuffer-to-wav');
 var xhr = require('xhr');
 
+const multer  = require('multer') //use multer to upload blob data
+const upload = multer(); // set multer to be the upload variable (just like express, see above ( include it, then use it/set it up))
+
 
 console.log("HELLOOOOOO")
 
@@ -47,6 +50,34 @@ const generateFileName = (emailAddr) => {
   fileName = fileName + Date.now().toString();
   return fileName;
 }
+
+router.post('/upload', upload.single('soundBlob'), function (req, res, next) {
+  console.log("data: " + req.body.data);
+  // console.log(req.file); // see what got uploaded
+  console.log("we made it here...");
+  console.log(req.body.file);
+  uploadParams.Body = req.file;
+    // uploadParams.Body = Buffer.from(req.body.buffer);
+    // uploadParams.Body = req.body.buffer;
+
+    uploadParams.Key = path.basename("blahhhhh.wav");
+
+    // call S3 to retrieve upload file to specified bucket
+    s3.upload (uploadParams, function (err, data) {
+      if (err) {
+        console.log("Error Uploading to S3: " + err);
+      } if (data) {
+        console.log(data.Location);
+      }
+    })
+
+
+  // let uploadLocation = __dirname + '/public/uploads/' + req.file.originalname // where to save the file to. make sure the incoming name has a .wav extension
+
+  // fs.writeFileSync(uploadLocation, Buffer.from(new Uint8Array(req.file.buffer))); // write the blob to the server as a file
+  res.sendStatus(200); //send back that everything went ok
+
+})
 
 router.post("/submitMessage", (req, res) => {
   const buf = req.body.buffer;

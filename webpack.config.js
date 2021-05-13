@@ -21,6 +21,8 @@ const entryFile = path.resolve(__dirname, "client", "src", "index.js");
 const outputDir = path.resolve(__dirname, "client", "dist");
 
 const webpack = require("webpack");
+const dotenv = require('dotenv');
+const Buffer = require('buffer/').Buffer;  // note: the trailing slash is important!
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
@@ -63,6 +65,23 @@ module.exports = {
     extensions: ["*", ".js", ".jsx"],
   },
   plugins: [
+    // new webpack.DefinePlugin({
+    //   "env.REACT_APP_ACCESS_ID": JSON.stringify(process.env.REACT_APP_ACCESS_ID),
+    //   "env.REACT_APP_ACCESS_KEY": JSON.stringify(process.env.REACT_APP_ACCESS_KEY),
+    //   "env.REACT_APP_BUCKET_NAME": JSON.stringify(process.env.REACT_APP_BUCKET_NAME),
+    // }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+      Buffer: ['buffer', 'Buffer'],
+      // 'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+    }),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(dotenv.config().parsed),
+      'buffer': Buffer,
+    }),
+    // new webpack.ProvidePlugin({
+    //   'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+    // }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks 
     // new BundleAnalyzerPlugin(),

@@ -9,7 +9,7 @@ import "./Home.css";
 
 import { get } from "../../utilities.js";
 
-import AltFooter from "../modules/AltFooter.js";
+import Footer from "../modules/Footer.js";
 
 function Home(props) {
 
@@ -89,7 +89,7 @@ function Home(props) {
             </Link>
           </div>
 
-          <img className="Home-poster" src={poster} />
+          {/* <img className="Home-poster" src={poster} /> */}
 
           <div className="Home-worldMap">
             <WorldMap selected= {select} onSelect={setSelect} />
@@ -104,7 +104,7 @@ function Home(props) {
           {/* <img className="poster" src={poster} /> */}
         </div>
       </div>
-      <AltFooter />
+      <Footer />
     </>
   );
 }

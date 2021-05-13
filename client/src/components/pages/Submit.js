@@ -6,10 +6,9 @@ import MicRecorder from 'mic-recorder-to-mp3';
 import LegalPopup from "../modules/LegalPopup.js";
 
 import { post } from "../../utilities.js";
-import { Mp3Encoder } from 'lamejs';
+// import { Mp3Encoder } from 'lamejs';
 
-import RecordRTC from 'recordrtc';
-import { StereoAudioRecorder } from 'recordrtc';
+import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
 
 import mic from "../../../dist/mic-icon-white.png";
 
@@ -73,6 +72,13 @@ function Submit(props) {
         //       marginTop: 120,
         //   })
       };
+
+    const config = { 
+        bucketName: process.env.REACT_APP_BUCKET_NAME,
+        region: "us-east-1",
+        accessKeyId: process.env.REACT_APP_ACCESS_ID,
+        secretAccessKey: process.env.REACT_APP_ACCESS_KEY
+    };
 
 
     function supportsRecording(mimeType)
@@ -141,60 +147,60 @@ function Submit(props) {
                 //     });
                 // });
             }
-            if (isRecording && recorder !== null) {
-                recorder.start();
-                recorder.ondataavailable = async (event) => {
+            // if (isRecording && recorder !== null) {
+            //     recorder.start();
+            //     recorder.ondataavailable = async (event) => {
                     
-                    const blobURL = URL.createObjectURL(event.data);
-                    let blob = new Blob([event.data], {
-                        type: 'audio/webm'
-                    });
+            //         const blobURL = URL.createObjectURL(event.data);
+            //         let blob = new Blob([event.data], {
+            //             type: 'audio/webm'
+            //         });
 
-                    setBlobURL(blobURL);
+            //         setBlobURL(blobURL);
 
-                    // let tempBlob = new Blob(event.data);
-                    // console.log(tempBlob.arrayBuffer())
-                    console.log(blob);
-                    // setBuffer(blob);
+            //         // let tempBlob = new Blob(event.data);
+            //         // console.log(tempBlob.arrayBuffer())
+            //         console.log(blob);
+            //         // setBuffer(blob);
 
-                    // Set up file reader on loaded end event
-                    const fileReader = new FileReader();
+            //         // Set up file reader on loaded end event
+            //         const fileReader = new FileReader();
 
-                    const ac = window.AudioContext || window.webkitAudioContext;
-                    const audioContext = new ac();
-                    // const audioContext = new AudioContext();
-                    // const lameEncoder = new Encoder({
-                    //     // 128 or 160 kbit/s – mid-range bitrate quality
-                    //     bitRate: 128,
-                    //     startRecordingAt: 300,
-                    //     deviceId: null,
-                    //   });
+            //         const ac = window.AudioContext || window.webkitAudioContext;
+            //         const audioContext = new ac();
+            //         // const audioContext = new AudioContext();
+            //         // const lameEncoder = new Encoder({
+            //         //     // 128 or 160 kbit/s – mid-range bitrate quality
+            //         //     bitRate: 128,
+            //         //     startRecordingAt: 300,
+            //         //     deviceId: null,
+            //         //   });
 
-                    fileReader.onloadend = () => {
+            //         fileReader.onloadend = () => {
 
-                        const arrayBuffer = fileReader.result;
-                        var binary = '';
-                        var bytes = new Int8Array( arrayBuffer );
+            //             const arrayBuffer = fileReader.result;
+            //             var binary = '';
+            //             var bytes = new Int8Array( arrayBuffer );
 
-                        const channels = 1; //1 for mono or 2 for stereo
-                        // setBuffer(Array.from(bytes));
-                        console.log(Array.from(bytes));
+            //             const channels = 1; //1 for mono or 2 for stereo
+            //             // setBuffer(Array.from(bytes));
+            //             console.log(Array.from(bytes));
                         
-                        // Convert array buffer into audio buffer
-                        audioContext.decodeAudioData(arrayBuffer, (audioBuffer) => {
+            //             // Convert array buffer into audio buffer
+            //             audioContext.decodeAudioData(arrayBuffer, (audioBuffer) => {
                             
-                            setBuffer(audioBuffer);
-                            console.log(audioBuffer);
+            //                 setBuffer(audioBuffer);
+            //                 console.log(audioBuffer);
 
-                        })
+            //             })
 
-                    }
-                    fileReader.readAsArrayBuffer(event.data);
-                }
-            }
-            if (recorder !== null && !isRecording && recorder.state == "recording") {
-                recorder.stop();
-            }
+            //         }
+            //         fileReader.readAsArrayBuffer(event.data);
+            //     }
+            // }
+            // if (recorder !== null && !isRecording && recorder.state == "recording") {
+            //     recorder.stop();
+            // }
         }
         )();
       }, [isRecording]);
@@ -204,6 +210,8 @@ function Submit(props) {
             let newFilename = file.name;
             
         }
+
+        submitAudioFile();
 
         const body = {legalName: legalName, emailAddr: emailAddr, country: countryVal["value"], region: region["value"], message: message, translation: translation, language: language, buffer: buffer};
         if (acceptedTerms && legalName !== "" && region !== "" && message !== "" && emailAddr !== "" && emailAddr.indexOf('@') !== -1 && language !== "") {
@@ -369,7 +377,11 @@ function Submit(props) {
     }
 
     function stopRecordingCallback() {
-        replaceAudio(URL.createObjectURL(recorder.getBlob()));
+        const tempBlob = recorder.getBlob();
+        replaceAudio(URL.createObjectURL(tempBlob));
+        setBlob(tempBlob);
+
+        console.log(tempBlob);
         
         // setTimeout(function() {
         //     if(!audio.paused) return;
@@ -393,13 +405,6 @@ function Submit(props) {
     const isEdge = navigator.userAgent.indexOf('Edge') !== -1 && (!!navigator.msSaveOrOpenBlob || !!navigator.msSaveBlob);
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-    // let microphone;
-
-    // let btnStartRecording = document.getElementById('btn-start-recording');
-    // let btnStopRecording = document.getElementById('btn-stop-recording');
-    // let btnReleaseMicrophone = document.querySelector('#btn-release-microphone');
-    // let btnDownloadRecording = document.getElementById('btn-download-recording');
-
 
     const startRecordingRTC = () => {
     
@@ -408,14 +413,6 @@ function Submit(props) {
                 setMicrophone(mic);
     
                 if(isSafari) {
-                    // replaceAudio();
-    
-                    // audio.muted = true;
-                    // audio.srcObject = microphone;
-    
-                    // btnStartRecording.disabled = false;
-                    // btnStartRecording.style.border = '1px solid red';
-                    // btnStartRecording.style.fontSize = '150%';
     
                     alert('Please click startRecording button again. First time we tried to access your microphone. Now we will record it.');
                     return;
@@ -441,10 +438,6 @@ function Submit(props) {
         if(isSafari || isEdge) {
             options.recorderType = StereoAudioRecorder;
         }
-    
-        // if(navigator.platform && navigator.platform.toString().toLowerCase().indexOf('win') === -1) {
-        //     options.sampleRate = 48000; // or 44100 or remove this line for default
-        // }
     
         if(isSafari) {
             console.log("IT IS SAFARI????")
@@ -472,19 +465,81 @@ function Submit(props) {
             setIsRecording(false);
         }
     };
-    
-    // btnReleaseMicrophone.onclick = function() {
-    //     btnStartRecording.disabled = false;
-    
-    //     if(microphone) {
-    //         microphone.stop();
-    //         microphone = null;
-    //     }
-    
-    //     if(recorder) {
-    //         // click(btnStopRecording);
-    //     }
-    // };
+
+    const submitAudioFile = () => {
+        if (blob) {
+            console.log(blob)
+            // let request = new XMLHttpRequest();
+            
+                // Now we can send the blob to a server...
+            // var serverUrl = '/upload'; //we've made a POST endpoint on the server at /upload
+            //build a HTTP POST request
+            // var httpRequestOptions = {
+            // method: 'POST',
+            // body: formdata , // with our form data packaged above
+            // headers: new Headers({
+            //     'enctype': 'multipart/form-data' // the enctype is important to work with multer on the server
+            // })
+            // };
+            // request.open('POST', '/api/upload');
+            let formdata = new FormData() ; //create a from to of data to upload to the server
+            formdata.append('soundBlob', blob,  'myfiletosave.wav') ; // append the sound blob and the name of the file. third argument will show up on the server as req.file.originalname
+            console.log(formdata);
+            const body = {data: blob.arrayBuffer()}
+            post("/api/upload", body)
+            .then(response => response.json())
+            .then(result =>  {
+                console.log('Success uwuuu ', result);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            // request.send(formdata);
+            
+            // let fileObj = new File([blob], "xd.webm", {
+            //     type: 'audio/webm'
+            // });
+            // console.log(fileObj);
+            // // invokeSaveAsDialog(fileObj);
+            // const bucket = new S3(config);
+            // // const params = {
+            // //     Bucket: "earth-space",
+            // //     Key: "whatthekeckkekcek.webm",
+            // //     Body: fileObj,
+            // // }
+            // bucket.uploadFile(fileObj, "xdddd.webm").then((data) => {
+            //     console.log(data);
+            //     if (data.status === 204) {
+            //         console.log("SUCCESSSSSS");
+            //         return true;
+            //     }
+            //     else {
+            //         console.log("FAIL?????!?E?!@?!??");
+            //         return false;
+            //     }
+            // })
+            
+        }
+
+            // let params = {
+            //     type: 'audio/webm',
+            //     data: blob,
+            //     id: Math.floor(Math.random()*90000) + 10000
+            //   }
+        
+        
+            //   S3Upload(params)
+            //   .then((success) => {
+            //     console.log('enter then statement')
+            //     if(success) {
+            //       console.log(success)
+            //     }
+            //   }, (error) => {
+            //     alert(error, 'error occurred. check your aws settings and try again.')
+            //   })
+            // };
+    }
+
     
     return (
         <>

@@ -4,7 +4,7 @@
 
 .Home-container {
   width: 100vw;
-  height: 2500px;
+  height: 1500px;
   background-image: url("../../../dist/stars.jpeg");
   background-size: contain;
   color: white;
@@ -15,7 +15,7 @@
 
 .Home-backgroundOverlay {
   width: 100vw;
-  height: 2500px;
+  height: 1500px;
   /* background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0)); */
   background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
 }
