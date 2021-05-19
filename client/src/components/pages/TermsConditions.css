@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700&display=swap');
+
+
 .Terms-body {
     width: 70vw;
     margin-left: 15vw;
@@ -35,7 +38,7 @@
 
 .Terms-container {
     width: 100vw;
-    height: 3300px;
+    height: 3150px;
     /* background-image: url("../../../dist/stars.jpeg"); */
     background-color: rgb(232, 232, 232);
     background-size: contain;
@@ -45,6 +48,7 @@
     text-align: center;
     animation: fadeBackground 2s 1;
   }
+
 
   @keyframes fadeBackground {
     0% {
@@ -58,7 +62,7 @@
   
   .Terms-backgroundOverlay {
     width: 100vw;
-    height: 3300px;
+    height: 3150px;
     /* background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0)); */
   }
 
