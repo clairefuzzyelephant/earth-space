@@ -19,7 +19,7 @@
   overflow-y: scroll;
   top: 15vh;
   left: calc(30vw - 30px);
-  font-size: 12px;
+  font-size: 1em;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 2px 2px 5px 3px rgb(79, 79, 79);
@@ -91,7 +91,7 @@ h3 {
     overflow-y: scroll;
     top: 15vh;
     left: calc(10vw - 5vw);
-    font-size: 12px;
+    font-size: 1em;
     padding: 5vw;
     border-radius: 10px;
     box-shadow: 2px 2px 5px 3px rgb(79, 79, 79);

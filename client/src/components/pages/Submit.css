@@ -18,7 +18,7 @@
   margin-top: 5vh;
 }
 
-@media (max-width: 1000px) {
+@media (min-width: 300px) {
   .Submit-title {
     font-size: 30px;
     width: 80vw;
@@ -38,7 +38,7 @@
   }
   
   .Submit-container {
-    height: 295vh;
+    height: 300vh;
     position: relative;
     z-index: 0;
     font-size: 15px;
@@ -47,7 +47,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 295vh;
+    height: 300vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
     padding-bottom: 100px;
     z-index: -5;
@@ -175,15 +175,15 @@
   }
 } */
 
-@media (min-width: 1000px) {
+@media (min-width: 1200px) {
   .Submit-container {
-    height: 130vh;
+    height: 180vh;
   }
   .Submit-backgroundOverlay {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 130vh;
+    height: 180vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
     padding-bottom: 100px;
   }
