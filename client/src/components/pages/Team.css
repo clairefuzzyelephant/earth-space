@@ -8,6 +8,21 @@
     animation: fadeIn 2s 1;
 }
 
+.Team-subtitle {
+    font-size: 18px;
+    width: 1000px;
+    margin-left: calc(50vw - 500px);
+    padding-top: 8vh;
+    font-family: "Red Hat Display", sans-serif;
+    text-shadow: 2px 4px rgb(21, 21, 21);
+    animation: fadeIn 2s 1;
+}
+
+.Team-container a {
+    text-shadow: none;
+    color: white;
+}
+
 .Team-container {
     width: 100vw;
     height: 3000px;

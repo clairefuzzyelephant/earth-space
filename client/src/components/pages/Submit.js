@@ -551,13 +551,13 @@ function Submit(props) {
         <div className="Submit-container">
             <div className="Submit-backgroundOverlay">
             <div className="Submit-title">
-                Send your message of peace to space!
+                Send your message to space!
             </div>
-            <div className="Submit-introText">
+            {/* <div className="Submit-introText">
             In a year of unending crises, MIT sends—for the first time from space—messages of peace and unity in various languages representing all countries around the world using MIT Nanotechnology!
             Space is a "space" for everyone!
             Send your message of peace to space!
-            </div>
+            </div> */}
             <div className="Submit-inputSection">
                 <div className="Submit-inputInfoLeft">
                     <input className="Submit-smallField" placeholder="Legal Full Name (required)" value={legalName} onChange={e => setLegalName(e.target.value)} />
@@ -576,7 +576,7 @@ function Submit(props) {
                 </div>
                 <div className="Submit-inputInfoRight">
                     <div className="Submit-messagingText">
-                        What does peace and unity mean to me in my own language?
+                        Tell us, in your native language, what does <b>SPACE</b> mean to you and to humanity?
                     </div>
                     <textarea className="Submit-largeField" placeholder="Type your message here... (required, max 200 characters)" maxLength={200} value={message} onChange={e => setMessage(e.target.value)}/>
                     <input className="Submit-smallField" placeholder="Language of message (required)" value={language} onChange={e => setLanguage(e.target.value)}/>

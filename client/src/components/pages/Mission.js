@@ -17,15 +17,18 @@ function Mission(props) {
             Our Mission
           </div>
           <div className="Mission-introText">
-          <p>The MIT Media Lab Space Exploration Initiative is pleased to announce an open call, Golden Record 2.0, to invite people around the world for a unique opportunity to bring their voices to the International Space Station. 
-          </p><p>In a year of unending crises, MIT uses nanotechnology to send—for the first time from space— messages of peace, love and unity in languages representing various regions around the world!
-        </p>
+          <p>In an effort to increase global representation in space, MIT sends—for the first time—messages in multiple languages around the world to the International Space Station using nanotechnology. 
+          </p>
             <p></p>
             <b>Space is for everyone!</b>
             <p>
-            When the Voyager Golden Record was sent out for any intelligent extraterrestrial life to decipher Earth in 1977, it told a story of the diversity of lives and cultures on our home planet. In 2020, a year where technology has advanced to an unprecedented height and human beings need unity and hope more than ever in face of an unprecedented crisis of COVID-19, we wish to send a new different version of the Golden Record to the International Space Station (ISS). This time, the story is not for intelligent extraterrestrial life, but for ourselves. 
-            </p><p>
-            In this open call, we are collecting names and quotes, in submitters' native languages, under the themes of peace, love and unity, in addition to optional audio or video recordings of the quotes. Later, we will use nanotechnology to etch the submissions on the surface of the Golden Record 2.0, similar to the process used in the One.MIT project. The end goal is to promote international space collaboration and how space should remain a "space" for all mankind to unite, instead of isolating from each other. This project would be in parallel with MIT.nano’s upcoming One.WORLD project.
+            When the <a target="_blank" href="https://voyager.jpl.nasa.gov/golden-record/">Voyager Golden Record</a> was sent out for any intelligent extraterrestrial life to decipher Earth in 1977, it told a story of the diversity of lives and cultures on our home planet. In a period where technology has advanced to an unprecedented height and humanity needs unity and hope more than ever in face of the COVID-19 crisis, we wish to send a new <i>"Record of Our Voices"</i> to the <a href="https://www.nasa.gov/mission_pages/station/main/index.html" target="_blank">International Space Station (ISS)</a>. This time, the story is not for intelligent extraterrestrial life, <b>but for ourselves.</b></p><p>
+            </p>
+            <p>
+            HUMANS—Humanity United with MIT Art and Nanotechnology in Space—is a project with a goal of promoting international space collaboration and shedding light on how space should remain a "space" for all mankind to unite, instead of isolating from each other. 
+            </p>
+            <p>
+            Join our project by sending us a message in your native language, about the meaning of space to you and to humanity, in addition to an optional audio recording of your voice. We will use nanotechnology to etch the submitted messages to our record, similar to the process used in the <a href="http://onemit.mit.edu/">One.MIT project</a>, before launching it over to the International Space Station!
             </p>
           </div>
           {/* <img className="poster" src={poster} /> */}

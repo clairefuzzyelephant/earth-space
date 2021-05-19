@@ -79,9 +79,9 @@ function Home(props) {
             A Record of Our Voices
           </div>
           <div className="Home-introText">
-            In a year of unending crises, MIT sends—for the first time from space—messages of peace and unity in various languages representing all countries around the world using MIT Nanotechnology!
-            Space is a "space" for everyone!
-            Send your message of peace to space!
+          In an effort to increase global representation in space, MIT sends—for the first time—messages in multiple languages around the world to the International Space Station using nanotechnology. 
+          <br></br><br></br>
+          Join us and submit your message if you believe space is a “space” for everyone! 
           </div>
           <div className="Home-buttonContainer">
             <Link to="/submit" className="Home-submitButton">

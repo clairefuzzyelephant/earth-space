@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400&family=Lexend:wght@300&family=Manrope:wght@300&family=Monda&family=Overpass:wght@200&family=Red+Hat+Display&family=Spartan&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700&display=swap');
 
 .Mission-introText {
     font-size: 1.1em;
@@ -10,11 +11,6 @@
     text-shadow: 2px 2px rgb(21, 21, 21);
     animation: fadeIn 4s 1;
     font-family: "Red Hat Display", sans-serif;
-}
-
-.Mission-introText b {
-  line-height: 100px;
-  font-size: 35px;
 }
 
 .Mission-introText p {
@@ -43,6 +39,11 @@
     /* font-family: "Abel", sans-serif; */
     text-align: center;
     padding-bottom: 100px;
+  }
+
+  .Mission-container a{
+    color: white;
+    text-shadow: none;
   }
   
   .Mission-backgroundOverlay {
