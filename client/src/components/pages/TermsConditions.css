@@ -87,7 +87,7 @@
   @media (max-width: 1000px) {
     .Terms-container {
         width: 100vw;
-        height: 4700px;
+        height: 4500px;
         /* min-height: 6500px; */
         /* background-image: url("../../../dist/stars.jpeg"); */
         background-size: contain;
@@ -111,7 +111,7 @@
       
       .Terms-backgroundOverlay {
         width: 100vw;
-        height: 4700px;
+        height: 4500px;
         /* min-height: 6500px; */
       }
   }
@@ -120,7 +120,7 @@
   @media (max-width: 700px) {
     .Terms-container {
         width: 100vw;
-        height: 7200px;
+        height: 7000px;
         /* min-height: 6500px; */
         /* background-image: url("../../../dist/stars.jpeg"); */
         background-size: contain;
@@ -139,7 +139,46 @@
       
       .Terms-backgroundOverlay {
         width: 100vw;
-        height: 7200px;
+        height: 7000px;
         /* min-height: 6500px; */
       }
+  }
+
+  @media (max-width: 500px) {
+    .Terms-container {
+      width: 100vw;
+      height: 6500px;
+      /* min-height: 6500px; */
+      /* background-image: url("../../../dist/stars.jpeg"); */
+      background-size: contain;
+      font-family: "Red Hat Display", sans-serif;
+      /* font-family: "Abel", sans-serif; */
+      text-align: center;
+    }
+    
+    .Terms-backgroundOverlay {
+      width: 100vw;
+      height: 6500px;
+      /* min-height: 6500px; */
+    }
+  }
+
+  @media (max-width: 400px) {
+    .Terms-container {
+      width: 100vw;
+      height: 6900px;
+      /* min-height: 6500px; */
+      /* background-image: url("../../../dist/stars.jpeg"); */
+      background-size: contain;
+      font-family: "Red Hat Display", sans-serif;
+      /* font-family: "Abel", sans-serif; */
+      text-align: center;
+    }
+
+    
+    .Terms-backgroundOverlay {
+      width: 100vw;
+      height: 6900px;
+      /* min-height: 6500px; */
+    }
   }

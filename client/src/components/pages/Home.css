@@ -188,8 +188,25 @@
     margin-top: 8vh;
   }
 
+}
+
+@media (max-width: 850px) {
+  .Home-container {
+    width: 100vw;
+    height: 1300px;
+    background-image: url("../../../dist/stars.jpeg");
+    background-size: contain;
+    color: white;
+    font-family: "Red Hat Display", sans-serif;
+    /* font-family: "Abel", sans-serif; */
+    text-align: center;
+  }
   
-  
+  .Home-backgroundOverlay {
+    width: 100vw;
+    height: 1300px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
+  }
 }
 
 @media (min-width: 1000px) {

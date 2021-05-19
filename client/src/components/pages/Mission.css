@@ -41,9 +41,10 @@
     padding-bottom: 100px;
   }
 
-  .Mission-container a{
+  .Mission-container a {
     color: white;
     text-shadow: none;
+    animation: fadeIn 4s 1;
   }
   
   .Mission-backgroundOverlay {
@@ -93,4 +94,17 @@
         background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
         padding-bottom: 100px;
       }
+}
+
+@media (max-width: 850px) {
+
+  .Mission-container {
+    width: 100vw;
+    height: 1500px;
+  }
+  
+  .Mission-backgroundOverlay {
+    width: 100vw;
+    min-height: 1500px;
+  }
 }

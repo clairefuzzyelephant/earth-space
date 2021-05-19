@@ -38,7 +38,7 @@
   }
   
   .Submit-container {
-    height: 300vh;
+    height: 295vh;
     position: relative;
     z-index: 0;
     font-size: 15px;
@@ -47,7 +47,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 300vh;
+    height: 295vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
     padding-bottom: 100px;
     z-index: -5;
@@ -157,12 +157,33 @@
   }
 }
 
-@media (min-width: 1000px) {
+/* @media (min-width: 1000px) {
+  .Submit-container {
+    height: 130vh;
+    position: relative;
+    z-index: 0;
+    font-size: 15px;
+  }
   .Submit-backgroundOverlay {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 1450px;
+    height: 130vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
+    padding-bottom: 100px;
+    z-index: -5;
+  }
+} */
+
+@media (min-width: 1000px) {
+  .Submit-container {
+    height: 130vh;
+  }
+  .Submit-backgroundOverlay {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 130vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
     padding-bottom: 100px;
   }
