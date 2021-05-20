@@ -6,6 +6,7 @@ import "./Mission.css";
 
 import poster from "../../../dist/poster.jpeg";
 import Footer from "../modules/Footer.js";
+import useScrollToTop from "../ScrollToTop";
 
 function Mission(props) {
 

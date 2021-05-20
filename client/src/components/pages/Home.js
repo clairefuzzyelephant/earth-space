@@ -10,6 +10,7 @@ import "./Home.css";
 import { get } from "../../utilities.js";
 
 import Footer from "../modules/Footer.js";
+import useScrollToTop from "../ScrollToTop";
 
 function Home(props) {
 

@@ -12,28 +12,33 @@ import Mission from "./pages/Mission.js";
 import Team from "./pages/Team.js";
 import TermsConditions from "./pages/TermsConditions.js";
 
+import ScrollToTop from "./ScrollToTop.js";
+import useScrollToTop from "./ScrollToTop.js";
+
 function App (props) {
 
   return (
     <>
       <NavBar />
-      <Router>
-        <Home
-          path="/"
-        />
-        <Mission
-          path="/mission"
-        />
-        <Team 
-          path="/team"
-        />
-        <Submit 
-          path="/submit"
-        />
-        <TermsConditions 
-          path="/terms"
-        />
-        <NotFound default />
+      <Router primary={false}>
+        <ScrollToTop path="/" >
+          <Home
+            path="/"
+          />
+          <Mission
+            path="/mission"
+          />
+          <Team 
+            path="/team"
+          />
+          <Submit 
+            path="/submit"
+          />
+          <TermsConditions 
+            path="/terms"
+          />
+          <NotFound default />
+        </ScrollToTop>
       </Router>
       {/* <Footer /> */}
       
