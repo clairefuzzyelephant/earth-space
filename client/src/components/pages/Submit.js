@@ -56,11 +56,12 @@ function Submit(props) {
 
     const targetHeight = 40;
     const customStyles = {
-        // control: base => ({
-        //     ...base,
-        //     minHeight: targetHeight,
-        //     height: targetHeight,
-        //   }),
+        control: base => ({
+            ...base,
+            // minHeight: targetHeight,
+            // height: targetHeight,
+            fontSize: 15,
+          }),
         //   valueContainer: base => ({
         //     ...base,
         //     height: `${targetHeight - 1 - 1}px`,
