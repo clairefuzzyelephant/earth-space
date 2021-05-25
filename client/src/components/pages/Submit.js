@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { countryData } from '../../data.js';
 import Select from 'react-select';
-import MicRecorder from 'mic-recorder-to-mp3';
-
 import LegalPopup from "../modules/LegalPopup.js";
 
 import { post } from "../../utilities.js";
@@ -40,169 +38,25 @@ function Submit(props) {
     const issueList = ["Terms and conditions", "Legal name", "Email Address", "Region", "Message", "Language of Message", "Enter a valid email address"];
     const issuesOccur = {0: false, 1: false, 2: false, 3: false, 4: false};
 
-    // const recorder = useMemo(() => new MicRecorder({ bitRate: 64 }), []);
-    const [audioStream, setAudioStream] = useState(null);
     const [recorder, setRecorder] = useState(null);
     const [microphone, setMicrophone] = useState(null);
     const [isRecording, setIsRecording] = useState(false);
-    const [isBlocked, setIsBlocked] = useState(false);
     const [blobURL, setBlobURL] = useState("");
     const [blob, setBlob] = useState(null);
     const [buffer, setBuffer] = useState(null);
 
-    const [chunks, setChunks] = useState([]);
-
-    const [file, setFile] = useState("");
-
-    const targetHeight = 40;
     const customStyles = {
         control: base => ({
             ...base,
-            // minHeight: targetHeight,
-            // height: targetHeight,
             fontSize: 15,
           }),
-        //   valueContainer: base => ({
-        //     ...base,
-        //     height: `${targetHeight - 1 - 1}px`,
-        //     padding: '2px 10px',
-        //     color: '#575757',
-        //   }),
-        //   singleValue: base => ({
-        //       ...base,
-        //       marginTop: 120,
-        //   })
       };
-
-
-    // function supportsRecording(mimeType)
-    //     {
-    //         if (!window.MediaRecorder)
-    //             return false;
-    //         if (!MediaRecorder.isTypeSupported)
-    //             return mimeType.startsWith("audio/mp4") || mimeType.startsWith("video/mp4");
-    //         return MediaRecorder.isTypeSupported(mimeType);
-    //     }
-
-
-    // function getAudioStream() {
-    //     // Older browsers might not implement mediaDevices at all, so we set an empty object first
-    //     if (navigator.mediaDevices === undefined) {
-    //       navigator.mediaDevices = {};
-    //     }
-    
-    //     if (navigator.mediaDevices.getUserMedia === undefined) {
-    //       navigator.mediaDevices.getUserMedia = function (constraints) {
-    //         // First get ahold of the legacy getUserMedia, if present
-    //         const params = { audio: true, video: false };
-    //         let getUserMedia = navigator.mediaDevices.getUserMedia( params) || navigator.getUserMedia(params) || navigator.webkitGetUserMedia(params) || navigator.mozGetUserMedia(params) || navigator.msGetUserMedia(params);
-
-    //         if (!getUserMedia) {
-    //             setIsBlocked(true);
-    //           return Promise.reject(
-    //             new Error("getUserMedia is not implemented in this browser")
-    //           );
-    //         }
-    
-    //         // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
-    //         return new Promise(function (resolve, reject) {
-    //           getUserMedia.call(navigator, constraints, resolve, reject);
-    //         });
-    //       };
-    //     }
-    
-        
-    //     setIsBlocked(false);
-    //     return navigator.mediaDevices.getUserMedia({ audio: true, video: false });
-    //   }
-
-    //   useEffect(() => {
-    //     (async () => {
-    //         if (recorder == null) {
-    //             // const as = await getAudioStream();
-    //             // setAudioStream(as);
-    //             // setRecorder(new MediaRecorder(as, {mimeType: 'audio/webm'}));
-    //             // let params = {audio: true};
-    //             // let getUserMedia = navigator.mediaDevices.getUserMedia( params) || navigator.getUserMedia(params) || navigator.webkitGetUserMedia(params) || navigator.mozGetUserMedia(params) || navigator.msGetUserMedia(params);
-    //             // navigator.mediaDevices.getUserMedia({
-    //             //     video: false,
-    //             //     audio: true
-    //             // }).then(async function(stream) {
-    //             //     let recorder = RecordRTC(stream, {
-    //             //         type: 'audio'
-    //             //     });
-    //             //     recorder.startRecording();
-                
-    //             //     const sleep = m => new Promise(r => setTimeout(r, m));
-    //             //     await sleep(3000);
-                
-    //             //     recorder.stopRecording(function() {
-    //             //         let blob = recorder.getBlob();
-    //             //     });
-    //             // });
-    //         }
-    //         // if (isRecording && recorder !== null) {
-    //         //     recorder.start();
-    //         //     recorder.ondataavailable = async (event) => {
-                    
-    //         //         const blobURL = URL.createObjectURL(event.data);
-    //         //         let blob = new Blob([event.data], {
-    //         //             type: 'audio/webm'
-    //         //         });
-
-    //         //         setBlobURL(blobURL);
-
-    //         //         // let tempBlob = new Blob(event.data);
-    //         //         // console.log(tempBlob.arrayBuffer())
-    //         //         console.log(blob);
-    //         //         // setBuffer(blob);
-
-    //         //         // Set up file reader on loaded end event
-    //         //         const fileReader = new FileReader();
-
-    //         //         const ac = window.AudioContext || window.webkitAudioContext;
-    //         //         const audioContext = new ac();
-    //         //         // const audioContext = new AudioContext();
-    //         //         // const lameEncoder = new Encoder({
-    //         //         //     // 128 or 160 kbit/s – mid-range bitrate quality
-    //         //         //     bitRate: 128,
-    //         //         //     startRecordingAt: 300,
-    //         //         //     deviceId: null,
-    //         //         //   });
-
-    //         //         fileReader.onloadend = () => {
-
-    //         //             const arrayBuffer = fileReader.result;
-    //         //             var binary = '';
-    //         //             var bytes = new Int8Array( arrayBuffer );
-
-    //         //             const channels = 1; //1 for mono or 2 for stereo
-    //         //             // setBuffer(Array.from(bytes));
-    //         //             console.log(Array.from(bytes));
-                        
-    //         //             // Convert array buffer into audio buffer
-    //         //             audioContext.decodeAudioData(arrayBuffer, (audioBuffer) => {
-                            
-    //         //                 setBuffer(audioBuffer);
-    //         //                 console.log(audioBuffer);
-
-    //         //             })
-
-    //         //         }
-    //         //         fileReader.readAsArrayBuffer(event.data);
-    //         //     }
-    //         // }
-    //         // if (recorder !== null && !isRecording && recorder.state == "recording") {
-    //         //     recorder.stop();
-    //         // }
-    //     }
-    //     )();
-    //   }, [isRecording]);
 
     const handleSubmit = async () => {
         const body = {legalName: legalName, emailAddr: emailAddr, country: countryVal["value"], region: region["value"], message: message, translation: translation, language: language, linkToRecording: ""};
 
         if (acceptedTerms && legalName !== "" && region !== "" && message !== "" && emailAddr !== "" && emailAddr.indexOf('@') !== -1 && language !== "") {
+        // if (true) { 
             if (blob) {
                 const resultLink = await submitAudioFile();
                 if (resultLink !== undefined) {
@@ -548,7 +402,7 @@ function Submit(props) {
 
     
     return (
-        <>
+        <div className="Submit-outerContainer">
         <div className="Submit-container">
             <div className="Submit-backgroundOverlay">
             <div className="Submit-title">
@@ -561,7 +415,7 @@ function Submit(props) {
             </div> */}
             <div className="Submit-inputSection">
                 <div className="Submit-inputInfoLeft">
-                    <input className="Submit-smallField" placeholder="Legal Full Name (required)" value={legalName} onChange={e => setLegalName(e.target.value)} />
+                    <input className="Submit-smallField" placeholder="Legal Name (required)" value={legalName} onChange={e => setLegalName(e.target.value)} />
                     {/* <input className="Submit-smallField" placeholder="Legal Name (if different from above)" value={englishName} onChange={e => setEnglishName(e.target.value)}/> */}
                     <input className="Submit-smallField" placeholder="Email address (required)" value={emailAddr} onChange={e => setEmailAddr(e.target.value)}/>
                     <div className="Submit-countrySection">
@@ -579,7 +433,7 @@ function Submit(props) {
                     <div className="Submit-messagingText">
                         Tell us, in your native language, what does <b>SPACE</b> mean to you and to humanity?
                     </div>
-                    <textarea className="Submit-largeField" placeholder="Type your message here... (required, max 200 characters)" maxLength={200} value={message} onChange={e => setMessage(e.target.value)}/>
+                    <textarea className="Submit-largeField" placeholder="Type your message here... (required, max 200 char)" maxLength={200} value={message} onChange={e => setMessage(e.target.value)}/>
                     <input className="Submit-smallField" placeholder="Language of message (required)" value={language} onChange={e => setLanguage(e.target.value)}/>
                     <textarea className="Submit-mediumField" placeholder="English translation of message" maxLength={500} value={translation} onChange={e => setTranslation(e.target.value)}/>
                     {/** Audio stuff */}
@@ -630,14 +484,14 @@ function Submit(props) {
             
             </div>
 
-            <div>{showPopup ? <LegalPopup acceptFunction={() => acceptTerms()} cancelFunction={() => cancelTerms()} /> : null}</div>
+            <div className="Submit-popup">{showPopup ? <LegalPopup acceptFunction={() => acceptTerms()} cancelFunction={() => cancelTerms()} /> : null}</div>
         </div>
 {/* 
         <button className="startRecording" onClick={() => startRecordingRTC()}>start recording</button>
         <button className="stopRecording" onClick={() => stopRecordingRTC()}>stop recording</button>
         <audio controls src={blobURL} /> */}
-        <Footer />
-        </>
+        <div className="Submit-footer"><Footer /></div>
+        </div>
     );
 }
 

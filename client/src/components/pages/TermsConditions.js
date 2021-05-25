@@ -12,7 +12,7 @@ function TermsConditions(props) {
       <div className="Terms-container">
         <div className="Terms-backgroundOverlay">
           <div className="Terms-title">
-            “HUMANS: A Record of Our Voices” Terms and Conditions
+            Terms and Conditions
           </div>
           <div className="Terms-body">
           Welcome to the HUMANS: A Record of Our Voices project website (the “Site”). By accessing

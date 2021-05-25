@@ -100,7 +100,7 @@ function Home(props) {
             <br></br>
             Click on a region to check out how many people have submitted!
             <br></br>
-            {select ? <>{regionMap[select]}: {mapToCount[select]}</> : "(None selected)"}
+            <div className="Home-mapSubcaption">{select ? <>{regionMap[select]}: {mapToCount[select]}</> : "(None selected)"}</div>
           </div>
           {/* <img className="poster" src={poster} /> */}
         </div>

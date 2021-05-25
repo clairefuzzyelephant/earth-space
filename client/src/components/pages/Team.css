@@ -25,7 +25,7 @@
 
 .Team-container {
     width: 100vw;
-    height: 3000px;
+    height: 3350px;
     background-image: url("../../../dist/stars.jpeg");
     background-size: contain;
     color: white;
@@ -36,7 +36,7 @@
   
   .Team-backgroundOverlay {
     width: 100vw;
-    height: 3000px;
+    height: 3350px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
   }
 
@@ -49,6 +49,36 @@
     row-gap: 100px;
     animation: fadeIn 2s 1;
     font-size: 15px;
+}
+
+.Team-section-one {
+    padding-top: 60px;
+    width: 40vw;
+    margin-left: 30vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 100px;
+    animation: fadeIn 2s 1;
+    font-size: 15px;
+}
+
+@media (min-height: 800px) {
+    .Team-container {
+        width: 100vw;
+        height: 3650px;
+        background-image: url("../../../dist/stars.jpeg");
+        background-size: contain;
+        color: white;
+        font-family: "Red Hat Display", sans-serif;
+        /* font-family: "Abel", sans-serif; */
+        text-align: center;
+      }
+      
+      .Team-backgroundOverlay {
+        width: 100vw;
+        height: 3650px;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
+      }
 }
 
 @media (max-width: 1000px) {
@@ -73,7 +103,7 @@
     }
     .Team-container {
         width: 100vw;
-        height: 5100px;
+        height: 5800px;
         background-image: url("../../../dist/stars.jpeg");
         background-size: contain;
         color: white;
@@ -84,7 +114,7 @@
       
       .Team-backgroundOverlay {
         width: 100vw;
-        height: 5100px;
+        height: 5800px;
         background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
       }
       .Team-section img {
@@ -108,6 +138,15 @@
 }
 
 .Team-section img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    animation: fadeInImg 2s 1;
+}
+
+.Team-section-one img {
     width: 180px;
     height: 180px;
     object-fit: cover;

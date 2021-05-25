@@ -21,7 +21,7 @@ function Mission(props) {
           <p>In an effort to increase global representation in space, MIT sends—for the first time—messages in multiple languages around the world to the International Space Station using nanotechnology. 
           </p>
             <p></p>
-            <b>Space is for everyone!</b>
+            <div className="Mission-boldLarger"><b>Space is for everyone!</b></div>
             <p>
             When the <a target="_blank" href="https://voyager.jpl.nasa.gov/golden-record/">Voyager Golden Record</a> was sent out for any intelligent extraterrestrial life to decipher Earth in 1977, it told a story of the diversity of lives and cultures on our home planet. In a period where technology has advanced to an unprecedented height and humanity needs unity and hope more than ever in face of the COVID-19 crisis, we wish to send a new <i>"Record of Our Voices"</i> to the <a href="https://www.nasa.gov/mission_pages/station/main/index.html" target="_blank">International Space Station (ISS)</a>. This time, the story is not for intelligent extraterrestrial life, <b>but for ourselves.</b></p><p>
             </p>

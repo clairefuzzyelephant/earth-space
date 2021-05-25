@@ -87,6 +87,7 @@
     padding: 10px 10px;
     font-family: "Red Hat Display";
     font-size: 15px;
+    white-space: nowrap;
   }
 
   .Submit-dropdown {
@@ -94,7 +95,6 @@
     height: 10vh;
     width: 80vw;
     border-radius: 30px;
-    color: rgb(125, 125, 125);
     margin-top: 10vh;
     /* margin-bottom: 1vh; */
     /* font-size: 1em; */
@@ -156,7 +156,8 @@
 
   .Submit-messagingText {
     text-align: left;
-    margin-top: 10vh;
+    margin-top: 5vh;
+    font-size: 20px;
   }
 }
 
@@ -178,15 +179,29 @@
   }
 } */
 
-@media (min-width: 1200px) {
+@media (max-height: 780px) {
   .Submit-container {
-    height: 180vh;
+    height: 2000px;
   }
   .Submit-backgroundOverlay {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 180vh;
+    height: 2000px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
+    padding-bottom: 100px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .Submit-container {
+    height: 1450px;
+  }
+  .Submit-backgroundOverlay {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 1450px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
     padding-bottom: 100px;
   }
@@ -305,6 +320,7 @@
     box-shadow: 2px 2px 3px 1px rgb(41, 41, 41);
     padding: 10px 10px;
     font-family: "Red Hat Display";
+    white-space: pre-line;
   }
   
   .Submit-inputInfoRight .Submit-mediumField {
@@ -419,6 +435,29 @@
   margin-left: 20px;
   margin-top: 20px;
   font-size: 12px;
+}
+
+.Submit-popup {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.Submit-footer {
+  position: absolute;
+  z-index: -1;
+}
+
+.Submit-outerContainer {
+  position: relative;
+  width: 100vw;
+  height: fit-content;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 

@@ -11,6 +11,7 @@ function Popup (props) {
         <div className="Popup-background">
         </div>
         <div className="Popup-container">
+          <div className="TeamPopup-quit" onClick={cancelFunction}>x</div>
             <h1>Legal Terms and Conditions</h1>
             <h3>Please accept at the bottom to continue.</h3>
             <div>

@@ -29,10 +29,9 @@ function Team(props) {
       {"img": jeff, "name": "Jeffrey Hoffman", "role": "Faculty Supervisor", "title": "MIT Professor of Aeronautics and Astronautics", "bio": "Dr. Jeffrey Hoffman is a professor in MIT’s Aeronautics and Astronautics Department. He received a BA in Astronomy (summa cum laude) from Amherst College (1966); a PhD in Astrophysics from Harvard University (1971); and an MSc in Materials Science from Rice University (1988). As a NASA astronaut (1978-1997) Dr. Hoffman made five space flights, becoming the first astronaut to log 1000 hours of flight time aboard the Space Shuttle. He was a member of the spacewalking team that repaired the optics of the Hubble Space Telescope. His primary research interests are in improving the technology of space suits and designing innovative space systems for human and robotic space exploration. Dr. Hoffman is director of the Massachusetts Space Grant Consortium. He is Deputy Principal Investigator of the Mars2020 MOXIE experiment, which will produce oxygen on the surface of Mars. In 2007, Dr. Hoffman was elected to the US Astronaut Hall of Fame."},
   ]
 
-  const additionalCollabs = {
-    "nourie":
-    {"img": jeff, "name": "Jeffrey Hoffman", "role": "Faculty Supervisor", "title": "MIT Professor of Aeronautics and Astronautics", "bio": "Dr. Jeffrey Hoffman is a professor in MIT’s Aeronautics and Astronautics Department. He received a BA in Astronomy (summa cum laude) from Amherst College (1966); a PhD in Astrophysics from Harvard University (1971); and an MSc in Materials Science from Rice University (1988). As a NASA astronaut (1978-1997) Dr. Hoffman made five space flights, becoming the first astronaut to log 1000 hours of flight time aboard the Space Shuttle. He was a member of the spacewalking team that repaired the optics of the Hubble Space Telescope. His primary research interests are in improving the technology of space suits and designing innovative space systems for human and robotic space exploration. Dr. Hoffman is director of the Massachusetts Space Grant Consortium. He is Deputy Principal Investigator of the Mars2020 MOXIE experiment, which will produce oxygen on the surface of Mars. In 2007, Dr. Hoffman was elected to the US Astronaut Hall of Fame."},
-  }
+  const additionalCollabs = [
+    {"img": placeholder, "name": "Nourie Flayhan", "role": "Artist", "title": "??", "bio": ""},
+  ]
 
   const sei = [
       {"img": xin, "name": "Xin Liu", "role": "Artistic Advisor", "title": "Arts Curator at the Space Exploration Initiative at the MIT Media Lab", "bio": "Xin Liu is an artist and engineer. \n\n In her practice, Xin creates experiences/experiments to take measurements in our personal, social and technological spaces in a post-metaphysical world and examines its discourse-power nexus.Her recent research and interest center around the verticality of space, extraterrestrial explorations and cosmic metabolism. \n\n Xin is the Arts Curator in the Space Exploration Initiative in MIT Media Lab, an artist-in-residence in SETI Institute, a member of the inaugural ONX studio program founded by New Museum and Onassis NY. She is recipient of numerous awards,  including Forbes 30 under 30 Asia, X Museum Triennial Award, the Van Lier Fellowship from Museum of Arts and Design, Sundance New Frontier Story Lab fellowship, inaugural Europe ARTificial Intelligence Lab residency, SXSW Interactive Innovation Award, Core 77 Interaction Design Award, Fast Company Innovation by Design Award and Creative Capital On Our Radar. She has been commissioned by M+ Museum (Hong Kong), Ars Electronica (Austria), Rhizome (USA), Media Art Xploration Festival (USA) and Onassis Enter Program (US). She has joined several residency programs including Queens Museum Artist Studio program, New INC and Pioneer Works.  She is also an advisor for LACMA Art+Tech Lab and a faculty member at The Terraforming, a new research program at Strelka Institute in 2020-2021."},
@@ -42,8 +41,8 @@ function Team(props) {
     ]
 
   const nano = [
-    {"img": craig, "name": "Craig Carter", "role": "???", "title": "??", "bio": "W. Craig Carter is an American materials scientist, a POSCO Professor of Materials Science and Engineering at Massachusetts Institute of Technology. He is also a co-founder of the 24M Technologies Company. \n\n He is a specialist in the fields of meso-scale modelling of materials properties and processing. His research is focused on thermodynamics and kinetics of interfaces, simulations of microstructural evolution, and predictions of fracture and reliability in materials. He has also worked on battery materials. \n\nHe is a MacVicar Fellow and has received the MIT School of Engineering Bose Teaching Award. He has also been a recipient of Wolfram Innovator Award. He is a fellow of American Ceramic Society."},
-    {"img": georgios, "name": "Georgios Varnavides", "role": "??", "title": "??", "bio": "Georgios Varnavides is a graduate student in the Department of Materials Science and Engineering at MIT, working on unconventional transport regimes in nanoscale devices. When he’s not drawing funny interaction diagrams, Georgios enjoys camping, generative art, and singing along to musicals on YouTube."},
+    {"img": craig, "name": "Craig Carter", "role": "Computational Implementation, Record Design", "title": "POSCO Professor and MacVicar Fellow, DMSE", "bio": "W. Craig Carter is an American materials scientist, a POSCO Professor of Materials Science and Engineering at Massachusetts Institute of Technology. He is also a co-founder of the 24M Technologies Company. \n\n He is a specialist in the fields of meso-scale modelling of materials properties and processing. His research is focused on thermodynamics and kinetics of interfaces, simulations of microstructural evolution, and predictions of fracture and reliability in materials. He has also worked on battery materials. \n\nHe is a MacVicar Fellow and has received the MIT School of Engineering Bose Teaching Award. He has also been a recipient of Wolfram Innovator Award. He is a fellow of American Ceramic Society."},
+    {"img": georgios, "name": "Georgios Varnavides", "role": "Message Search Implementation, Website Development", "title": "MIT DMSE Graduate Student", "bio": "Georgios Varnavides is a graduate student in the Department of Materials Science and Engineering at MIT, working on unconventional transport regimes in nanoscale devices. When he’s not drawing funny interaction diagrams, Georgios enjoys camping, generative art, and singing along to musicals on YouTube."},
   ]
 
 
@@ -78,6 +77,21 @@ function Team(props) {
           </div>
           <div className="Team-section">
             {sei.map((person) => 
+                <div className="Team-member" onClick={e => {setPopupStatus(true); setPopupPerson(person); console.log("HII") }}>
+                <img src={person["img"]}/>
+                <div className="Team-member-text">
+                  <b>{person["name"]}</b>
+                  <p>{person["role"]}</p>
+                  <p>{person["title"]}</p>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="Team-title">
+            External Artist Collaborators
+          </div>
+          <div className="Team-section-one">
+            {additionalCollabs.map((person) => 
                 <div className="Team-member" onClick={e => {setPopupStatus(true); setPopupPerson(person); console.log("HII") }}>
                 <img src={person["img"]}/>
                 <div className="Team-member-text">
