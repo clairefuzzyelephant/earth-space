@@ -29,7 +29,7 @@ function Mission(props) {
             HUMANS—Humanity United with MIT Art and Nanotechnology in Space—is a project with a goal of promoting international space collaboration and shedding light on how space should remain a "space" for all mankind to unite, instead of isolating from each other. 
             </p>
             <p>
-            Join our project by sending us a message in your native language, about the meaning of space to you and to humanity, in addition to an optional audio recording of your voice. We will use nanotechnology to etch the submitted messages to our record, similar to the process used in the <a href="http://onemit.mit.edu/">One.MIT project</a>, before launching it over to the International Space Station!
+            Join our project by sending us a message in your native language, about the meaning of space to you and to humanity, in addition to an optional audio recording of your voice. We will use nanotechnology to etch the submitted messages to our record, similar to the process used in the <a target="_blank" href="http://onemit.mit.edu/">One.MIT project</a>, before launching it over to the International Space Station!
             </p>
           </div>
           {/* <img className="poster" src={poster} /> */}

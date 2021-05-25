@@ -122,7 +122,7 @@ function Team(props) {
           </div>
           <div className="Team-subtitle">
             MIT Office of the General Counsel (OGC)<br></br>
-            For legal inquiries, please contact <a href="mailto:mitogc@mit.edu">mitogc@mit.edu</a>.
+            For legal inquiries, please contact <a target="_blank" href="mailto:mitogc@mit.edu">mitogc@mit.edu</a>.
           </div>
         </div>
         <div>{popupStatus ? <TeamPopup image={popupPerson["img"]} name={popupPerson["name"]} role={popupPerson["role"]} title={popupPerson["title"]} bio={popupPerson["bio"]} closePopup={() => setPopupStatus(false)} /> : null}</div>

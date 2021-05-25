@@ -75,6 +75,7 @@ function Submit(props) {
                             setBlob(null);
                             setBlobURL("");
                             setIsChecked(false);
+                            alert("Success!");
                         }
                         else {
                             alert("We encountered an error while trying to submit. Please refresh and try again.")
@@ -97,6 +98,7 @@ function Submit(props) {
                         setBlob(null);
                         setBlobURL("");
                         setIsChecked(false);
+                        alert("Success!");
                     }
                     else {
                         alert("We encountered an error while trying to submit. Please refresh and try again.")
