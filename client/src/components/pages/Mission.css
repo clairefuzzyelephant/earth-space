@@ -35,7 +35,7 @@
 
 .Mission-container {
     width: 100vw;
-    height: 900px;
+    height: 1200px;
     background-image: url("../../../dist/stars.jpeg");
     background-size: contain;
     color: white;
@@ -53,7 +53,7 @@
   
   .Mission-backgroundOverlay {
     width: 100vw;
-    height: 900px;
+    height: 1200px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
     padding-bottom: 100px;
   }
@@ -63,7 +63,7 @@
         font-size: 1em;
         line-height: 1.7em;
         width: 70vw;
-        height: 1000px;
+        height: 1400px;
         margin-left: 15vw;
         margin-top: 40px;
         text-shadow: 2px 2px rgb(21, 21, 21);
@@ -86,7 +86,7 @@
 
       .Mission-container {
         width: 100vw;
-        height: 1000px;
+        height: 1200px;
         background-image: url("../../../dist/stars.jpeg");
         background-size: contain;
         color: white;
@@ -98,7 +98,7 @@
       
       .Mission-backgroundOverlay {
         width: 100vw;
-        min-height: 1000px;
+        min-height: 1400px;
         background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
         padding-bottom: 100px;
       }
@@ -108,12 +108,12 @@
 
   .Mission-container {
     width: 100vw;
-    height: 1200px;
+    height: 1750px;
   }
   
   .Mission-backgroundOverlay {
     width: 100vw;
-    min-height: 1200px;
+    min-height: 1750px;
   }
 }
 
@@ -121,11 +121,13 @@
 
   .Mission-container {
     width: 100vw;
-    height: 1550px;
+    height: 1700px;
+    font-size: 0.9em;
   }
   
   .Mission-backgroundOverlay {
     width: 100vw;
-    min-height: 1550px;
+    min-height: 1700px;
   }
+  
 }

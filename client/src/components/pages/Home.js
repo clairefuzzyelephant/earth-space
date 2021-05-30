@@ -80,9 +80,11 @@ function Home(props) {
             A Record of Our Voices
           </div>
           <div className="Home-introText">
-          In an effort to increase global representation in space, MIT sends—for the first time—messages in multiple languages around the world to the International Space Station using nanotechnology. 
+          In an effort to increase global representation in space, the HUMANS project creates a symbolic avenue for space access worldwide.
           <br></br><br></br>
-          Join us and submit your message if you believe space is a “space” for everyone! 
+          Join our project by sending us a message in your native language, about the meaning of space to you and to humanity, in addition to an optional audio recording of your voice. We will use MIT nanotechnology to etch these messages onto a six-inch record, inspired by <a target="_blank" href="https://voyager.jpl.nasa.gov/golden-record/">The Golden Record</a>, before launching it over to the International Space Station (ISS)!
+          <br></br><br></br>
+          We invite you to submit your message if you also believe <b>space should be a “space” for everyone!</b>
           </div>
           <div className="Home-buttonContainer">
             <Link to="/submit" className="Home-submitButton">

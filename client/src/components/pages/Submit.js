@@ -454,7 +454,8 @@ function Submit(props) {
                                 <audio controls src={blobURL} />
                             </div>
                             </>
-                         : isRecording ? <p>Recording...</p> : <p>Record your message</p>}
+                         : isRecording ? <p>Recording...</p> : <p>Record your voice reading the message you wrote above!
+                         </p>}
                         </div>  
                     </div>
                     {/* <div className="Submit-audioPrompt">
