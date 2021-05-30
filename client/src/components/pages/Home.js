@@ -28,7 +28,6 @@ function Home(props) {
   useEffect(() => {
     async function getSubmissions() {
         get("/api/allSubmissions").then((messages) => {
-          console.log(messages);
           setTotalSubs(messages.length);
           let naCount = 0;
           let saCount = 0;

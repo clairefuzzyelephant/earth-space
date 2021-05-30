@@ -131,7 +131,6 @@ function Submit(props) {
                 return issuesOccur[issueList.indexOf(i)]
             }))
             setDisplayWarning(true);
-            console.log(issues);
         }
         
         // const body = {legalName: legalName, emailAddr: emailAddr, country: countryVal["value"], region: region["value"], message: message, translation: translation, language: language};
@@ -188,9 +187,7 @@ function Submit(props) {
     }
 
     const toggleCheckbox = () => {
-        console.log("value of state " + isChecked);
         if (!isChecked) {
-            console.log("toggling checkbox");
             setShowPopup(true);
         }
         else { //already checked
@@ -302,7 +299,6 @@ function Submit(props) {
         replaceAudio(URL.createObjectURL(tempBlob));
         setBlob(tempBlob);
 
-        console.log(tempBlob);
         
         // setTimeout(function() {
         //     if(!audio.paused) return;
@@ -361,7 +357,6 @@ function Submit(props) {
         }
     
         if(isSafari) {
-            console.log("IT IS SAFARI????")
             options.sampleRate = 44100;
             options.bufferSize = 256;
             options.numberOfAudioChannels = 1;
@@ -372,17 +367,14 @@ function Submit(props) {
         }
     
         let tempRecorder = RecordRTC(microphone, options);
-        console.log(tempRecorder);
         setRecorder(tempRecorder);
         tempRecorder.startRecording();
         setIsRecording(true);
-        console.log("recording");
     };
     
     const stopRecordingRTC = () => {
         if (recorder !== null) {
             recorder.stopRecording(stopRecordingCallback);
-            console.log("stopping");
             setIsRecording(false);
         }
     };

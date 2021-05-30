@@ -3,7 +3,6 @@ import React from "react";
 import "./LegalPopup.css";
 
 function Popup (props) {
-  console.log("HEYY")
   const { acceptFunction, cancelFunction } = props;
 
   return (

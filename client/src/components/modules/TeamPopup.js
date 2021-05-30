@@ -3,7 +3,6 @@ import React from "react";
 import "./TeamPopup.css";
 
 function TeamPopup (props) {
-  console.log("WHAT UP");
   const { image, name, role, title, bio, closePopup } = props;
 
   return (

@@ -14,6 +14,8 @@ import ariel from "../../../dist/people/ariel.jpeg";
 import placeholder from "../../../dist/people/placeholder.jpeg";
 import georgios from "../../../dist/people/georgios.jpeg";
 import craig from "../../../dist/people/craig.jpeg";
+import sean from "../../../dist/people/sean.jpeg";
+import mitnano from "../../../dist/people/mitnano.png";
 
 import Footer from "../modules/Footer.js";
 
@@ -30,19 +32,20 @@ function Team(props) {
   ]
 
   const additionalCollabs = [
-    {"img": placeholder, "name": "Nourie Flayhan", "role": "Artist", "title": "??", "bio": ""},
+    {"img": placeholder, "name": "Nourie Flayhan", "role": "Artist", "title": "", "bio": ""},
   ]
 
   const sei = [
-      {"img": xin, "name": "Xin Liu", "role": "Artistic Advisor", "title": "Arts Curator at the Space Exploration Initiative at the MIT Media Lab", "bio": "Xin Liu is an artist and engineer. \n\n In her practice, Xin creates experiences/experiments to take measurements in our personal, social and technological spaces in a post-metaphysical world and examines its discourse-power nexus.Her recent research and interest center around the verticality of space, extraterrestrial explorations and cosmic metabolism. \n\n Xin is the Arts Curator in the Space Exploration Initiative in MIT Media Lab, an artist-in-residence in SETI Institute, a member of the inaugural ONX studio program founded by New Museum and Onassis NY. She is recipient of numerous awards,  including Forbes 30 under 30 Asia, X Museum Triennial Award, the Van Lier Fellowship from Museum of Arts and Design, Sundance New Frontier Story Lab fellowship, inaugural Europe ARTificial Intelligence Lab residency, SXSW Interactive Innovation Award, Core 77 Interaction Design Award, Fast Company Innovation by Design Award and Creative Capital On Our Radar. She has been commissioned by M+ Museum (Hong Kong), Ars Electronica (Austria), Rhizome (USA), Media Art Xploration Festival (USA) and Onassis Enter Program (US). She has joined several residency programs including Queens Museum Artist Studio program, New INC and Pioneer Works.  She is also an advisor for LACMA Art+Tech Lab and a faculty member at The Terraforming, a new research program at Strelka Institute in 2020-2021."},
-      {"img": placeholder, "name": "Sands A. Fish", "role": "Advisor", "title": "Designer at the Space Exploration Initiative at the MIT Media Lab ", "bio": ""},
+      {"img": xin, "name": "Xin Liu", "role": "Artistic Advisor", "title": "Arts Curator at the MIT Space Exploration Initiative", "bio": "Xin Liu is an artist and engineer. \n\n In her practice, Xin creates experiences/experiments to take measurements in our personal, social and technological spaces in a post-metaphysical world and examines its discourse-power nexus.Her recent research and interest center around the verticality of space, extraterrestrial explorations and cosmic metabolism. \n\n Xin is the Arts Curator in the Space Exploration Initiative in MIT Media Lab, an artist-in-residence in SETI Institute, a member of the inaugural ONX studio program founded by New Museum and Onassis NY. She is recipient of numerous awards,  including Forbes 30 under 30 Asia, X Museum Triennial Award, the Van Lier Fellowship from Museum of Arts and Design, Sundance New Frontier Story Lab fellowship, inaugural Europe ARTificial Intelligence Lab residency, SXSW Interactive Innovation Award, Core 77 Interaction Design Award, Fast Company Innovation by Design Award and Creative Capital On Our Radar. She has been commissioned by M+ Museum (Hong Kong), Ars Electronica (Austria), Rhizome (USA), Media Art Xploration Festival (USA) and Onassis Enter Program (US). She has joined several residency programs including Queens Museum Artist Studio program, New INC and Pioneer Works.  She is also an advisor for LACMA Art+Tech Lab and a faculty member at The Terraforming, a new research program at Strelka Institute in 2020-2021."},
       {"img": ariel, "name": "Ariel Ekblaw", "role": "Advisor", "title": "Director of the MIT Space Exploration Initiative", "bio": "Ariel Ekblaw is the founder and Director of the MIT Space Exploration Initiative, a team of over 50 graduate students, staff, and faculty actively prototyping the artifacts of our sci-fi space future. Founded in 2016, the Initiative includes a portfolio of 40+ research projects focused on life in space, and supports an accelerator-like R&D program for payload development and flight testing across MIT. For the Initiative, Ariel drives space-related research across science, engineering, art, and design, and charters an annually recurring cadence of parabolic flights, sub-orbital, and orbital launch opportunities.  Ariel graduated with a B.S. in Physics, Mathematics and Philosophy from Yale University and defended her MIT PhD in autonomously self-assembling space architecture for future habitats and space stations in orbit around the Earth, Moon, and Mars. Ariel’s work has been featured in WIRED (March 2020 cover story), MIT Technology Review, Harvard Business Review, the Wall Street Journal, the BBC, CNN, NPR, IEEE and AIAA proceedings, and more. Humanity stands on the cusp of interplanetary civilization and space is our next, grand frontier. This opportunity to design our interplanetary lives beckons to us—Ariel strives to bring our space exploration future to life."},
-      {"img": placeholder, "name": "Sean Auffinger", "role": "Mission Integrator", "title": "Mission Integrator at the Space Exploration Initiative at the MIT Media Lab ", "bio": ""},
+      {"img": sean, "name": "Sean Auffinger", "role": "Mission Integrator of the MIT Space Exploration Initiative", "title": "Mission Integrator at the Space Exploration Initiative at the MIT Media Lab ", "bio": "Sean serves as Mission Integrator for the Space Exploration Initiative. \n\n Sean brings with him experience working on many different aircraft programs from his time at Boeing Research and Technology. \n\n As Mission Integrator, Sean works intimately with all different research projects across the SEI and MIT community to make sure they are flight ready, advising on technical requirements, design decisions, and flight operations, as well as filling in on engineering support as needed. \n\n Alongside his Mission integrator role, Sean facilitates the Zero-Gravity Flight Prep and Operating in the Lunar Environment courses at SEI. \n\n Outside of SEI, Sean enjoys skiing in the winter months, and is excited to begin private pilot training."},
+      {"img": placeholder, "name": "Sands A. Fish", "role": "Advisor", "title": "Designer at the MIT Space Exploration Initiative", "bio": ""},
     ]
 
   const nano = [
     {"img": craig, "name": "Craig Carter", "role": "Computational Implementation, Record Design", "title": "POSCO Professor and MacVicar Fellow, DMSE", "bio": "W. Craig Carter is an American materials scientist, a POSCO Professor of Materials Science and Engineering at Massachusetts Institute of Technology. He is also a co-founder of the 24M Technologies Company. \n\n He is a specialist in the fields of meso-scale modelling of materials properties and processing. His research is focused on thermodynamics and kinetics of interfaces, simulations of microstructural evolution, and predictions of fracture and reliability in materials. He has also worked on battery materials. \n\nHe is a MacVicar Fellow and has received the MIT School of Engineering Bose Teaching Award. He has also been a recipient of Wolfram Innovator Award. He is a fellow of American Ceramic Society."},
     {"img": georgios, "name": "Georgios Varnavides", "role": "Message Search Implementation, Website Development", "title": "MIT DMSE Graduate Student", "bio": "Georgios Varnavides is a graduate student in the Department of Materials Science and Engineering at MIT, working on unconventional transport regimes in nanoscale devices. When he’s not drawing funny interaction diagrams, Georgios enjoys camping, generative art, and singing along to musicals on YouTube."},
+    {"img": mitnano, "name": "MIT.nano"}
   ]
 
 
@@ -50,7 +53,6 @@ function Team(props) {
   
 
   useEffect(() => {
-    console.log(popupStatus);
   }, [popupStatus])
 
   return (
@@ -62,7 +64,7 @@ function Team(props) {
           </div>
           <div className="Team-section">
             {teamLeads.map((person) => 
-                <div className="Team-member" onClick={e => {setPopupStatus(true); setPopupPerson(person); console.log("HII") }}>
+                <div className="Team-member" onClick={e => {setPopupStatus(true); setPopupPerson(person); }}>
                 <img src={person["img"]}/>
                 <div className="Team-member-text">
                   <b>{person["name"]}</b>
@@ -77,7 +79,7 @@ function Team(props) {
           </div>
           <div className="Team-section">
             {sei.map((person) => 
-                <div className="Team-member" onClick={e => {setPopupStatus(true); setPopupPerson(person); console.log("HII") }}>
+                <div className="Team-member" onClick={e => {setPopupStatus(true); setPopupPerson(person); }}>
                 <img src={person["img"]}/>
                 <div className="Team-member-text">
                   <b>{person["name"]}</b>
@@ -87,27 +89,28 @@ function Team(props) {
               </div>
             )}
           </div>
+          
           <div className="Team-title">
-            External Artist Collaborators
-          </div>
-          <div className="Team-section-one">
-            {additionalCollabs.map((person) => 
-                <div className="Team-member" onClick={e => {setPopupStatus(true); setPopupPerson(person); console.log("HII") }}>
-                <img src={person["img"]}/>
-                <div className="Team-member-text">
-                  <b>{person["name"]}</b>
-                  <p>{person["role"]}</p>
-                  <p>{person["title"]}</p>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="Team-title">
-            MIT.nano
+            Design and Manufacturing
           </div>
           <div className="Team-section">
             {nano.map((person) => 
-                <div className="Team-member" onClick={e => {setPopupStatus(true); setPopupPerson(person); console.log("HII") }}>
+                <div className="Team-member" onClick={e => {setPopupStatus(true); setPopupPerson(person); }}>
+                <img src={person["img"]}/>
+                <div className="Team-member-text">
+                  <b>{person["name"]}</b>
+                  <p>{person["role"]}</p>
+                  <p>{person["title"]}</p>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="Team-title">
+            Artistic Collaboration
+          </div>
+          <div className="Team-section-one">
+            {additionalCollabs.map((person) => 
+                <div className="Team-member" onClick={e => {setPopupStatus(true); setPopupPerson(person); }}>
                 <img src={person["img"]}/>
                 <div className="Team-member-text">
                   <b>{person["name"]}</b>

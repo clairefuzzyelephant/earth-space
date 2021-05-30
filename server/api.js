@@ -23,12 +23,7 @@ s3.listBuckets(function(err, data) {
 
 
 
-// const fs = require('fs');
 const path = require('path');
-// const Buffer = require('buffer/').Buffer;  // note: the trailing slash is important!
-// // const { reduce } = require("core-js/core/array");
-var toWav = require('audiobuffer-to-wav');
-var xhr = require('xhr');
 
 const multer  = require('multer') //use multer to upload blob data
 const upload = multer().single("soundBlob"); // set multer to be the upload variable (just like express, see above ( include it, then use it/set it up))
@@ -36,13 +31,6 @@ const upload = multer().single("soundBlob"); // set multer to be the upload vari
 const generateFileName = (size) => {
   console.log("generating FILENAME")
   let fileName = "";
-  // ind = emailAddr.indexOf("@");
-  // if (ind !== -1) {
-  //   fileName = emailAddr.slice(0, ind);
-  // }
-  // else {
-  //   fileName = emailAddr.slice(0, Math.round(emailAddr.length/3));
-  // }
   fileName = size.toString() + "_" +  Date.now().toString();
   return fileName;
 }
