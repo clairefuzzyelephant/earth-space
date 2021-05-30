@@ -39,7 +39,7 @@
   }
   
   .Submit-container {
-    height: 250vh;
+    height: 255vh;
     position: relative;
     z-index: 0;
     font-size: 15px;
@@ -48,7 +48,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 250vh;
+    height: 255vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
     padding-bottom: 100px;
     z-index: -5;
@@ -56,7 +56,7 @@
   .Submit-inputSection {
     width: 80vw;
     margin-left: 10vw;
-    padding-top: 10vh;
+    padding-top: 1vh;
     animation: fadeIn3 2s 1;
   }
   .Submit-inputInfoLeft {
@@ -156,7 +156,7 @@
 
   .Submit-messagingText {
     text-align: left;
-    margin-top: 35px;
+    margin-top: 10vh;
     font-size: 20px;
   }
 }
@@ -181,13 +181,13 @@
 
 @media (max-height: 780px) {
   .Submit-container {
-    height: 1700px;
+    height: 1750px;
   }
   .Submit-backgroundOverlay {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 1700px;
+    height: 1750px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
     padding-bottom: 100px;
   }
