@@ -89,13 +89,13 @@
     position: fixed;
     width: 100vw;
     height: fit-content;
-    z-index: 1;
+    z-index: 6;
   }
 
   .NavBar-HamburgerIcon {
     margin-top: 20px;
     margin-left: 20px;
-    z-index: 3;
+    z-index: 6;
   }
 
   .NavBar-Hamburger {
