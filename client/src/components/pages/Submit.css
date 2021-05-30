@@ -4,7 +4,7 @@
 
 .Submit-container {
   width: 100vw;
-  height: 1450px;
+  height: 1350px;
   background-image: url("../../../dist/stars.jpeg");
   background-size: contain;
   color: white;
@@ -39,7 +39,7 @@
   }
   
   .Submit-container {
-    height: 300vh;
+    height: 240vh;
     position: relative;
     z-index: 0;
     font-size: 15px;
@@ -48,7 +48,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 300vh;
+    height: 240vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
     padding-bottom: 100px;
     z-index: -5;
@@ -110,7 +110,7 @@
   }
 
   .Submit-countryDisclaimer {
-    margin-top: 5vh;
+    margin-top: 25px;
     font-size: 12px;
   }
   
@@ -156,7 +156,7 @@
 
   .Submit-messagingText {
     text-align: left;
-    margin-top: 5vh;
+    margin-top: 10vh;
     font-size: 20px;
   }
 }
@@ -181,13 +181,13 @@
 
 @media (max-height: 780px) {
   .Submit-container {
-    height: 2000px;
+    height: 1700px;
   }
   .Submit-backgroundOverlay {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 2000px;
+    height: 1700px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
     padding-bottom: 100px;
   }
@@ -195,13 +195,13 @@
 
 @media (min-width: 1200px) {
   .Submit-container {
-    height: 1450px;
+    height: 1350px;
   }
   .Submit-backgroundOverlay {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 1450px;
+    height: 1350px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
     padding-bottom: 100px;
   }

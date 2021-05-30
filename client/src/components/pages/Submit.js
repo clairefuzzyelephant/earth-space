@@ -19,7 +19,7 @@ function Submit(props) {
     const [emailAddr, setEmailAddr] = useState("");
     const [countryVal, setCountryVal] = useState("");
     const [message, setMessage] = useState("");
-    const [translation, setTranslation] = useState("");
+    // const [translation, setTranslation] = useState("");
     const [language, setLanguage] = useState("");
 
     const [isChecked, setIsChecked] = useState(false);
@@ -53,7 +53,7 @@ function Submit(props) {
       };
 
     const handleSubmit = async () => {
-        const body = {legalName: legalName, emailAddr: emailAddr, country: countryVal["value"], region: region["value"], message: message, translation: translation, language: language, linkToRecording: ""};
+        const body = {legalName: legalName, emailAddr: emailAddr, country: countryVal["value"], region: region["value"], message: message, language: language, linkToRecording: ""};
 
         if (acceptedTerms && legalName !== "" && region !== "" && message !== "" && emailAddr !== "" && emailAddr.indexOf('@') !== -1 && language !== "") {
         // if (true) { 
@@ -69,7 +69,7 @@ function Submit(props) {
                             setRegion("");
                             setMessage("");
                             setEmailAddr("");
-                            setTranslation("");
+                            // setTranslation("");
                             setLanguage("");
                             setBuffer(null);
                             setBlob(null);
@@ -92,7 +92,7 @@ function Submit(props) {
                         setRegion("");
                         setMessage("");
                         setEmailAddr("");
-                        setTranslation("");
+                        // setTranslation("");
                         setLanguage("");
                         setBuffer(null);
                         setBlob(null);
@@ -335,7 +335,7 @@ function Submit(props) {
     
                 // if(isSafari) {
     
-                    alert('Please click startRecording button again. First time we tried to access your microphone. Now we will record it.');
+                    alert('Please click the recording button again. The first time, we tried to access your microphone. Now we will record it.');
                 //     return;
                 // }
     
@@ -437,7 +437,7 @@ function Submit(props) {
                     </div>
                     <textarea className="Submit-largeField" placeholder="Type your message here... (required, max 200 char)" maxLength={200} value={message} onChange={e => setMessage(e.target.value)}/>
                     <input className="Submit-smallField" placeholder="Language of message (required)" value={language} onChange={e => setLanguage(e.target.value)}/>
-                    <textarea className="Submit-mediumField" placeholder="English translation of message" maxLength={500} value={translation} onChange={e => setTranslation(e.target.value)}/>
+                    {/* <textarea className="Submit-mediumField" placeholder="English translation of message" maxLength={500} value={translation} onChange={e => setTranslation(e.target.value)}/> */}
                     {/** Audio stuff */}
                     <div className="Submit-audioSection">
                         <div className="Submit-recordButton" onClick={() => {
@@ -487,7 +487,7 @@ function Submit(props) {
             
             </div>
 
-            <div className="Submit-popup">{showPopup ? <LegalPopup acceptFunction={() => acceptTerms()} cancelFunction={() => cancelTerms()} /> : null}</div>
+            {showPopup ? <div className="Submit-popup"><LegalPopup acceptFunction={() => acceptTerms()} cancelFunction={() => cancelTerms()} /></div> : null}
         </div>
 {/* 
         <button className="startRecording" onClick={() => startRecordingRTC()}>start recording</button>

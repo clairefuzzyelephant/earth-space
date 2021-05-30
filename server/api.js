@@ -77,7 +77,7 @@ router.post("/submitMessage", (req, res) => {
     country: req.body.country,
     region: req.body.region,
     message: req.body.message,
-    translation: req.body.translation,
+    // translation: req.body.translation,
     language: req.body.language,
     recordingLink: req.body.linkToRecording,
   });
@@ -86,7 +86,6 @@ router.post("/submitMessage", (req, res) => {
 
 
 router.get("/allSubmissions", (req, res) => {
-  console.log("HI?")
   Message.find({}).then((messages) => {
     res.send(messages);
   })
