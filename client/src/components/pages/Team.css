@@ -25,7 +25,7 @@
 
 .Team-container {
     width: 100vw;
-    height: 3350px;
+    height: 3700px;
     background-image: url("../../../dist/stars.jpeg");
     background-size: contain;
     color: white;
@@ -36,7 +36,7 @@
   
   .Team-backgroundOverlay {
     width: 100vw;
-    height: 3350px;
+    height: 3700px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
   }
 
@@ -57,7 +57,7 @@
     margin-left: 30vw;
     display: grid;
     grid-template-columns: 1fr;
-    row-gap: 100px;
+    /* row-gap: 100px; */
     animation: fadeIn 2s 1;
     font-size: 15px;
 }
@@ -65,7 +65,7 @@
 @media (min-height: 800px) {
     .Team-container {
         width: 100vw;
-        height: 3650px;
+        height: 3950px;
         background-image: url("../../../dist/stars.jpeg");
         background-size: contain;
         color: white;
@@ -76,7 +76,7 @@
       
       .Team-backgroundOverlay {
         width: 100vw;
-        height: 3650px;
+        height: 3950px;
         background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
       }
 }
@@ -92,6 +92,17 @@
         animation: fadeIn 2s 1;
     }
     .Team-section {
+        padding-top: 60px;
+        width: 80vw;
+        margin-left: 10vw;
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 100px;
+        animation: fadeIn 2s 1;
+        font-size: 1em;
+    }
+
+    .Team-section-one {
         padding-top: 60px;
         width: 80vw;
         margin-left: 10vw;
@@ -124,6 +135,13 @@
         animation: fadeInImg 2s 1;
     }
 
+    .Team-section-one img {
+        width: 100%;
+        border-radius: 15px;
+        margin-bottom: 10px;
+        animation: fadeInImg 2s 1;
+    }
+
     .Team-member {
         display: flex;
         flex-direction: column;
@@ -135,6 +153,25 @@
         width: 80vw;
         margin-left: 10vw;
     }
+}
+
+@media (max-width: 400px) {
+    .Team-container {
+        width: 100vw;
+        height: 6000px;
+        background-image: url("../../../dist/stars.jpeg");
+        background-size: contain;
+        color: white;
+        font-family: "Red Hat Display", sans-serif;
+        /* font-family: "Abel", sans-serif; */
+        text-align: center;
+      }
+      
+      .Team-backgroundOverlay {
+        width: 100vw;
+        height: 6000px;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
+      }
 }
 
 .Team-section img {
