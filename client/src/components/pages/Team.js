@@ -39,7 +39,6 @@ function Team(props) {
       {"img": xin, "name": "Xin Liu", "role": "Artistic Advisor", "title": "Arts Curator at the MIT Space Exploration Initiative", "bio": "Xin Liu is an artist and engineer. \n\n In her practice, Xin creates experiences/experiments to take measurements in our personal, social and technological spaces in a post-metaphysical world and examines its discourse-power nexus.Her recent research and interest center around the verticality of space, extraterrestrial explorations and cosmic metabolism. \n\n Xin is the Arts Curator in the Space Exploration Initiative in MIT Media Lab, an artist-in-residence in SETI Institute, a member of the inaugural ONX studio program founded by New Museum and Onassis NY. She is recipient of numerous awards,  including Forbes 30 under 30 Asia, X Museum Triennial Award, the Van Lier Fellowship from Museum of Arts and Design, Sundance New Frontier Story Lab fellowship, inaugural Europe ARTificial Intelligence Lab residency, SXSW Interactive Innovation Award, Core 77 Interaction Design Award, Fast Company Innovation by Design Award and Creative Capital On Our Radar. She has been commissioned by M+ Museum (Hong Kong), Ars Electronica (Austria), Rhizome (USA), Media Art Xploration Festival (USA) and Onassis Enter Program (US). She has joined several residency programs including Queens Museum Artist Studio program, New INC and Pioneer Works.  She is also an advisor for LACMA Art+Tech Lab and a faculty member at The Terraforming, a new research program at Strelka Institute in 2020-2021."},
       {"img": ariel, "name": "Ariel Ekblaw", "role": "Advisor", "title": "Director of the MIT Space Exploration Initiative", "bio": "Ariel Ekblaw is the founder and Director of the MIT Space Exploration Initiative, a team of over 50 graduate students, staff, and faculty actively prototyping the artifacts of our sci-fi space future. Founded in 2016, the Initiative includes a portfolio of 40+ research projects focused on life in space, and supports an accelerator-like R&D program for payload development and flight testing across MIT. For the Initiative, Ariel drives space-related research across science, engineering, art, and design, and charters an annually recurring cadence of parabolic flights, sub-orbital, and orbital launch opportunities.  Ariel graduated with a B.S. in Physics, Mathematics and Philosophy from Yale University and defended her MIT PhD in autonomously self-assembling space architecture for future habitats and space stations in orbit around the Earth, Moon, and Mars. Ariel’s work has been featured in WIRED (March 2020 cover story), MIT Technology Review, Harvard Business Review, the Wall Street Journal, the BBC, CNN, NPR, IEEE and AIAA proceedings, and more. Humanity stands on the cusp of interplanetary civilization and space is our next, grand frontier. This opportunity to design our interplanetary lives beckons to us—Ariel strives to bring our space exploration future to life."},
       {"img": sean, "name": "Sean Auffinger", "role": "Mission Integrator of the MIT Space Exploration Initiative", "title": "Mission Integrator at the Space Exploration Initiative at the MIT Media Lab ", "bio": "Sean serves as Mission Integrator for the Space Exploration Initiative. \n\n Sean brings with him experience working on many different aircraft programs from his time at Boeing Research and Technology. \n\n As Mission Integrator, Sean works intimately with all different research projects across the SEI and MIT community to make sure they are flight ready, advising on technical requirements, design decisions, and flight operations, as well as filling in on engineering support as needed. \n\n Alongside his Mission integrator role, Sean facilitates the Zero-Gravity Flight Prep and Operating in the Lunar Environment courses at SEI. \n\n Outside of SEI, Sean enjoys skiing in the winter months, and is excited to begin private pilot training."},
-      {"img": placeholder, "name": "Sands A. Fish", "role": "Advisor", "title": "Designer at the MIT Space Exploration Initiative", "bio": ""},
     ]
 
   const nano = [
@@ -77,7 +76,7 @@ function Team(props) {
           <div className="Team-title">
             Space Exploration Initiative (SEI) Team
           </div>
-          <div className="Team-section">
+          <div className="Team-section-three">
             {sei.map((person) => 
                 <div className="Team-member" onClick={e => {setPopupStatus(true); setPopupPerson(person); }}>
                 <img src={person["img"]}/>
@@ -93,7 +92,7 @@ function Team(props) {
           <div className="Team-title">
             Design and Manufacturing
           </div>
-          <div className="Team-section">
+          <div className="Team-section-three">
             {nano.map((person) => 
                 <div className="Team-member" onClick={e => {setPopupStatus(true); setPopupPerson(person); }}>
                 <img src={person["img"]}/>

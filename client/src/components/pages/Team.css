@@ -25,7 +25,7 @@
 
 .Team-container {
     width: 100vw;
-    height: 3700px;
+    height: 3000px;
     background-image: url("../../../dist/stars.jpeg");
     background-size: contain;
     color: white;
@@ -36,7 +36,7 @@
   
   .Team-backgroundOverlay {
     width: 100vw;
-    height: 3700px;
+    height: 3000px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
   }
 
@@ -61,6 +61,19 @@
     animation: fadeIn 2s 1;
     font-size: 15px;
 }
+
+.Team-section-three {
+    padding-top: 60px;
+    width: 60vw;
+    margin-left: 20vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 100px;
+    animation: fadeIn 2s 1;
+    font-size: 1em;
+}
+
+
 
 @media (min-height: 800px) {
     .Team-container {
@@ -112,9 +125,20 @@
         animation: fadeIn 2s 1;
         font-size: 1em;
     }
+
+    .Team-section-three {
+        padding-top: 60px;
+        width: 80vw;
+        margin-left: 10vw;
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 100px;
+        animation: fadeIn 2s 1;
+        font-size: 1em;
+    }
     .Team-container {
         width: 100vw;
-        height: 5800px;
+        height: 5500px;
         background-image: url("../../../dist/stars.jpeg");
         background-size: contain;
         color: white;
@@ -125,7 +149,7 @@
       
       .Team-backgroundOverlay {
         width: 100vw;
-        height: 5800px;
+        height: 5500px;
         background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
       }
       .Team-section img {
@@ -136,6 +160,13 @@
     }
 
     .Team-section-one img {
+        width: 100%;
+        border-radius: 15px;
+        margin-bottom: 10px;
+        animation: fadeInImg 2s 1;
+    }
+
+    .Team-section-three img {
         width: 100%;
         border-radius: 15px;
         margin-bottom: 10px;
@@ -158,7 +189,7 @@
 @media (max-width: 400px) {
     .Team-container {
         width: 100vw;
-        height: 6000px;
+        height: 5700px;
         background-image: url("../../../dist/stars.jpeg");
         background-size: contain;
         color: white;
@@ -169,7 +200,7 @@
       
       .Team-backgroundOverlay {
         width: 100vw;
-        height: 6000px;
+        height: 5700px;
         background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0));
       }
 }
@@ -184,6 +215,15 @@
 }
 
 .Team-section-one img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    animation: fadeInImg 2s 1;
+}
+
+.Team-section-three img {
     width: 180px;
     height: 180px;
     object-fit: cover;
