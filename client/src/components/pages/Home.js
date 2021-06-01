@@ -27,41 +27,16 @@ function Home(props) {
   const mapToCount = {"na": na, "sa": sa, "af": af, "eu": eu, "as": as, "oc": oc};
   useEffect(() => {
     async function getSubmissions() {
-        get("/api/allSubmissions").then((messages) => {
-          setTotalSubs(messages.length);
-          let naCount = 0;
-          let saCount = 0;
-          let afCount = 0;
-          let euCount = 0;
-          let asCount = 0;
-          let ocCount = 0;
-          for (let i = 0; i < messages.length; i++) {
-            if (messages[i].region == "NA") {
-              naCount = naCount + 1;
-            }
-            else if (messages[i].region == "SA") {
-              saCount = saCount + 1;
-            }
-            else if (messages[i].region == "AF") {
-              afCount = afCount + 1;
-            }
-            else if (messages[i].region == "EU") {
-              euCount = euCount + 1;
-            }
-            else if (messages[i].region == "AS") {
-              asCount = asCount + 1;
-            }
-            else if (messages[i].region == "OC") {
-              ocCount = ocCount + 1;
-            }
-          }
-          setNA(naCount);
-          setSA(saCount);
-          setAF(afCount);
-          setEU(euCount);
-          setAS(asCount);
-          setOC(ocCount);
-        })
+      get("/api/regionCounts").then((regionCounts) => {
+        console.log(regionCounts);
+        setNA(regionCounts["NA"]);
+        setSA(regionCounts["SA"]);
+        setAF(regionCounts["AF"]);
+        setEU(regionCounts["EU"]);
+        setAS(regionCounts["AS"]);
+        setOC(regionCounts["OC"]);
+        setTotalSubs(regionCounts["NA"] + regionCounts["SA"] + regionCounts["AF"] + regionCounts["EU"] + regionCounts["AS"] + regionCounts["OC"]);
+      })
     }
     getSubmissions();
 }, [totalSubs, na, sa, af, eu, as, oc])

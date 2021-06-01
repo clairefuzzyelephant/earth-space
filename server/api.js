@@ -2,6 +2,7 @@
 const express = require("express");
 
 const Message = require("./models/Message");
+const RegionCount = require("./models/RegionCount");
 const router = express.Router();
 
 // Load the AWS SDK for Node.js
@@ -65,17 +66,34 @@ router.post("/submitMessage", (req, res) => {
     country: req.body.country,
     region: req.body.region,
     message: req.body.message,
-    // translation: req.body.translation,
     language: req.body.language,
     recordingLink: req.body.linkToRecording,
   });
-  newMessage.save().then(() => res.send(newMessage));
+  newMessage.save().then(() => 
+      RegionCount.updateOne(
+          { regionName: req.body.region },
+          { $inc: {count: 1 }}
+      ).then(() => {
+          res.send(newMessage)
+      })
+    )
 })
 
 
 router.get("/allSubmissions", (req, res) => {
   Message.find({}).then((messages) => {
     res.send(messages);
+  })
+})
+
+router.get("/regionCounts", (req, res) => {
+  regionCountDict = {"NA": 0, "SA": 0, "AF": 0, "EU": 0, "AS": 0, "OC": 0};
+  RegionCount.find({}).then((regionCounts) => {
+    for (i = 0; i < regionCounts.length; i++) {
+      let curRegion = regionCounts[i].regionName;
+      regionCountDict[curRegion] = regionCounts[i].count;
+    }
+    res.send(regionCountDict);
   })
 })
 

@@ -14,7 +14,7 @@ const api = require("./api");
 
 const mongoConnectionURL = process.env.ATLAS_SRV;
 // TODO change database name to the name you chose
-const databaseName = "messages";
+const databaseName = "humans";
 
 // connect to mongodb
 mongoose

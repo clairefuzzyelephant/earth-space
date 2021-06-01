@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState } from "react";
 import { countryData } from '../../data.js';
 import Select from 'react-select';
 import LegalPopup from "../modules/LegalPopup.js";
 
 import { post } from "../../utilities.js";
-// import { Mp3Encoder } from 'lamejs';
 
 import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
 
@@ -19,7 +18,6 @@ function Submit(props) {
     const [emailAddr, setEmailAddr] = useState("");
     const [countryVal, setCountryVal] = useState("");
     const [message, setMessage] = useState("");
-    // const [translation, setTranslation] = useState("");
     const [language, setLanguage] = useState("");
 
     const [isChecked, setIsChecked] = useState(false);
@@ -28,7 +26,6 @@ function Submit(props) {
     const [displayWarning, setDisplayWarning] = useState(false);
 
     const countryOptions = countryData();
-    // const options = [ {value: 'EAP', label: 'East Asia and Pacific'}, {value: 'ECA', label: 'Europe and Central Asia'}, {value: 'LAC', label: 'Latin America & Caribbean'}, {value: 'MENA', label: 'Middle East and North Africa'}, {value: 'NAM', label: 'North America'}, {value: 'SAS', label: 'South Asia'}, {value: 'SSA', label: 'Sub-Saharan Africa'}];
     const options = [ {value: 'NA', label: 'North America'}, {value: 'SA', label: 'South America'}, {value: 'AF', label: 'Africa'}, {value: 'EU', label: 'Europe'}, {value: 'AS', label: 'Asia'}, {value: 'OC', label: 'Oceania'} ];
 
     const [region, setRegion] = useState("");
@@ -43,7 +40,6 @@ function Submit(props) {
     const [isRecording, setIsRecording] = useState(false);
     const [blobURL, setBlobURL] = useState("");
     const [blob, setBlob] = useState(null);
-    const [buffer, setBuffer] = useState(null);
 
     const customStyles = {
         control: base => ({
@@ -54,9 +50,7 @@ function Submit(props) {
 
     const handleSubmit = async () => {
         const body = {legalName: legalName, emailAddr: emailAddr, country: countryVal["value"], region: region["value"], message: message, language: language, linkToRecording: ""};
-
         if (acceptedTerms && legalName !== "" && region !== "" && message !== "" && emailAddr !== "" && emailAddr.indexOf('@') !== -1 && language !== "") {
-        // if (true) { 
             if (blob) {
                 const resultLink = await submitAudioFile();
                 if (resultLink !== undefined) {
@@ -69,9 +63,7 @@ function Submit(props) {
                             setRegion("");
                             setMessage("");
                             setEmailAddr("");
-                            // setTranslation("");
                             setLanguage("");
-                            setBuffer(null);
                             setBlob(null);
                             setBlobURL("");
                             setIsChecked(false);
@@ -92,9 +84,7 @@ function Submit(props) {
                         setRegion("");
                         setMessage("");
                         setEmailAddr("");
-                        // setTranslation("");
                         setLanguage("");
-                        setBuffer(null);
                         setBlob(null);
                         setBlobURL("");
                         setIsChecked(false);
@@ -131,59 +121,7 @@ function Submit(props) {
                 return issuesOccur[issueList.indexOf(i)]
             }))
             setDisplayWarning(true);
-        }
-        
-        // const body = {legalName: legalName, emailAddr: emailAddr, country: countryVal["value"], region: region["value"], message: message, translation: translation, language: language};
-        // if (acceptedTerms && legalName !== "" && region !== "" && message !== "" && emailAddr !== "" && emailAddr.indexOf('@') !== -1 && language !== "") {
-        //     post("/api/submitMessage", body).then((result) => {
-        //         if (result !== null) {
-        //             console.log("Success!");
-        //             setLegalName("");
-        //             setCountryVal("");
-        //             setRegion("");
-        //             setMessage("");
-        //             setEmailAddr("");
-        //             setTranslation("");
-        //             setLanguage("");
-        //             setBuffer(null);
-        //             setBlob(null);
-        //             setBlobURL("");
-        //             setIsChecked(false);
-        //         }
-        //         else {
-        //             alert("We encountered an error while trying to submit. Please refresh and try again.")
-        //         }
-        //     })
-        // }
-        // else {
-        //     if (!acceptedTerms) {
-        //         issuesOccur[0] = true;
-        //     }
-        //     if (legalName == "" || !legalName) {
-        //         issuesOccur[1] = true;
-        //     }
-        //     if (emailAddr == "" || !emailAddr) {
-        //         issuesOccur[2] = true;
-        //     }
-        //     if (region == "" || !region) {
-        //         issuesOccur[3] = true;
-        //     }
-        //     if (message == "" || !message) {
-        //         issuesOccur[4] = true;
-        //     }
-        //     if (language == "" || !language) {
-        //         issuesOccur[5] = true;
-        //     }
-        //     if (emailAddr !== "" && emailAddr.indexOf("@") == -1) {
-        //         issuesOccur[6] = true;
-        //     }
-        //     setIssues(issueList.filter(function(i) {
-        //         return issuesOccur[issueList.indexOf(i)]
-        //     }))
-        //     setDisplayWarning(true);
-        //     console.log(issues);
-        // }
-            
+        }          
     }
 
     const toggleCheckbox = () => {
@@ -205,50 +143,8 @@ function Submit(props) {
 
     const cancelTerms = () => {
         setShowPopup(false);
-    }
+    } 
 
-    // const startRecording = () => {
-    //     if (isBlocked) {
-    //         console.log('Permission Denied');
-    //       } else {
-    //         // recorder.start();
-    //         setIsRecording(true);
-    //         // recorder
-    //         //   .start()
-    //         //   .then(() => {
-    //         //     setIsRecording(true);
-    //         //   }).catch((e) => console.error(e));
-    //       }
-    // }
-
-
-    // const stopRecording = () => {
-    //     // recorder.stop();
-    //     // console.log(recorder.state)
-    //     setIsRecording(false);
-    //     // console.log(chunks);
-    //     // let tempBlob = new Blob(chunks, {'type': 'audio/ogg;codecs=opus'});
-    //     // setBlob(tempBlob);
-    //     // console.log(tempBlob);
-    //     // const blobURL = window.URL.createObjectURL(tempBlob);
-    //     // console.log(blobURL);
-    //     // setBlobURL(blobURL);
-    //     // setChunks([]);
-        
-    //     // recorder.stop().getMp3()
-    //     // .then(([buffer, blob]) => {
-    //     // setIsRecording(false);
-    //     // const blobURL = URL.createObjectURL(new Blob(chunks));
-    //     // console.log(chunks);
-    //     // // const blobURL = URL.createObjectURL(blob);
-    //     // setBlobURL(blobURL);
-    //     // setBlob(blob);
-    //     // setBuffer(buffer);
-    //     // console.log(typeof(buffer))
-    //     // console.log(buffer);
-    //     // console.log(blob);
-    //     // })
-    // }
 
     function captureMicrophone(callback) {
     
@@ -279,44 +175,12 @@ function Submit(props) {
 
     function replaceAudio(src) {
         setBlobURL(src);
-        // var newAudio = document.createElement('audio');
-        // newAudio.controls = true;
-        // newAudio.autoplay = true;
-    
-        // if(src) {
-        //     newAudio.src = src;
-        // }
-        
-        // var parentNode = audio.parentNode;
-        // parentNode.innerHTML = '';
-        // parentNode.appendChild(newAudio);
-    
-        // audio = newAudio;
     }
 
     function stopRecordingCallback() {
         const tempBlob = recorder.getBlob();
         replaceAudio(URL.createObjectURL(tempBlob));
         setBlob(tempBlob);
-
-        
-        // setTimeout(function() {
-        //     if(!audio.paused) return;
-    
-        //     setTimeout(function() {
-        //         if(!audio.paused) return;
-        //         audio.play();
-        //     }, 1000);
-            
-        //     audio.play();
-        // }, 300);
-    
-        // audio.play();
-    
-    
-        // if(isSafari) {
-        //     click(btnReleaseMicrophone);
-        // }
     }
 
     const isEdge = navigator.userAgent.indexOf('Edge') !== -1 && (!!navigator.msSaveOrOpenBlob || !!navigator.msSaveBlob);
@@ -328,27 +192,14 @@ function Submit(props) {
         if (!microphone) {
             captureMicrophone(function(mic) {
                 setMicrophone(mic);
-    
-                // if(isSafari) {
-    
-                    alert('Please click the recording button again. The first time, we tried to access your microphone. Now we will record it.');
-                //     return;
-                // }
-    
-                // click(btnStartRecording);
+                alert('Please click the recording button again. The first time, we tried to access your microphone. Now we will record it.');
             });
             return;
         }
     
-        // replaceAudio();
-    
-        // audio.muted = true;
-        // audio.srcObject = microphone;
-    
         let options = {
             type: 'audio/wav',
             numberOfAudioChannels: 1,
-            // checkForInactiveTracks: true,
             bufferSize: 256
         };
     
@@ -402,24 +253,16 @@ function Submit(props) {
             <div className="Submit-title">
                 Send your message to space!
             </div>
-            {/* <div className="Submit-introText">
-            In a year of unending crises, MIT sends—for the first time from space—messages of peace and unity in various languages representing all countries around the world using MIT Nanotechnology!
-            Space is a "space" for everyone!
-            Send your message of peace to space!
-            </div> */}
             <div className="Submit-inputSection">
                 <div className="Submit-inputInfoLeft">
                     <input className="Submit-smallField" placeholder="Legal Name (required)" value={legalName} onChange={e => setLegalName(e.target.value)} />
-                    {/* <input className="Submit-smallField" placeholder="Legal Name (if different from above)" value={englishName} onChange={e => setEnglishName(e.target.value)}/> */}
                     <input className="Submit-smallField" placeholder="Email address (required)" value={emailAddr} onChange={e => setEmailAddr(e.target.value)}/>
                     <div className="Submit-countrySection">
-                        {/* <CountryDropdown className="Submit-dropdown" showDefaultOption={true} defaultOptionLabel="No Country Selected (required)" value={countryVal} onChange={e => setCountryVal(e)} /> */}
                         <Select styles={customStyles} options={countryOptions} value={countryVal} className="Submit-dropdown" isSearchable={false} placeholder="Select your country (required)" onChange={e => setCountryVal(e)} />
                         <div className="Submit-countryDisclaimer">Country list provided by country-region-data repo.</div>
                     </div>
                     <div className="Submit-countrySection">
                         <Select styles={customStyles} options={options} className="Submit-dropdown" isSearchable={false} value={region} placeholder="Select your region (required)" onChange={e => setRegion(e)} />
-                        {/* <div className="Submit-countryDisclaimer">Region list as classified by the World Bank.</div> */}
                     </div>
                     
                 </div>
@@ -429,8 +272,6 @@ function Submit(props) {
                     </div>
                     <textarea className="Submit-largeField" placeholder="Type your message here... (required, max 200 char)" maxLength={200} value={message} onChange={e => setMessage(e.target.value)}/>
                     <input className="Submit-smallField" placeholder="Language of message (required)" value={language} onChange={e => setLanguage(e.target.value)}/>
-                    {/* <textarea className="Submit-mediumField" placeholder="English translation of message" maxLength={500} value={translation} onChange={e => setTranslation(e.target.value)}/> */}
-                    {/** Audio stuff */}
                     <div className="Submit-audioSection">
                         <div className="Submit-recordButton" onClick={() => {
                             if (isRecording) stopRecordingRTC()
@@ -450,9 +291,6 @@ function Submit(props) {
                          </p>}
                         </div>  
                     </div>
-                    {/* <div className="Submit-audioPrompt">
-                            <input type="file" onChange={e => setFile(e.target.files[0])}/>
-                        </div> */}
                     <div className="Submit-legalCheckbox">
                         <div><input type="checkbox" style={{ minHeight: "20px", minWidth: "20px"}} checked={isChecked} onChange={() => toggleCheckbox()} /></div>
                         <div>I accept the legal terms and conditions. (required)</div>  
@@ -481,10 +319,6 @@ function Submit(props) {
 
             {showPopup ? <div className="Submit-popup"><LegalPopup acceptFunction={() => acceptTerms()} cancelFunction={() => cancelTerms()} /></div> : null}
         </div>
-{/* 
-        <button className="startRecording" onClick={() => startRecordingRTC()}>start recording</button>
-        <button className="stopRecording" onClick={() => stopRecordingRTC()}>stop recording</button>
-        <audio controls src={blobURL} /> */}
         <div className="Submit-footer"><Footer /></div>
         </div>
     );
