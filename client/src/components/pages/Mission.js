@@ -28,7 +28,7 @@ function Mission(props) {
             <div className="Mission-boldLarger"><b>Who are we?</b></div>
 
             <p>
-            Maya and Lihui grew up in different parts of the world (Lebanon and China), yet met at MIT because of our shared passion for space. In our journeys in the space sector, we have both faced constant challenges and struggles that limited us from fully contributing our learning and passion. These challenges generated a shared frustration, but more importantly, a vision that space should be more accessible and representative for more people around the world. We hope this project could be one small symbolic step towards that goal.
+            Maya and Lihui grew up in different parts of the world (Lebanon and China), yet met at MIT because of our shared passion for space. In our journeys in the space sector, we have both faced constant challenges and struggles that limited us from fully contributing our learning and passion. These challenges generated a shared frustration, but more importantly, a vision that space should be more accessible and representative for more people around the world. We hope this project could be one small symbolic step towards that goal, and we are grateful to have the support of the <a target="_blank" href="https://www.media.mit.edu/groups/space-exploration/overview/">Space Exploration Initiative (SEI) at MIT Media Lab</a> to make this happen.
             </p>
 
             <div className="Mission-boldLarger"><b>Why you?</b></div>
