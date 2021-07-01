@@ -34,7 +34,7 @@ function Mission(props) {
             <div className="Mission-boldLarger"><b>Why you?</b></div>
 
             <p>
-            This project needs you. We hope to collect messages in your native language, about the meaning of space to you and to humanity, in addition to an optional audio recording of you reading that message. We will use MIT nanotechnology to etch the text and audio waveform to a six-inch record, similar to the process used in the <a href="http://onemit.mit.edu/" target="_blank">One.MIT project</a>. The record would be launched to space and displayed by an astronaut in the International Space Station, accompanied by the background audio of your voices combined. 
+            This project needs you. We hope to collect messages in your native language, about the meaning of space to you and to humanity, in addition to an optional audio recording of you reading that message. We will use MIT nanotechnology to etch the text and audio waveform to a six-inch record, similar to the process used in the <a href="http://onemit.mit.edu/" target="_blank">One.MIT project</a>. We intend to launch the record to the International Space Station with our partners, where we are exploring opportunities for the record to be displayed, and perhaps even "played" by an astronaut! 
             </p>
           </div>
           {/* <img className="poster" src={poster} /> */}
