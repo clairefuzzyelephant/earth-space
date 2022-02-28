@@ -249,7 +249,13 @@ function Submit(props) {
     return (
         <div className="Submit-outerContainer">
         <div className="Submit-container">
-            <div className="Submit-backgroundOverlay">
+            <div className="Submit-title">
+                Send your message to space!
+            </div>
+            <div className="Submit-introText">
+            Thank you for your interest! Our submission collection is now closed. We are working on to make the messages we received earlier ready for space at the moment. Please visit back for more updates!
+            </div>
+            {/* <div className="Submit-backgroundOverlay">
             <div className="Submit-title">
                 Send your message to space!
             </div>
@@ -317,7 +323,7 @@ function Submit(props) {
             
             </div>
 
-            {showPopup ? <div className="Submit-popup"><LegalPopup acceptFunction={() => acceptTerms()} cancelFunction={() => cancelTerms()} /></div> : null}
+            {showPopup ? <div className="Submit-popup"><LegalPopup acceptFunction={() => acceptTerms()} cancelFunction={() => cancelTerms()} /></div> : null} */}
         </div>
         <div className="Submit-footer"><Footer /></div>
         </div>

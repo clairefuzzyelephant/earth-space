@@ -60,11 +60,11 @@ function Home(props) {
           <br></br><br></br>
           We invite you to submit your message if you also believe <b>space should be a “space” for everyone!</b>
           </div>
-          <div className="Home-buttonContainer">
+          {/* <div className="Home-buttonContainer">
             <Link to="/submit" className="Home-submitButton">
                 Submit
             </Link>
-          </div>
+          </div> */}
 
           {/* <img className="Home-poster" src={poster} /> */}
 

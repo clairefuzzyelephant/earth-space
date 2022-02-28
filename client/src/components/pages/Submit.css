@@ -4,7 +4,7 @@
 
 .Submit-container {
   width: 100vw;
-  height: 1350px;
+  height: 400px;
   background-image: url("../../../dist/stars.jpeg");
   background-size: contain;
   color: white;
@@ -39,7 +39,7 @@
   }
   
   .Submit-container {
-    height: 255vh;
+    height: 400px;
     position: relative;
     z-index: 0;
     font-size: 15px;
@@ -184,7 +184,7 @@
 
 @media (max-height: 780px) {
   .Submit-container {
-    height: 1750px;
+    height: 400px;
   }
   .Submit-backgroundOverlay {
     top: 0;
@@ -198,7 +198,7 @@
 
 @media (min-width: 1200px) {
   .Submit-container {
-    height: 1350px;
+    height: 400px;
   }
   .Submit-backgroundOverlay {
     top: 0;
