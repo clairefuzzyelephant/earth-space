@@ -12,7 +12,7 @@ Built using React.js with Node.js backend.
 $ git clone https://github.com/clairefuzzyelephant/earth-space.git
 $ cd earth-space
 ```
-Note: This website currently uses node 16.12.0 and will break if you use node 17+.
+**Note**: This website currently uses node 16.12.0 and will break if you use node 17+.
 Make sure you are running node 16 and/or change your development environment to use node 16.
 Install the npm dependencies.
 ```
@@ -25,7 +25,8 @@ ATLAS_SRV=some_url
 SESSION_SECRET=some_string
 ```
 Now you should be able to connect to the MongoDB. 
-Note: to connect to the Amazon AWS S3 bucket as well, you need to set up an AWS credentials file to use with Node.js: https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/loading-node-credentials-shared.html for local development. However, this is not necessary unless you want to locally test sending audio files from the user to store in the backend. 
+
+**Note**: to connect to the Amazon AWS S3 bucket as well, you need to set up an AWS credentials file to use with Node.js for local development: https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/loading-node-credentials-shared.html. However, this is not necessary unless you want to locally test sending audio files from the user to store in the backend. 
 
 Start the server in a new terminal tab in the same directory:
 ```
