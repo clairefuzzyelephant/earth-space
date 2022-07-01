@@ -24,7 +24,10 @@ In your folder's root directory, add a .env file with the following environment 
 ATLAS_SRV=some_url
 SESSION_SECRET=some_string
 ```
-Now you should be able to connect to the relevant databases. Start the server in a new terminal tab in the same directory:
+Now you should be able to connect to the MongoDB. 
+Note: to connect to the Amazon AWS S3 bucket as well, you need to set up an AWS credentials file to use with Node.js: https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/loading-node-credentials-shared.html for local development. However, this is not necessary unless you want to locally test sending audio files from the user to store in the backend. 
+
+Start the server in a new terminal tab in the same directory:
 ```
 npm start
 ```
