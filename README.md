@@ -19,10 +19,10 @@ Install the npm dependencies.
 $ npm install
 ```
 
-In your folder's root directory, add a .env file with the following environment variables and their values:
+In your folder's root directory, add a .env file with the following environment variables and their values in the format VARIABLE_NAME=VARIABLE_VALUE (no quotation marks):
 ```
-ATLAS_SRV
-SESSION_SECRET
+ATLAS_SRV=some_url
+SESSION_SECRET=some_string
 ```
 Now you should be able to connect to the relevant databases. Start the server in a new terminal tab in the same directory:
 ```
